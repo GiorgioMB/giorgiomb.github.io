@@ -1,14 +1,11 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - GiorgioMB
 
 repo_description_lines_max: 2
 
 github_repos:
-  - alshedivat/al-folio
-  - jekyll/jekyll
-  - twbs/bootstrap
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - mathjax/MathJax
-  - jpswalsh/academicons
+  - GiorgioMB/stockdatamanipulation
+  - GiorgioMB/bridgesampling_paper_code
+  - GiorgioMB/bridgeoverlap
+  - GiorgioMB/Curvature-Transfer-Code
+  - GiorgioMB/GradProjects
