@@ -1,0 +1,238 @@
+<style>
+  .demo {
+    --claim: #467886;
+    --truth: #8a5a00;
+    --truth-tint: rgba(138, 90, 0, 0.07);
+    margin: 1.25rem 0 1.75rem;
+  }
+  html[data-theme='dark'] .demo {
+    --claim: #7fb8c4;
+    --truth: #e0b54e;
+    --truth-tint: rgba(224, 181, 78, 0.1);
+  }
+  .demo .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    align-items: flex-end;
+    margin-bottom: 0.75rem;
+  }
+  .demo fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+  .demo legend {
+    float: none;
+    width: auto;
+    margin: 0 0 0.25rem;
+    padding: 0;
+    font-size: 0.85rem;
+    color: var(--global-text-color-light);
+  }
+  .demo .seg {
+    display: inline-flex;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .demo .seg input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+  .demo .seg label {
+    margin: 0;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: var(--global-text-color);
+    border-left: 1px solid var(--global-divider-color);
+  }
+  .demo .seg label:first-of-type {
+    border-left: 0;
+  }
+  .demo .seg input:checked + label {
+    background: var(--claim);
+    color: var(--global-bg-color);
+  }
+  .demo .seg input:focus-visible + label {
+    outline: 2px solid var(--claim);
+    outline-offset: -3px;
+  }
+  .demo .action {
+    border: 1px solid var(--claim);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--claim);
+    padding: 0.3rem 0.8rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  .demo .action:hover {
+    background: var(--claim);
+    color: var(--global-bg-color);
+  }
+  .demo .action:focus-visible {
+    outline: 2px solid var(--claim);
+    outline-offset: 2px;
+  }
+  .demo .action:disabled {
+    opacity: 0.55;
+    cursor: progress;
+  }
+  .demo .chart svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .demo .readout {
+    margin: 0.75rem 0 0.25rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .demo .status {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--global-text-color-light);
+  }
+  .demo text {
+    font-family: inherit;
+  }
+  .demo .bd-grid,
+  .demo .od-grid {
+    stroke: var(--global-divider-color);
+    stroke-width: 1;
+  }
+  .demo .bd-tick,
+  .demo .od-tick {
+    fill: var(--global-text-color-light);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  .demo .bd-axis,
+  .demo .od-axis {
+    fill: var(--global-text-color-light);
+    font-size: 12.5px;
+  }
+  .demo .bd-unreachable {
+    fill: var(--truth-tint);
+  }
+  .demo .bd-note {
+    fill: var(--truth);
+    font-size: 12px;
+  }
+  .demo .bd-cap {
+    stroke: var(--claim);
+    stroke-width: 1.5;
+    stroke-dasharray: 6 4;
+  }
+  .demo .bd-cap-label {
+    fill: var(--claim);
+    font-size: 12px;
+  }
+  .demo .bd-trust {
+    stroke: var(--global-text-color-light);
+    stroke-width: 1;
+    stroke-dasharray: 2 4;
+  }
+  .demo .bd-trust-label {
+    fill: var(--global-text-color-light);
+    font-size: 12px;
+  }
+  .demo .bd-line {
+    fill: none;
+    stroke-width: 2.2;
+    stroke-linejoin: round;
+  }
+  .demo .bd-line.bd-reported {
+    stroke: var(--claim);
+  }
+  .demo .bd-line.bd-actual {
+    stroke: var(--truth);
+  }
+  .demo .bd-dot.bd-reported {
+    fill: var(--claim);
+  }
+  .demo .bd-dot.bd-actual {
+    fill: var(--truth);
+  }
+  .demo .bd-series-label {
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+  .demo .bd-series-label.bd-reported {
+    fill: var(--claim);
+  }
+  .demo .bd-series-label.bd-actual {
+    fill: var(--truth);
+  }
+  .demo .od-band {
+    fill: var(--claim);
+    fill-opacity: 0.18;
+  }
+  .demo .od-band-plain {
+    fill: var(--global-text-color-light);
+    fill-opacity: 0.14;
+  }
+  .demo .od-est {
+    fill: none;
+    stroke: var(--claim);
+    stroke-width: 2;
+  }
+  .demo .od-truth {
+    stroke: var(--truth);
+    stroke-width: 2;
+  }
+  .demo .od-truth-label {
+    fill: var(--truth);
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+  .demo .od-plain-label {
+    fill: var(--global-text-color-light);
+    font-size: 12px;
+  }
+  .demo .od-sliders {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 0.5rem 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .demo .od-slider {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+  }
+  .demo .od-slider label {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  .demo .od-slider output {
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--claim);
+  }
+  .demo .od-slider input {
+    grid-column: 1 / -1;
+    width: 100%;
+    accent-color: var(--claim);
+  }
+  .demo .od-numbers {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 0.5rem 1.5rem;
+    margin: 0.75rem 0 0;
+  }
+  .demo .od-numbers dt {
+    font-weight: normal;
+    font-size: 0.85rem;
+    color: var(--global-text-color-light);
+  }
+  .demo .od-numbers dd {
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+  }
+</style>

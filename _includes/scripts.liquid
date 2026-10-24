@@ -376,3 +376,11 @@
 {% if site.newsletter.enabled %}
   <script defer src="{{ '/assets/js/newsletter.js' | relative_url | bust_file_cache }}"></script>
 {% endif %}
+
+{% if site.doom_easter_egg.enabled %}
+  <script
+    defer
+    src="{{ '/assets/js/doom-egg.js' | relative_url | bust_file_cache }}"
+    data-url="{{ site.doom_easter_egg.url | relative_url }}"
+  ></script>
+{% endif %}

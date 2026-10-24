@@ -1,115 +1,46 @@
 ---
 ---
 
-@string{aps = {American Physical Society,}}
-
-@book{einstein1920relativity,
-  title     = {Relativity: the Special and General Theory},
-  author    = {Einstein, Albert},
-  year      = {1920},
-  publisher = {Methuen & Co Ltd},
-  html      = {relativity.html}
-}
-
-@book{einstein1956investigations,
+@article{micaletto2026overlap,
+  abbr        = {arXiv},
   bibtex_show = {true},
-  title       = {Investigations on the Theory of the Brownian Movement},
-  author      = {Einstein, Albert},
-  year        = {1956},
-  publisher   = {Courier Corporation},
-  preview     = {brownian-motion.gif}
+  title       = {Overlap, Not Moments: Finite-Sample Theory for Bridge Sampling},
+  author      = {Micaletto, Giorgio},
+  journal     = {arXiv preprint arXiv:2610.17403},
+  year        = {2026},
+  arxiv       = {2610.17403},
+  code        = {https://github.com/GiorgioMB/bridgeoverlap},
+  preview     = {overlap-not-moments.png},
+  abstract    = {Bridge sampling estimates of marginal likelihoods are routinely reported with a delta-method Monte Carlo standard error (MCSE). Existing theory is asymptotic and cannot say whether a given run is long enough to trust the estimate or its MCSE. We give finite-sample answers. The optimal bridge estimator fits a logistic regression that separates posterior from proposal draws, and its accuracy is governed by their overlap, within a factor of two of the classification's Bayes error. Because the estimating function is a sum of bounded terms, no moment conditions are needed, and all bounds hold uniformly over targets, proposals and dimensions. A number of draws inversely proportional to the overlap suffices and is necessary in the worst case, paralleling the exponential-in-Kullback--Leibler requirement of importance sampling. A Berry--Esseen bound with an explicit constant holds at the optimal rate, and the MCSE is accurate once the effective overlap is large; it is estimated at no cost. For Markov chain draws, the required sample size grows in proportion to the sampler's relaxation time, unavoidably in the worst case. The estimated bridge, the fixed-point iteration and the fitted proposal matter only at second order, and we give free diagnostics for sampler failure and misestimated autocorrelation.},
+  selected    = {true}
 }
 
-@article{einstein1950meaning,
-  abbr        = {AJP},
-  bibtex_show = {true},
-  title       = {The meaning of relativity},
-  author      = {Einstein, Albert and Taub, AH},
-  journal     = {American Journal of Physics},
-  volume      = {18},
-  number      = {6},
-  pages       = {403--404},
-  year        = {1950},
-  publisher   = {American Association of Physics Teachers}
+@inproceedings{micaletto2026scalable,
+  abbr            = {NeurIPS-W},
+  bibtex_show     = {true},
+  title           = {Scalable Graph Curvature: Bounding Ollivier-Ricci via Local Combinatorics for Geometric Deep Learning},
+  author          = {Micaletto, Giorgio and Nigrelli, Tebe},
+  booktitle       = {NeurIPS 2026 Workshop on Graph Distributional Deep Learning},
+  year            = {2026},
+  arxiv           = {2603.13535},
+  code            = {https://github.com/GiorgioMB/Curvature-Transfer-Code},
+  preview         = {scalable-graph-curvature.png},
+  additional_info = {. The extended version is on arXiv as *Edgewise Envelopes Between Balanced Forman and Ollivier-Ricci Curvature*},
+  abstract        = {Evaluating Ollivier-Ricci (OR) curvature on large-scale graphs is computationally prohibitive due to the necessity of solving an optimal transport problem for every edge. We bypass this bottleneck by deriving explicit, two-sided, piecewise-affine transfer moduli between the transport-based OR curvature and the combinatorial Balanced Forman (BF) curvature. We establish deterministic bounds for the OR curvature of each edge, parameterized by 2-hop local graph combinatorics, reducing the edgewise evaluation complexity from an optimal transport linear program to a worst-case time of order the maximum degree to the power 2.5, entirely eliminating the reliance on global solvers. Empirical scalability benchmarks confirm these theoretical guarantees, demonstrating that the proposed transfer moduli yield significant asymptotic and constant-factor speedups over the steep polynomial scaling of exact OR evaluation. Furthermore, the tightness of these bounds is validated via distributional analyses on canonical random graphs and empirical networks, with the derived analytical bands enclosing the empirical distributions independent of degree heterogeneity, geometry, or clustering, providing a scalable, computationally efficient framework for rigorous statistical network analysis.},
+  selected        = {true}
 }
 
-@article{PhysRev.47.777,
-  abbr              = {PhysRev},
-  title             = {Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?},
-  author            = {Einstein*†, A. and Podolsky*, B. and Rosen*, N.},
-  abstract          = {In a complete theory there is an element corresponding to each element of reality. A sufficient condition for the reality of a physical quantity is the possibility of predicting it with certainty, without disturbing the system. In quantum mechanics in the case of two physical quantities described by non-commuting operators, the knowledge of one precludes the knowledge of the other. Then either (1) the description of reality given by the wave function in quantum mechanics is not complete or (2) these two quantities cannot have simultaneous reality. Consideration of the problem of making predictions concerning a system on the basis of measurements made on another system that had previously interacted with it leads to the result that if (1) is false then (2) is also false. One is thus led to conclude that the description of reality as given by a wave function is not complete.},
-  journal           = {Phys. Rev.},
-  location          = {New Jersey},
-  volume            = {47},
-  issue             = {10},
-  pages             = {777--780},
-  numpages          = {0},
-  year              = {1935},
-  month             = {May},
-  publisher         = aps,
-  doi               = {10.1103/PhysRev.47.777},
-  url               = {https://link.aps.org/doi/10.1103/PhysRev.47.777},
-  html              = {https://journals.aps.org/pr/abstract/10.1103/PhysRev.47.777},
-  pdf               = {example_pdf.pdf},
-  altmetric         = {248277},
-  dimensions        = {true},
-  google_scholar_id = {qyhmnyLat1gC},
-  video             = {https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ},
-  additional_info   = {. *More Information* can be [found here](https://github.com/alshedivat/al-folio/)},
-  annotation        = {* Example use of superscripts<br>† Albert Einstein},
-  selected          = {true},
-  inspirehep_id     = {3255}
-}
-
-@article{einstein1905molekularkinetischen,
-  title     = {{\"U}ber die von der molekularkinetischen Theorie der W{\"a}rme geforderte Bewegung von in ruhenden Fl{\"u}ssigkeiten suspendierten Teilchen},
-  author    = {Einstein, A.},
-  journal   = {Annalen der physik},
-  volume    = {322},
-  number    = {8},
-  pages     = {549--560},
-  year      = {1905},
-  publisher = {Wiley Online Library}
-}
-
-@article{einstein1905movement,
-  abbr    = {Ann. Phys.},
-  title   = {Un the movement of small particles suspended in statiunary liquids required by the molecular-kinetic theory 0f heat},
-  author  = {Einstein, A.},
-  journal = {Ann. Phys.},
-  volume  = {17},
-  pages   = {549--560},
-  year    = {1905}
-}
-
-@article{einstein1905electrodynamics,
-  title  = {On the electrodynamics of moving bodies},
-  author = {Einstein, A.},
-  year   = {1905}
-}
-
-@article{einstein1905photoelectriceffect,
-  bibtex_show = {true},
-  abbr        = {Ann. Phys.},
-  title       = {{{\"U}ber einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt}},
-  author      = {Albert Einstein},
-  abstract    = {This is the abstract text.},
-  journal     = {Ann. Phys.},
-  volume      = {322},
-  number      = {6},
-  pages       = {132--148},
-  year        = {1905},
-  doi         = {10.1002/andp.19053220607},
-  award       = {Albert Einstein receveid the **Nobel Prize in Physics** 1921 *for his services to Theoretical Physics, and especially for his discovery of the law of the photoelectric effect*},
-  award_name  = {Nobel Prize}
-}
-
-@book{przibram1967letters,
-  bibtex_show = {true},
-  title       = {Letters on wave mechanics},
-  author      = {Einstein, Albert and Schrödinger, Erwin and Planck, Max and Lorentz, Hendrik Antoon and Przibram, Karl},
-  year        = {1967},
-  publisher   = {Vision},
-  preview     = {wave-mechanics.gif},
-  abbr        = {Vision}
+@article{micaletto2025bridge,
+  abbr            = {arXiv},
+  bibtex_show     = {true},
+  title           = {Bridge Sampling Diagnostics},
+  author          = {Micaletto, Giorgio and Vehtari, Aki},
+  journal         = {arXiv preprint arXiv:2508.14487},
+  year            = {2025},
+  arxiv           = {2508.14487},
+  code            = {https://github.com/GiorgioMB/bridgesampling_paper_code},
+  preview         = {bridge-sampling-diagnostics.png},
+  additional_info = {. Revised and resubmitted to *The American Statistician*. [Interactive demo](/projects/bridge-sampling/)},
+  abstract        = {In Bayesian statistics, the marginal likelihood is used for model selection and averaging, yet it is often challenging to compute accurately for complex models. Approaches such as bridge sampling, while effective, suffer from high variance when the proposal distribution overlaps poorly with the target posterior. To quantify this variance, we present a closed-form Monte Carlo standard error (MCSE) estimator for bridge sampling, extending classical variance approximations with a multi-chain effective-sample-size correction for autocorrelated MCMC draws and an exact log-scale variance. We show that the MCSE estimate itself is structurally capped at about 1.05, so values near this cap signal saturation rather than precision, and our calibration experiments show that the MCSE can be trusted when it is below 0.3. Furthermore, we introduce a hybrid score-matching proposal that regularizes the sample covariance using the local posterior geometry, significantly improving the stability of the estimator, and we demonstrate the efficacy of these methods using increasingly difficult simulated posteriors and real posteriors from the posteriordb database.},
+  selected        = {true}
 }
