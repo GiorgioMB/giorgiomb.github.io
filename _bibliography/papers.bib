@@ -1,20 +1,6 @@
 ---
 ---
 
-@article{micaletto2026overlap,
-  abbr        = {arXiv},
-  bibtex_show = {true},
-  title       = {Overlap, Not Moments: Finite-Sample Theory for Bridge Sampling},
-  author      = {Micaletto, Giorgio},
-  journal     = {arXiv preprint arXiv:2610.17403},
-  year        = {2026},
-  arxiv       = {2610.17403},
-  code        = {https://github.com/GiorgioMB/bridgeoverlap},
-  preview     = {overlap-not-moments.png},
-  abstract    = {Bridge sampling estimates of marginal likelihoods are routinely reported with a delta-method Monte Carlo standard error (MCSE). Existing theory is asymptotic and cannot say whether a given run is long enough to trust the estimate or its MCSE. We give finite-sample answers. The optimal bridge estimator fits a logistic regression that separates posterior from proposal draws, and its accuracy is governed by their overlap, within a factor of two of the classification's Bayes error. Because the estimating function is a sum of bounded terms, no moment conditions are needed, and all bounds hold uniformly over targets, proposals and dimensions. A number of draws inversely proportional to the overlap suffices and is necessary in the worst case, paralleling the exponential-in-Kullback--Leibler requirement of importance sampling. A Berry--Esseen bound with an explicit constant holds at the optimal rate, and the MCSE is accurate once the effective overlap is large; it is estimated at no cost. For Markov chain draws, the required sample size grows in proportion to the sampler's relaxation time, unavoidably in the worst case. The estimated bridge, the fixed-point iteration and the fitted proposal matter only at second order, and we give free diagnostics for sampler failure and misestimated autocorrelation.},
-  selected    = {true}
-}
-
 @inproceedings{micaletto2026scalable,
   abbr            = {NeurIPS-W},
   bibtex_show     = {true},
@@ -40,7 +26,6 @@
   arxiv           = {2508.14487},
   code            = {https://github.com/GiorgioMB/bridgesampling_paper_code},
   preview         = {bridge-sampling-diagnostics.png},
-  additional_info = {. Revised and resubmitted to *The American Statistician*. [Interactive demo](/projects/bridge-sampling/)},
   abstract        = {In Bayesian statistics, the marginal likelihood is used for model selection and averaging, yet it is often challenging to compute accurately for complex models. Approaches such as bridge sampling, while effective, suffer from high variance when the proposal distribution overlaps poorly with the target posterior. To quantify this variance, we present a closed-form Monte Carlo standard error (MCSE) estimator for bridge sampling, extending classical variance approximations with a multi-chain effective-sample-size correction for autocorrelated MCMC draws and an exact log-scale variance. We show that the MCSE estimate itself is structurally capped at about 1.05, so values near this cap signal saturation rather than precision, and our calibration experiments show that the MCSE can be trusted when it is below 0.3. Furthermore, we introduce a hybrid score-matching proposal that regularizes the sample covariance using the local posterior geometry, significantly improving the stability of the estimator, and we demonstrate the efficacy of these methods using increasingly difficult simulated posteriors and real posteriors from the posteriordb database.},
   selected        = {true}
 }

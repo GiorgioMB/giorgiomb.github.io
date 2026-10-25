@@ -9,7 +9,7 @@ category: interactive
 
 {% include demo-styles.liquid %}
 
-[stockdatamanager](https://github.com/GiorgioMB/stockdatamanipulation) is a Python library I wrote for technical, fundamental and options analysis, including Greeks and option pricing with binomial trees and Crank–Nicolson. This page is its Monte Carlo counterpart: price a European option by simulation, see how wide the error bar is, and compare it with the Black–Scholes price.
+[stockdatamanager](https://github.com/GiorgioMB/stockdatamanipulation) is a Python library I wrote for fun as a passion project before going to Aalto, for technical, fundamental and options analysis, including Greeks and option pricing with binomial trees and Crank–Nicolson. This page is its Monte Carlo counterpart: price a European option by simulation, see how wide the error bar is, and compare it with the Black–Scholes price.
 
 <div id="option-demo" class="demo">
   <div class="controls">
@@ -51,7 +51,7 @@ category: interactive
 
 ### What you're seeing
 
-The teal line is the running Monte Carlo estimate and the band is its 95% interval; the gold line is the Black–Scholes price. The band narrows like one over the square root of the number of paths, so halving it takes four times as many. Variance reduction narrows it at almost no cost: antithetic draws pair each path with its mirror image, and a control variate subtracts the part of the payoff explained by the final stock price, whose mean is known exactly. The paths stay the same as you move the sliders, so you can see how each input moves the price.
+The teal line is the running Monte Carlo estimate and the band is its 95% interval; the gold line is the Black–Scholes price. The band narrows like $1/\sqrt{N}$ in the number of paths $N$, so halving it takes four times as many. Variance reduction narrows it at almost no cost: antithetic draws pair each path with its mirror image, and a control variate subtracts the part of the payoff explained by the final stock price, whose mean is known. The paths stay the same as you move the sliders, so you can see how each input moves the price.
 
 The American price comes from a 400-step binomial tree. For a put, its difference from the European price is the value of being able to exercise early.
 
