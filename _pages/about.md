@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: PhD student in Statistics at the <a href="https://stat.uchicago.edu/">University of Chicago</a>
+subtitle: PhD candidate in Statistics at the <a href="https://stat.uchicago.edu/">University of Chicago</a>
 
 profile:
   align: right
