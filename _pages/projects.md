@@ -5,7 +5,7 @@ permalink: /projects/
 description: Some of these are interactive and run in your browser.
 nav: true
 nav_order: 3
-display_categories: [interactive, competitions]
+display_categories: [Interactive, Open source, Competitions]
 horizontal: false
 ---
 

@@ -4,7 +4,7 @@ title: Water quality from coordinates
 description: EY AI & Data Challenge 2026, top 10 of 953 teams, competing solo.
 img: assets/img/projects/ey-water-quality.png
 importance: 1
-category: competitions
+category: Competitions
 ---
 
 The 2026 EY AI & Data Challenge asked for predictions of three water quality indicators, total alkalinity, electrical conductance and dissolved reactive phosphorus, at monitoring stations across South Africa, using only each sample's coordinates and date. I competed solo and reached the semifinal, in the top 10 of 953 teams.
