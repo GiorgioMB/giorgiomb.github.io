@@ -4,7 +4,7 @@ title: When an error bar can't warn you
 description: Bridge sampling's error estimate has a ceiling. Watch it hit it.
 img: assets/img/projects/bridge-sampling.png
 importance: 1
-category: interactive
+category: Interactive
 ---
 
 {% include demo-styles.liquid %}

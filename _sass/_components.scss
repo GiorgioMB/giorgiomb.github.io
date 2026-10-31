@@ -259,3 +259,42 @@ ul.task-list input[type="checkbox"] {
 .d2h-diff-table {
   position: relative;
 }
+
+// About page: the photo sits beside the news and papers instead of above them
+.about-layout {
+  display: flex;
+  flex-direction: column;
+
+  .profile {
+    align-self: center;
+    max-width: 280px;
+    margin: 0 0 1rem;
+  }
+
+  .about-main {
+    min-width: 0;
+  }
+}
+
+@media (min-width: 576px) {
+  .about-layout {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    gap: 1.5rem;
+
+    .profile {
+      flex: 0 0 30%;
+      align-self: flex-start;
+      max-width: none;
+      margin: 0.25rem 0 0;
+    }
+
+    .about-main {
+      flex: 1 1 auto;
+    }
+  }
+
+  .about-layout.about-layout-left {
+    flex-direction: row;
+  }
+}
