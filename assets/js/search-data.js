@@ -41,6 +41,11 @@ ninja.data = [{
           description: "Monte Carlo pricing in your browser, checked against Black–Scholes.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/option-pricing/";
+            },},{id: "projects-sporf-on-current-python",
+          title: 'SPORF on current Python',
+          description: "A maintained fork of sparse projection oblique randomer forests, proposed upstream in neurodata/SPORF#361.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/sporf/";
             },},{
         id: 'social-email',
         title: 'email',
