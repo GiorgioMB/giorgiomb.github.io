@@ -4,15 +4,15 @@
 @inproceedings{micaletto2026scalable,
   abbr            = {NeurIPS-W},
   bibtex_show     = {true},
-  title           = {Scalable Graph Curvature: Bounding Ollivier-Ricci via Local Combinatorics for Geometric Deep Learning},
+  title           = {From Proxy to Certificate: Two-Sided {Ollivier-Ricci} Bounds from Balanced {Forman} Curvature},
   author          = {Micaletto, Giorgio and Nigrelli, Tebe},
   booktitle       = {NeurIPS 2026 Workshop on Graph Distributional Deep Learning},
   year            = {2026},
-  arxiv           = {2603.13535},
+  arxiv           = {2603.13535v6},
   code            = {https://github.com/GiorgioMB/Curvature-Transfer-Code},
-  preview         = {scalable-graph-curvature.png},
-  additional_info = {. The extended version is on arXiv as *Edgewise Envelopes Between Balanced Forman and Ollivier-Ricci Curvature*},
-  abstract        = {Evaluating Ollivier-Ricci (OR) curvature on large-scale graphs is computationally prohibitive due to the necessity of solving an optimal transport problem for every edge. We bypass this bottleneck by deriving explicit, two-sided, piecewise-affine transfer moduli between the transport-based OR curvature and the combinatorial Balanced Forman (BF) curvature. We establish deterministic bounds for the OR curvature of each edge, parameterized by 2-hop local graph combinatorics, reducing the edgewise evaluation complexity from an optimal transport linear program to a worst-case time of order the maximum degree to the power 2.5, entirely eliminating the reliance on global solvers. Empirical scalability benchmarks confirm these theoretical guarantees, demonstrating that the proposed transfer moduli yield significant asymptotic and constant-factor speedups over the steep polynomial scaling of exact OR evaluation. Furthermore, the tightness of these bounds is validated via distributional analyses on canonical random graphs and empirical networks, with the derived analytical bands enclosing the empirical distributions independent of degree heterogeneity, geometry, or clustering, providing a scalable, computationally efficient framework for rigorous statistical network analysis.},
+  preview         = {proxy-to-certificate.png},
+  additional_info = {. An earlier version was accepted (non-archival) as *Scalable Graph Curvature: Bounding Ollivier-Ricci via Local Combinatorics for Geometric Deep Learning*},
+  abstract        = {Balanced Forman (BF) curvature is used in graph learning as a cheap stand-in for Ollivier-Ricci (OR) curvature, yet it does not lower-bound OR curvature. We show that the BF value of an edge certifies a two-sided interval for its lazy OR curvature without solving any optimal transport problem, that BF coincides with a quadrangle-augmented Jost-Liu (JL) bound with its positive parts removed, and that when the 2-hop neighborhood is available, the interval can be sharpened at a cost of order the maximum degree to the power 2.5 per edge. On 23 benchmark graphs, our quadrangle-augmented bound is tighter than the bounds of JL and Tian-Lubberts-Weber (TLW) on 13.8-100\% of the edges and reduces their mean gap to the exact curvature by a median of 31.2\%; intersected with the bounds of TLW, the intervals settle the curvature sign of more than half of the edges on 21 of the 23 graphs. On 15 real networks with up to 1,049,866 edges, a certify-then-solve procedure answers sign queries exactly while solving a median of 5.9 times fewer transport problems, for median speedups of 2 times over exact evaluation, measured against a min-cut solver that is itself about two orders of magnitude faster than the widely used GraphRicciCurvature. The main results are machine-checked in Lean 4.},
   selected        = {true}
 }
 
