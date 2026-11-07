@@ -235,4 +235,248 @@
     margin: 0;
     font-variant-numeric: tabular-nums;
   }
+  .demo [hidden] {
+    display: none !important;
+  }
+  .demo {
+    --sm-neg: #d55e00;
+    --sm-pos: #0072b2;
+    --sm-old: #b4b4b4;
+  }
+  html[data-theme='dark'] .demo {
+    --sm-neg: #f08a4b;
+    --sm-pos: #56b4e9;
+    --sm-old: #5d636a;
+  }
+  .demo .sm-threshold {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 0.25rem 1rem;
+    margin-bottom: 0.25rem;
+  }
+  .demo .sm-threshold label {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  .demo .sm-threshold output {
+    margin-left: 0.35rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--claim);
+  }
+  .demo .sm-threshold input {
+    grid-column: 1 / -1;
+    width: 100%;
+    accent-color: var(--claim);
+  }
+  .demo .sm-chart svg {
+    touch-action: pan-y;
+    cursor: ew-resize;
+  }
+  .demo .sm-band-0 {
+    fill: var(--claim);
+    fill-opacity: 0.62;
+  }
+  .demo .sm-band-1 {
+    fill: var(--claim);
+    fill-opacity: 0.36;
+  }
+  .demo .sm-band-2 {
+    fill: var(--claim);
+    fill-opacity: 0.16;
+  }
+  .demo .sm-band-3 {
+    fill: var(--truth);
+    fill-opacity: 0.2;
+  }
+  .demo .sm-band-on {
+    stroke: var(--global-text-color);
+    stroke-width: 1.25;
+    stroke-linejoin: round;
+  }
+  .demo .sm-grid {
+    stroke: var(--global-divider-color);
+    stroke-width: 1;
+  }
+  .demo .sm-tick {
+    fill: var(--global-text-color-light);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  .demo .sm-axis {
+    fill: var(--global-text-color-light);
+    font-size: 12.5px;
+  }
+  .demo .sm-marker {
+    stroke: var(--global-text-color);
+    stroke-width: 1.5;
+  }
+  .demo .sm-steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin: 0.75rem 0 0.5rem;
+  }
+  .demo .sm-steps input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+  .demo .sm-steps label {
+    display: block;
+    margin: 0;
+    padding: 0.4rem 0.6rem 0.45rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--global-text-color);
+    line-height: 1.3;
+  }
+  .demo .sm-steps input:checked + label {
+    border-color: var(--claim);
+    box-shadow: inset 0 0 0 1px var(--claim);
+  }
+  .demo .sm-steps input:focus-visible + label {
+    outline: 2px solid var(--claim);
+    outline-offset: 2px;
+  }
+  .demo .sm-swatch {
+    display: block;
+    height: 4px;
+    border-radius: 2px;
+    margin-bottom: 0.35rem;
+  }
+  .demo .sm-swatch-0 {
+    background: var(--claim);
+    opacity: 0.62;
+  }
+  .demo .sm-swatch-1 {
+    background: var(--claim);
+    opacity: 0.36;
+  }
+  .demo .sm-swatch-2 {
+    background: var(--claim);
+    opacity: 0.16;
+  }
+  .demo .sm-swatch-3 {
+    background: var(--truth);
+    opacity: 0.35;
+  }
+  .demo .sm-step-name {
+    display: block;
+    font-size: 0.85rem;
+  }
+  .demo .sm-step-num {
+    display: block;
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--global-text-color-light);
+  }
+  .demo .sm-steps input:checked + label .sm-step-num {
+    color: var(--global-text-color);
+  }
+  .demo .sm-map svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 78vh;
+    touch-action: manipulation;
+  }
+  .demo .sm-svg path {
+    fill: none;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+  .demo .sm-svg .sm-old {
+    stroke: var(--sm-old);
+    stroke-width: 0.7;
+  }
+  .demo .sm-svg .sm-neg {
+    stroke: var(--sm-neg);
+    stroke-width: 1.7;
+  }
+  .demo .sm-svg .sm-pos {
+    stroke: var(--sm-pos);
+    stroke-width: 1.7;
+  }
+  .demo .sm-svg.sm-sparse .sm-old {
+    stroke-width: 1.2;
+  }
+  .demo .sm-svg.sm-sparse .sm-neg,
+  .demo .sm-svg.sm-sparse .sm-pos {
+    stroke-width: 2.8;
+  }
+  .demo .sm-svg .sm-hi {
+    stroke: var(--global-text-color);
+    stroke-width: 3.5;
+  }
+  .demo .sm-svg .sm-ends {
+    stroke: var(--global-text-color);
+    stroke-width: 8;
+  }
+  .demo .sm-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 1.25rem;
+    margin: 0.5rem 0 0;
+    font-size: 0.85rem;
+    color: var(--global-text-color-light);
+  }
+  .demo .sm-key::before {
+    content: '';
+    display: inline-block;
+    width: 1.4em;
+    margin-right: 0.4em;
+    vertical-align: middle;
+    border-top: 3px solid;
+  }
+  .demo .sm-key-neg::before {
+    border-top-color: var(--sm-neg);
+  }
+  .demo .sm-key-pos::before {
+    border-top-color: var(--sm-pos);
+  }
+  .demo .sm-key-old::before {
+    border-top: 1.5px solid var(--sm-old);
+  }
+  .demo .sm-readout p {
+    margin: 0 0 0.35rem;
+  }
+  .demo .sm-hint {
+    font-size: 0.85rem;
+    color: var(--global-text-color-light);
+  }
+  .demo .sm-table {
+    width: 100%;
+    margin: 0.25rem 0 0.5rem;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .demo .sm-table th,
+  .demo .sm-table td {
+    padding: 0.2rem 0.75rem 0.2rem 0;
+    border-bottom: 1px solid var(--global-divider-color);
+    text-align: left;
+    font-weight: normal;
+  }
+  .demo .sm-table td:nth-child(2) {
+    white-space: nowrap;
+  }
+  .demo .sm-table th {
+    font-size: 0.8rem;
+    color: var(--global-text-color-light);
+  }
+  .demo .sm-row-on td {
+    font-weight: 600;
+  }
+  .demo .sm-row-off td {
+    color: var(--global-text-color-light);
+  }
+  @media (max-width: 575px) {
+    .demo .sm-steps {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
 </style>
