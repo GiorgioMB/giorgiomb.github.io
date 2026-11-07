@@ -23,10 +23,10 @@ impressum_path: # set to path to include impressum link in the footer, use the s
 back_to_top: true # set to false to disable the back to top button
 
 # Easter egg: type "iddqd" anywhere on the site (or tap the footer five times) to open the game page.
-# Keep this off until the game page only ships files you're allowed to share (e.g. the shareware episode).
+# The game page (doom/) runs doom.wasm (GNU GPL v2) with the shareware episode of DOOM embedded, which may be shared.
 doom_easter_egg:
-  enabled: false
-  url: /GiorgioMB/doom/
+  enabled: true
+  url: /doom/
 
 # -----------------------------------------------------------------------------
 # Theme

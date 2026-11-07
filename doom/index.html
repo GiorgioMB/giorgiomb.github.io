@@ -1,0 +1,251 @@
+<!doctype html>
+<!--
+  The game page opened by the iddqd easter egg (assets/js/doom-egg.js).
+
+  Engine: doom.wasm v0.1.0 by Jacob Enget, https://github.com/jacobenget/doom.wasm/tree/v0.1.0, licensed under the
+  GNU GPL v2 (see COPYING), built on doomgeneric and id Software's GPL source release of Linux Doom. This page is
+  adapted from examples/browser/doom.html in that repository and is under the same licence.
+
+  Game data: the shareware episode of DOOM, DOOM1.WAD v1.9 (c) id Software, embedded in doom.wasm unmodified
+  (MD5 f0cefca49926d00903cf57551d901abe).
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>DOOM</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #000;
+        color: #ddd;
+        font:
+          14px/1.45 system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
+        outline: none;
+      }
+      #start {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.62);
+        text-align: center;
+        cursor: pointer;
+      }
+      #start[hidden] {
+        display: none;
+      }
+      #start strong {
+        font-size: 1.4rem;
+        color: #fff;
+      }
+      #start .small {
+        max-width: 36rem;
+        font-size: 12px;
+        color: #aaa;
+      }
+      #start a {
+        color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="doom" tabindex="0" aria-label="DOOM"></canvas>
+    <div id="start" role="button" tabindex="0" aria-label="Click to play">
+      <strong>Loading…</strong>
+      <span>Arrows move · Ctrl or a click fires · Space opens doors · Shift runs · Enter selects · Esc opens the menu</span>
+      <span class="small"
+        >Needs a keyboard. The shareware episode of DOOM, © id Software, running in
+        <a href="https://github.com/jacobenget/doom.wasm/tree/v0.1.0" target="_blank" rel="noopener">doom.wasm</a> (GNU GPL v2,
+        <a href="COPYING" target="_blank" rel="noopener">licence</a>).</span
+      >
+    </div>
+    <script>
+      (function () {
+        "use strict";
+        const canvas = document.getElementById("doom"),
+          start = document.getElementById("start"),
+          label = start.querySelector("strong");
+        const ctx = canvas.getContext("2d");
+        let memory = null,
+          image = null,
+          ready = false;
+
+        // Show the 320x200-style frame at DOOM's original 4:3, as large as the window allows.
+        function fit() {
+          const w = Math.min(innerWidth, (innerHeight * 4) / 3);
+          canvas.style.width = Math.floor(w) + "px";
+          canvas.style.height = Math.floor((w * 3) / 4) + "px";
+        }
+        addEventListener("resize", fit);
+        fit();
+
+        const text = (ptr, len) => new TextDecoder("utf-8").decode(new Uint8Array(memory.buffer, ptr, len));
+        const imports = {
+          loading: {
+            onGameInit(width, height) {
+              canvas.width = width;
+              canvas.height = height;
+              image = ctx.createImageData(width, height);
+            },
+            // No WAD data is provided, so doom.wasm loads the shareware WAD embedded in it.
+            wadSizes() {},
+            readWads() {},
+          },
+          ui: {
+            drawFrame(ptr) {
+              // DOOM's pixels are BGRA in memory; ImageData wants RGBA.
+              const src = new Uint8Array(memory.buffer, ptr, canvas.width * canvas.height * 4),
+                dst = image.data;
+              for (let i = 0; i < dst.length; i += 4) {
+                dst[i] = src[i + 2];
+                dst[i + 1] = src[i + 1];
+                dst[i + 2] = src[i];
+                dst[i + 3] = 255;
+              }
+              ctx.putImageData(image, 0, 0);
+            },
+          },
+          runtimeControl: { timeInMilliseconds: () => BigInt(Math.trunc(performance.now())) },
+          console: {
+            onInfoMessage(ptr, len) {
+              console.debug("[doom] " + text(ptr, len));
+            },
+            onErrorMessage(ptr, len) {
+              console.error("[doom] " + text(ptr, len));
+            },
+          },
+          gameSaving: { sizeOfSaveGame: () => 0, readSaveGame: () => 0, writeSaveGame: () => 0 },
+        };
+
+        const fromBytes = () =>
+          fetch("doom.wasm")
+            .then((response) => response.arrayBuffer())
+            .then((bytes) => WebAssembly.instantiate(bytes, imports));
+        const loaded = WebAssembly.instantiateStreaming
+          ? WebAssembly.instantiateStreaming(fetch("doom.wasm"), imports).catch(fromBytes)
+          : fromBytes();
+
+        loaded.then(
+          ({ instance }) => {
+            const x = instance.exports;
+            memory = x.memory;
+            const named = new Map([
+              ["ArrowLeft", x.KEY_LEFTARROW],
+              ["ArrowRight", x.KEY_RIGHTARROW],
+              ["ArrowUp", x.KEY_UPARROW],
+              ["ArrowDown", x.KEY_DOWNARROW],
+              [",", x.KEY_STRAFE_L],
+              [".", x.KEY_STRAFE_R],
+              ["Control", x.KEY_FIRE],
+              [" ", x.KEY_USE],
+              ["Shift", x.KEY_SHIFT],
+              ["Tab", x.KEY_TAB],
+              ["Escape", x.KEY_ESCAPE],
+              ["Enter", x.KEY_ENTER],
+              ["Backspace", x.KEY_BACKSPACE],
+              ["Alt", x.KEY_ALT],
+            ]);
+            // Single characters go to DOOM as lower-case ASCII, so cheat codes still work while Shift is held.
+            const doomKey = (e) => (named.has(e.key) ? named.get(e.key) : e.key.length === 1 ? e.key.toLowerCase().charCodeAt(0) : null);
+            // DOOM reads key state once per tick (1/35 s), so a tap released within one tick would be lost:
+            // keep every key down for at least two ticks.
+            const held = new Map(), // key -> when it went down
+              pending = new Map(), // key -> timer of a delayed release
+              MIN_HOLD = 60;
+            const press = (k) => {
+              if (pending.has(k)) {
+                // pressed again before its delayed release: DOOM still sees it down
+                clearTimeout(pending.get(k));
+                pending.delete(k);
+              } else if (held.has(k))
+                return; // auto-repeat
+              else x.reportKeyDown(k);
+              held.set(k, performance.now());
+            };
+            const release = (k, now) => {
+              if (!held.has(k)) return;
+              const wait = now ? 0 : held.get(k) + MIN_HOLD - performance.now();
+              held.delete(k);
+              if (wait <= 0) return x.reportKeyUp(k);
+              pending.set(
+                k,
+                setTimeout(() => {
+                  pending.delete(k);
+                  x.reportKeyUp(k);
+                }, wait)
+              );
+            };
+            canvas.addEventListener("keydown", (e) => {
+              const k = doomKey(e);
+              if (k === null) return;
+              e.preventDefault();
+              press(k);
+            });
+            canvas.addEventListener("keyup", (e) => {
+              const k = doomKey(e);
+              if (k === null) return;
+              e.preventDefault();
+              release(k);
+            });
+            // A click fires too: on a Mac, Ctrl with an arrow key switches desktops instead.
+            canvas.addEventListener("mousedown", (e) => {
+              if (e.button === 0) press(x.KEY_FIRE);
+            });
+            addEventListener("mouseup", (e) => {
+              if (e.button === 0 && held.has(x.KEY_FIRE)) release(x.KEY_FIRE);
+            });
+            // Keys held when focus leaves would otherwise stay down.
+            canvas.addEventListener("blur", () => {
+              [...held.keys()].forEach((k) => release(k, true));
+              label.textContent = "Click to continue";
+              start.hidden = false;
+            });
+            x.initGame();
+            setInterval(x.tickGame, 1000 / 35);
+            ready = true;
+            label.textContent = "Click to play";
+          },
+          (error) => {
+            label.textContent = "The game couldn't load.";
+            console.error(error);
+          }
+        );
+
+        function play(e) {
+          if (!ready || (e.target.closest && e.target.closest("a"))) return;
+          start.hidden = true;
+          canvas.focus();
+        }
+        start.addEventListener("click", play);
+        start.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            play(e);
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
