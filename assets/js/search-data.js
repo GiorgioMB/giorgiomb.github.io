@@ -23,8 +23,8 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "news-scalable-graph-curvature-was-accepted-at-the-neurips-2026-workshop-on-graph-distributional-deep-learning",
-          title: 'Scalable Graph Curvature was accepted at the NeurIPS 2026 Workshop on Graph Distributional...',
+        },{id: "news-scalable-graph-curvature-was-accepted-at-the-neurips-2026-workshop-on-geometric-distributional-deep-learning",
+          title: 'Scalable Graph Curvature was accepted at the NeurIPS 2026 Workshop on Geometric Distributional...',
           description: "",
           section: "News",},{id: "projects-when-an-error-bar-can-39-t-warn-you",
           title: 'When an error bar can&amp;#39;t warn you',
@@ -41,6 +41,11 @@ ninja.data = [{
           description: "Monte Carlo pricing in your browser, checked against Black–Scholes.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/option-pricing/";
+            },},{id: "projects-which-edges-need-optimal-transport",
+          title: 'Which edges need optimal transport?',
+          description: "Cheap bounds certify the sign of many edges&#39; Ollivier–Ricci curvature. See which ones still need a transport problem.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/screening-map/";
             },},{id: "projects-sporf-on-current-python",
           title: 'SPORF on current Python',
           description: "A maintained fork of sparse projection oblique randomer forests, proposed upstream in neurodata/SPORF#361.",
