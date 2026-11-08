@@ -70,10 +70,6 @@ As in the paper's code, every interval is widened by $10^{-9}$ against floating-
 
 ### How it's computed
 
-Every interval and curvature comes from the paper's code, [Curvature-Transfer-Code](https://github.com/GiorgioMB/Curvature-Transfer-Code), with the exact values from [orcut](https://github.com/GiorgioMB/orcut), the solver behind every exact value in the paper. The intervals don't depend on $\tau$, so the page stores them at full precision and reruns the cascade in your browser whenever $\tau$ moves, with the same comparisons as the code, so every count matches the code's.
+Every interval and curvature comes from the paper's code, [Curvature-Transfer-Code](https://github.com/GiorgioMB/Curvature-Transfer-Code), with the exact values from [orcut](https://github.com/GiorgioMB/orcut), the solver behind every exact value in the paper.
 
 The random geometric graphs have 800 uniform points in the unit square, joined when closer than $r$, with the expected degree $800 \pi r^2$ set to 6, 8 or 12; each is restricted to its largest component and drawn at its points. Seed 0 at degree 8 is the graph of the paper's figure, and "Draw another graph" steps through three more seeds. Yeast and the karate club are two of the paper's real networks, drawn with a Kamada–Kawai layout.
-
-The paper's figure shows the four stages side by side, on the default graph at $\tau = 0$:
-
-{% include figure.liquid path="assets/img/projects/screening-map-figure.png" class="img-fluid rounded z-depth-1" zoomable=true alt="The four stages of certify-then-solve on the paper's random geometric graph" %}
