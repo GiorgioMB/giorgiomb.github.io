@@ -3,7 +3,7 @@ layout: page
 title: Option prices with honest error bars
 description: Monte Carlo pricing in your browser, checked against Black–Scholes.
 img: assets/img/projects/option-pricing.png
-importance: 3
+importance: 4
 category: Interactive
 ---
 
