@@ -21,7 +21,7 @@
   const stepInputs = Array.from(root.querySelectorAll('input[name="sm-stage"]'));
   const stepNums = Array.from(root.querySelectorAll(".sm-step-num"));
 
-  const state = { family: "rgg", degree: 8, seed: 0, stage: 0, k: 0, g: null, rows: null, st: null, counts: null, hover: -1, pinned: false };
+  const state = { family: "rgg", degree: 8, seed: 0, stage: 0, k: 0, g: null, rows: null, st: null, counts: null, hover: -1, pinned: false, automap: false };
   const cache = new Map();
   let token = 0,
     map = null,
@@ -275,7 +275,7 @@
     const tau = C.tauOf(state.k);
     C.stages(g, tau, state.st);
     state.counts = C.counts(g, state.st, tau);
-    if (state.hover >= 0 && state.st[state.hover] > state.stage) {
+    if (state.hover >= 0 && state.st[state.hover] > shownStage()) {
       state.hover = -1;
       state.pinned = false;
     }
@@ -296,7 +296,7 @@
     drawHover();
     writeReadout();
     const summary = plain(stageSentence());
-    map.svg.setAttribute("aria-label", NAMES[state.stage] + ". " + summary);
+    map.svg.setAttribute("aria-label", (state.automap ? "Automap: every edge, colored by the stage that decides it. " : NAMES[state.stage] + ". ") + summary);
     live.textContent = summary;
   }
 
@@ -380,10 +380,14 @@
       pos = el("path", { class: "sm-pos" }),
       hi = el("path", { class: "sm-hi" }),
       ends = el("path", { class: "sm-ends" });
+    const auto = [];
+    for (let s = 0; s < C.STAGES; s++) auto.push(el("path", { class: "sm-auto sm-auto-" + s }));
+    const autoLayer = el("g", { class: "sm-auto-layer" });
+    autoLayer.append(...auto);
     colored.append(neg, pos);
-    svg.append(old, colored, hi, ends);
-    mapBox.replaceChildren(svg);
-    map = { svg, seg, d, old, colored, neg, pos, hi, ends };
+    svg.append(old, colored, autoLayer, hi, ends);
+    mapBox.replaceChildren(svg, automapTag);
+    map = { svg, seg, d, old, colored, neg, pos, hi, ends, auto };
 
     svg.addEventListener("pointerdown", (e) => {
       pointerType = e.pointerType || "mouse";
@@ -415,6 +419,15 @@
       st = state.st,
       S = state.stage,
       tau = C.tauOf(state.k);
+    if (state.automap) {
+      // iddt: the whole map at once, every edge colored by the stage that decides it
+      const layers = map.auto.map(() => []);
+      for (let i = 0; i < g.m; i++) layers[st[i]].push(map.d[i]);
+      map.auto.forEach((path, s) => path.setAttribute("d", layers[s].join("")));
+      ["old", "neg", "pos"].forEach((k) => map[k].setAttribute("d", ""));
+      return;
+    }
+    map.auto.forEach((path) => path.setAttribute("d", ""));
     const old = [],
       neg = [],
       pos = [];
@@ -434,7 +447,7 @@
   function nearest(cx, cy, px) {
     const g = state.g,
       st = state.st,
-      S = state.stage,
+      S = shownStage(),
       s = map.seg;
     const ctm = map.svg.getScreenCTM();
     if (!g || !ctm) return -1;
@@ -623,6 +636,43 @@
     if (chart) chart.bands.forEach((band, s) => band.classList.toggle("sm-band-on", s === state.stage));
   }
 
+  // ---- iddt: Doom's automap cheat reveals the whole map ----
+  const shownStage = () => (state.automap ? C.STAGES - 1 : state.stage);
+  const automapTag = document.createElement("p");
+  automapTag.className = "sm-automap-tag";
+  automapTag.hidden = true;
+  automapTag.textContent = "AUTOMAP \u00b7 type iddt again to leave";
+  const legends = { plain: q(".sm-legend-plain"), auto: q(".sm-legend-auto") };
+  function setAutomap(on) {
+    state.automap = on;
+    root.classList.toggle("sm-automap", on);
+    automapTag.hidden = !on;
+    if (legends.plain) legends.plain.hidden = on;
+    if (legends.auto) legends.auto.hidden = !on;
+    if (!state.g) return;
+    if (!on && state.hover >= 0 && state.st[state.hover] > state.stage) {
+      state.hover = -1;
+      state.pinned = false;
+    }
+    redraw();
+  }
+  const isTextEntry = (t) =>
+    !!t &&
+    (t.isContentEditable ||
+      t.tagName === "TEXTAREA" ||
+      t.tagName === "SELECT" ||
+      (t.tagName === "INPUT" && !/^(radio|checkbox|range|button|submit|reset)$/.test(t.type)) ||
+      !!(t.closest && t.closest("ninja-keys")));
+  let typed = "";
+  document.addEventListener("keydown", (e) => {
+    if (e.ctrlKey || e.metaKey || e.altKey || !e.key || e.key.length !== 1 || isTextEntry(e.target)) return;
+    typed = (typed + e.key.toLowerCase()).slice(-4);
+    if (typed === "iddt") {
+      typed = "";
+      setAutomap(!state.automap);
+    }
+  });
+
   // ---- controls ----
   root.querySelectorAll('input[name="sm-graph"]').forEach((input) =>
     input.addEventListener("change", () => {
@@ -646,7 +696,7 @@
     input.addEventListener("change", () => {
       state.stage = Number(input.value);
       if (!state.g) return;
-      if (state.hover >= 0 && state.st[state.hover] > state.stage) {
+      if (state.hover >= 0 && state.st[state.hover] > shownStage()) {
         state.hover = -1;
         state.pinned = false;
       }
