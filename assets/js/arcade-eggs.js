@@ -4,8 +4,24 @@
   "use strict";
   const script = document.currentScript;
   const base = (script && script.dataset.base) || "";
-  const sfxUrl = script && script.dataset.sfx;
-  let sfx = null; // loaded when the console first opens, so the first refusal plays without delay
+  // Sounds load when the console first opens, so the first one plays without delay.
+  const soundUrls = { fool: script && script.dataset.sfx, dryfire: script && script.dataset.sfxGod };
+  const sounds = {};
+  function loadSounds() {
+    if (typeof Audio === "undefined") return;
+    for (const name in soundUrls) {
+      if (sounds[name] || !soundUrls[name]) continue;
+      sounds[name] = new Audio(soundUrls[name]);
+      sounds[name].preload = "auto";
+      sounds[name].volume = 0.7;
+    }
+  }
+  function play(name) {
+    const sound = sounds[name];
+    if (!sound) return;
+    sound.currentTime = 0;
+    sound.play().catch(() => {});
+  }
   let mapUrls = [];
   try {
     mapUrls = JSON.parse((script && script.dataset.maps) || "[]");
@@ -41,6 +57,21 @@
 .egg-console-in{flex:1;min-width:0;padding:.25rem .4rem;background:#1e201b;border:1px solid #6b6e64;color:#fff;font:inherit}
 .egg-console-in:focus{outline:1px solid #c4b550}
 .egg-console-submit{padding:.2rem .8rem;background:#4c5044;border:1px solid #7d8174;color:#fff;font:12px Verdana,Tahoma,sans-serif;cursor:pointer}
+.egg-hud{position:fixed;inset:auto 0 0 0;z-index:1990;display:flex;justify-content:space-between;padding:0 1.25rem 1.1rem;pointer-events:none}
+.egg-hud-box{display:flex;align-items:baseline;gap:.7rem;padding:.35rem .9rem .3rem;border-radius:9px;background:rgba(0,0,0,.42);color:#ffd23c;
+  font-family:Verdana,Tahoma,sans-serif;font-weight:700;text-shadow:0 0 6px rgba(255,190,40,.55)}
+.egg-hud-label{font-size:.8rem;letter-spacing:.06em}
+.egg-hud-value{font-size:2.2rem;line-height:1}
+.egg-noclip-tag{position:fixed;top:.75rem;left:50%;transform:translateX(-50%);z-index:1990;padding:.3rem .8rem;border-radius:6px;background:rgba(0,0,0,.6);
+  color:#ffd23c;font:700 13px Verdana,Tahoma,sans-serif;letter-spacing:.04em;pointer-events:none}
+html.egg-noclip body *{pointer-events:none;user-select:none;outline:1px solid rgba(255,140,0,.6);outline-offset:-1px}
+html.egg-noclip body * *{outline-color:rgba(0,200,255,.6)}
+html.egg-noclip body * * *{outline-color:rgba(255,60,200,.6)}
+html.egg-noclip body * * * *{outline-color:rgba(120,230,60,.6)}
+html.egg-noclip body * * * * *{outline-color:rgba(255,230,0,.6)}
+html.egg-noclip body * * * * * *{outline-color:rgba(160,120,255,.6)}
+html.egg-noclip .egg-overlay,html.egg-noclip .egg-overlay *{pointer-events:auto;user-select:auto;outline:revert}
+html.egg-noclip .egg-hud,html.egg-noclip .egg-hud *,html.egg-noclip .egg-noclip-tag{outline:none}
 .egg-echo{color:#8f9386}.egg-dim{color:#8f9386}.egg-err{color:#ff8a7a}.egg-breen{color:#c4b550;font-style:italic}
 `;
   document.head.appendChild(style);
@@ -145,12 +176,60 @@
     if (cheats.sv) return true;
     print("Can't use cheat command " + name + " in multiplayer, unless the server has sv_cheats set to 1.", "egg-err");
     print("Freeman, you fool!", "egg-breen"); // also the caption for anyone with the sound off
-    if (sfx) {
-      sfx.currentTime = 0;
-      sfx.play().catch(() => {});
-    }
+    play("fool");
     return false;
   }
+  // god: a HUD with infinite health and ammo
+  let hud = null;
+  function setGod(on) {
+    cheats.god = on;
+    play("dryfire");
+    print("godmode " + (on ? "ON" : "OFF"));
+    if (!on) {
+      if (hud) hud.remove();
+      hud = null;
+      return;
+    }
+    hud = node("div", "egg-hud");
+    hud.setAttribute("aria-hidden", "true");
+    const box = (cls, label, value) => {
+      const b = node("div", "egg-hud-box " + cls);
+      b.append(node("span", "egg-hud-label", label), node("span", "egg-hud-value", value));
+      return b;
+    };
+    hud.append(box("egg-hud-health", "HEALTH", "\u221e"), box("egg-hud-ammo", "AMMO", "\u221e | \u221e"));
+    document.body.appendChild(hud);
+  }
+
+  // noclip: the page's boxes show as level geometry, and nothing on it can be clicked, focused or selected.
+  // The console stays usable, so noclip (or sv_cheats 0) turns it back off; reloading the page does too.
+  let noclipTag = null;
+  function setNoclip(on) {
+    cheats.noclip = on;
+    print("noclip " + (on ? "ON" : "OFF"));
+    document.documentElement.classList.toggle("egg-noclip", on);
+    for (const child of Array.from(document.body.children)) {
+      if (child === overlay || child === hud || child === noclipTag || child.tagName === "SCRIPT" || child.tagName === "STYLE") continue;
+      if (on) {
+        if (!child.inert) {
+          child.inert = true;
+          child.dataset.eggInert = "";
+        }
+      } else if ("eggInert" in child.dataset) {
+        child.inert = false;
+        delete child.dataset.eggInert;
+      }
+    }
+    if (on) {
+      noclipTag = node("div", "egg-noclip-tag", "NOCLIP \u00b7 press ` and type noclip to land");
+      noclipTag.setAttribute("role", "status");
+      document.body.appendChild(noclipTag);
+    } else if (noclipTag) {
+      noclipTag.remove();
+      noclipTag = null;
+    }
+  }
+
   const COMMANDS = {
     help: () => print("Commands: " + Object.keys(COMMANDS).sort().join(", ")),
     cmdlist: () => COMMANDS.help(),
@@ -159,18 +238,20 @@
     sv_cheats: (args) => {
       if (!args.length) return print('"sv_cheats" = "' + (cheats.sv ? 1 : 0) + '" ( def. "0" )');
       cheats.sv = args[0] !== "0";
-      if (!cheats.sv) cheats.god = cheats.noclip = false;
       print("Server cvar 'sv_cheats' changed to " + (cheats.sv ? 1 : 0));
+      // as in Source, turning cheats off ends the cheats in effect
+      if (!cheats.sv) {
+        if (cheats.god) setGod(false);
+        if (cheats.noclip) setNoclip(false);
+      }
     },
     god: () => {
       if (!needCheats("god")) return;
-      cheats.god = !cheats.god;
-      print("godmode " + (cheats.god ? "ON" : "OFF"));
+      setGod(!cheats.god);
     },
     noclip: () => {
       if (!needCheats("noclip")) return;
-      cheats.noclip = !cheats.noclip;
-      print("noclip " + (cheats.noclip ? "ON" : "OFF"));
+      setNoclip(!cheats.noclip);
     },
     impulse: (args) => {
       if (args[0] !== "101") return print('Unknown impulse "' + (args[0] || "") + '"');
@@ -200,11 +281,7 @@
   }
 
   function openConsole() {
-    if (!sfx && sfxUrl && typeof Audio !== "undefined") {
-      sfx = new Audio(sfxUrl);
-      sfx.preload = "auto";
-      sfx.volume = 0.7;
-    }
+    loadSounds();
     const panel = node("div", "egg-console");
     panel.append(node("div", "egg-console-title", "Console"));
     consoleOut = node("div", "egg-console-out");
