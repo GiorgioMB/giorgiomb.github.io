@@ -21,4 +21,4 @@ latest_posts:
   enabled: false
 ---
 
-<!-- Bio goes here (Markdown). It's left empty on purpose for now. -->
+Much of my work asks when an answer can be checked instead of trusted. On graphs, this translates to computing discrete curvature fast, certifying it even faster, and asking what it actually measures. Several of these ideas have interactive demos on the [projects page]({{ '/projects/' | relative_url }}).
