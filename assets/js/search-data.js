@@ -36,11 +36,6 @@ ninja.data = [{
           description: "EY AI &amp; Data Challenge 2026, top 10 of 953 teams, competing solo.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/ey-water-quality/";
-            },},{id: "projects-forecasts-scored-in-public",
-          title: 'Forecasts scored in public',
-          description: "Daily intervals for the 10-year Treasury yield and EUR/USD, published before the fact and scored after.",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/forecast-scoreboard/";
             },},{id: "projects-option-prices-with-honest-error-bars",
           title: 'Option prices with honest error bars',
           description: "Monte Carlo pricing in your browser, checked against Black–Scholes.",
