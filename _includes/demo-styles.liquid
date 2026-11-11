@@ -461,18 +461,6 @@
     letter-spacing: 0.06em;
     pointer-events: none;
   }
-  .demo .sm-key-auto-0::before {
-    border-top-color: #fc3c3c;
-  }
-  .demo .sm-key-auto-1::before {
-    border-top-color: #e0c800;
-  }
-  .demo .sm-key-auto-2::before {
-    border-top-color: #c08850;
-  }
-  .demo .sm-key-auto-3::before {
-    border-top-color: #9a9a9a;
-  }
   .demo .sm-legend {
     display: flex;
     flex-wrap: wrap;
@@ -497,6 +485,19 @@
   }
   .demo .sm-key-old::before {
     border-top: 1.5px solid var(--sm-old);
+  }
+  /* after .sm-key::before, whose border-top shorthand would otherwise reset these colors */
+  .demo .sm-key-auto-0::before {
+    border-top-color: #fc3c3c;
+  }
+  .demo .sm-key-auto-1::before {
+    border-top-color: #e0c800;
+  }
+  .demo .sm-key-auto-2::before {
+    border-top-color: #c08850;
+  }
+  .demo .sm-key-auto-3::before {
+    border-top-color: #9a9a9a;
   }
   .demo .sm-readout p {
     margin: 0 0 0.35rem;
