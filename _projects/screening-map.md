@@ -72,4 +72,4 @@ As in the paper's code, every interval is widened by $10^{-9}$ against floating-
 
 Every interval and curvature comes from the paper's code, [Curvature-Transfer-Code](https://github.com/GiorgioMB/Curvature-Transfer-Code), with the exact values from [orcut](https://github.com/GiorgioMB/orcut), the solver behind every exact value in the paper.
 
-The random geometric graphs have 800 uniform points in the unit square, joined when closer than $r$, with the expected degree $800 \pi r^2$ set to 6, 8 or 12; each is restricted to its largest component and drawn at its points. Seed 0 at degree 8 is the graph of the paper's figure, and "Draw another graph" steps through three more seeds. Yeast and the karate club are two of the paper's real networks, drawn with a Kamada–Kawai layout.
+<p id="screening-map-about">This random geometric graph has 800 uniform points in the unit square, joined when closer than $r = 0.0564$, so that the expected degree $800 \pi r^2$ is 8; it is restricted to its largest component and drawn at its points. It is seed 0 of four at this degree, the graph of the paper's figure, and “Draw another graph” steps through the other three.</p>
