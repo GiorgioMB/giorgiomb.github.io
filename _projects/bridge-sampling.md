@@ -1,7 +1,7 @@
 ---
 layout: page
 title: When an error bar can't warn you
-description: Bridge sampling's error estimate has a ceiling. Watch it hit it.
+description: However wrong the estimate, bridge sampling's error estimate can't exceed √(log 3) ≈ 1.05. Watch it hit the ceiling.
 img: assets/img/projects/bridge-sampling.png
 importance: 1
 category: Interactive

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: SPORF on current Python
-description: A maintained fork of sparse projection oblique randomer forests, proposed upstream in neurodata/SPORF#361.
+description: A maintained fork of sparse projection oblique randomer forests that installs on Python 3.8 to 3.14, proposed upstream in neurodata/SPORF#361.
 img: assets/img/projects/sporf.png
 importance: 1
 category: Open source
