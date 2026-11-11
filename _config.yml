@@ -12,6 +12,7 @@ description: > # the ">" symbol means to ignore newlines until "footer_text:"
   PhD Candidate in Statistics at the University of Chicago. 
   Background spanning mathematics, computer science, statistics and data-driven research.
 footer_text: >
+  Some old cheat codes still work here.
 keywords: Giorgio Micaletto, statistics, University of Chicago # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: favicon.svg # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
