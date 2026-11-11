@@ -29,6 +29,10 @@ doom_easter_egg:
   enabled: true
   url: /doom/
 
+# The Konami code (arrows or WASD, then B A) opens an arcade screen; ` or ~ opens a Source-style console
+arcade_easter_eggs:
+  enabled: true
+
 # -----------------------------------------------------------------------------
 # Theme
 # -----------------------------------------------------------------------------

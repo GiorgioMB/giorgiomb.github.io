@@ -415,6 +415,64 @@
     stroke: var(--global-text-color);
     stroke-width: 8;
   }
+  /* iddt: the automap, in the colors of Doom's map screen */
+  .demo .sm-map {
+    position: relative;
+  }
+  .demo .sm-auto-0 {
+    --auto: #fc3c3c;
+  }
+  .demo .sm-auto-1 {
+    --auto: #fcfc3c;
+  }
+  .demo .sm-auto-2 {
+    --auto: #c08850;
+  }
+  .demo .sm-auto-3 {
+    --auto: #9a9a9a;
+  }
+  .demo .sm-svg .sm-auto {
+    stroke: var(--auto);
+    stroke-width: 1;
+  }
+  .demo .sm-svg .sm-auto-3 {
+    stroke-width: 1.8;
+  }
+  .demo .sm-svg.sm-sparse .sm-auto {
+    stroke-width: 2.2;
+  }
+  .demo.sm-automap .sm-svg {
+    background: #000;
+    border-radius: 4px;
+  }
+  .demo.sm-automap .sm-svg .sm-hi,
+  .demo.sm-automap .sm-svg .sm-ends {
+    stroke: #fff;
+  }
+  .demo .sm-automap-tag {
+    position: absolute;
+    top: 0.4rem;
+    left: 0.6rem;
+    margin: 0;
+    padding: 0.1rem 0.35rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fc3c3c;
+    font: 700 0.78rem/1.2 ui-monospace, Menlo, Consolas, monospace;
+    letter-spacing: 0.06em;
+    pointer-events: none;
+  }
+  .demo .sm-key-auto-0::before {
+    border-top-color: #fc3c3c;
+  }
+  .demo .sm-key-auto-1::before {
+    border-top-color: #e0c800;
+  }
+  .demo .sm-key-auto-2::before {
+    border-top-color: #c08850;
+  }
+  .demo .sm-key-auto-3::before {
+    border-top-color: #9a9a9a;
+  }
   .demo .sm-legend {
     display: flex;
     flex-wrap: wrap;

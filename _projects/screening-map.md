@@ -47,11 +47,17 @@ To decide whether $\kappa_{\mathrm{OR}} < \tau$ for every edge, certify-then-sol
     <input type="radio" id="sm-s3" name="sm-stage" value="3"><label for="sm-s3"><span class="sm-swatch sm-swatch-3"></span><span class="sm-step-name">(d) + exact solver</span><span class="sm-step-num"></span></label>
   </fieldset>
   <div class="sm-map"></div>
-  <p class="sm-legend">
+  <p class="sm-legend sm-legend-plain">
     <span class="sm-key sm-key-neg">decided here, κ<sub>OR</sub> &lt; τ</span>
     <span class="sm-key sm-key-pos">decided here, κ<sub>OR</sub> ≥ τ</span>
     <span class="sm-key sm-key-old">decided by an earlier stage</span>
     <span>undecided: not drawn</span>
+  </p>
+  <p class="sm-legend sm-legend-auto" hidden>
+    <span class="sm-key sm-key-auto-0">BF interval</span>
+    <span class="sm-key sm-key-auto-1">2-hop interval</span>
+    <span class="sm-key sm-key-auto-2">TLW certificate</span>
+    <span class="sm-key sm-key-auto-3">needs optimal transport</span>
   </p>
   <div class="readout sm-readout"></div>
   <p class="sr-only sm-live" aria-live="polite"></p>
