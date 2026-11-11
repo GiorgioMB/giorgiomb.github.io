@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Which edges need optimal transport?
-description: Cheap bounds certify the sign of many edges' Ollivier–Ricci curvature. See which ones still need a transport problem.
+description: Cheap bounds certify the Ollivier–Ricci curvature sign of 73.8% of edges on the paper's graph. See which 781 still need optimal transport.
 img: assets/img/projects/screening-map.png
 importance: 2
 category: Interactive

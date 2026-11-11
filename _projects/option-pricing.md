@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Option prices with honest error bars
-description: Monte Carlo pricing in your browser, checked against Black–Scholes.
+description: Monte Carlo pricing in your browser, checked against Black–Scholes. At the defaults, a control variate narrows the 95% band 2.4×, worth six times the paths.
 img: assets/img/projects/option-pricing.png
 importance: 3
 category: Interactive

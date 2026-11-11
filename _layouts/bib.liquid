@@ -241,6 +241,9 @@
       {% if entry.code %}
         <a href="{{ entry.code }}" class="btn btn-sm z-depth-0" role="button">Code</a>
       {% endif %}
+      {% if entry.lean %}
+        <a href="{{ entry.lean }}" class="btn btn-sm z-depth-0" role="button">Lean proof</a>
+      {% endif %}
       {% if entry.demo %}
         {% if entry.demo contains '://' %}
           <a href="{{ entry.demo }}" class="btn btn-sm z-depth-0" role="button">Demo</a>
