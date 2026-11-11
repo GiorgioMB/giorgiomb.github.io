@@ -90,6 +90,7 @@
         buildChart();
         update();
         status.textContent = describe();
+        writeAbout();
       },
       () => {
         cache.delete(key);
@@ -122,6 +123,53 @@
     if (state.family === "yeast")
       return "Yeast, one of the paper's real networks: its largest component has " + size + ", drawn as on the workshop poster.";
     return "Zachary's karate club: " + size + ".";
+  }
+
+  // The "How it's computed" paragraph below the demo, for the graph on screen.
+  function aboutText() {
+    if (state.family === "rgg") {
+      const d = state.degree,
+        s = state.seed,
+        r = Math.sqrt(d / (N_RGG * Math.PI)).toFixed(4);
+      let which = "It is seed " + s + " of " + (["one", "two", "three", "four", "five", "six"][SEEDS - 1] || SEEDS) + " at this degree";
+      if (d === 8 && s === 0) which += ", the graph of the paper's figure, and \u201cDraw another graph\u201d steps through the other three.";
+      else
+        which +=
+          "; \u201cDraw another graph\u201d moves to seed " +
+          ((s + 1) % SEEDS) +
+          (s + 1 === SEEDS ? ", back at the start" : "") +
+          ". The graph of the paper's figure is seed 0 at degree 8.";
+      return (
+        "This random geometric graph has " +
+        N_RGG +
+        " uniform points in the unit square, joined when closer than $r = " +
+        r +
+        "$, so that the expected degree $" +
+        N_RGG +
+        " \\pi r^2$ is " +
+        d +
+        "; it is restricted to its largest component and drawn at its points. " +
+        which
+      );
+    }
+    if (state.family === "yeast")
+      return "Yeast is one of the paper's real networks. It is restricted to its largest component and drawn with a Kamada\u2013Kawai layout.";
+    return "Zachary's karate club is one of the paper's real networks, drawn with a Kamada\u2013Kawai layout.";
+  }
+
+  function writeAbout() {
+    const about = document.getElementById("screening-map-about");
+    if (!about) return;
+    about.textContent = aboutText();
+    // Typeset the new $...$ once MathJax is ready; if it hasn't started yet, its first pass picks the paragraph up.
+    const MJ = window.MathJax;
+    if (MJ && MJ.startup && MJ.startup.promise && MJ.typesetPromise)
+      MJ.startup.promise
+        .then(() => {
+          if (MJ.typesetClear) MJ.typesetClear([about]);
+          return MJ.typesetPromise([about]);
+        })
+        .catch(() => {});
   }
 
   // ---- the cascade at the current threshold ----
