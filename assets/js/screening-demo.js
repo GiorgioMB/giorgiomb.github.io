@@ -91,6 +91,7 @@
         update();
         status.textContent = describe();
         writeAbout();
+        writeSpike();
       },
       () => {
         cache.delete(key);
@@ -157,19 +158,114 @@
     return "Zachary's karate club is one of the paper's real networks, drawn with a Kamada\u2013Kawai layout.";
   }
 
+  // ---- the text below the demo, for the graph and threshold on screen ----
+  const texNum = (k) => String(Number((k / 100).toFixed(2))); // 0, -0.5, 0.25
+  const LT = (t) => "$\\kappa_{\\mathrm{OR}} < " + t + "$",
+    GE = (t) => "$\\kappa_{\\mathrm{OR}} \\geq " + t + "$";
+  const cap = (text) => text.charAt(0).toUpperCase() + text.slice(1);
+
+  function graphName() {
+    if (state.family === "rgg") return state.degree === 8 && state.seed === 0 ? "the paper's graph" : "this graph";
+    return state.family === "yeast" ? "Yeast" : "the karate club";
+  }
+
+  // MathJax calls are chained, as its documentation asks; if MathJax hasn't started yet, its first pass typesets the page.
+  let typesetting = Promise.resolve();
+  function setMath(node, text) {
+    node.textContent = text;
+    const MJ = window.MathJax;
+    if (!(MJ && MJ.startup && MJ.startup.promise && MJ.typesetPromise)) return;
+    typesetting = typesetting
+      .then(() => MJ.startup.promise)
+      .then(() => {
+        if (MJ.typesetClear) MJ.typesetClear([node]);
+        return MJ.typesetPromise([node]);
+      })
+      .catch(() => {});
+  }
+
   function writeAbout() {
     const about = document.getElementById("screening-map-about");
-    if (!about) return;
-    about.textContent = aboutText();
-    // Typeset the new $...$ once MathJax is ready; if it hasn't started yet, its first pass picks the paragraph up.
-    const MJ = window.MathJax;
-    if (MJ && MJ.startup && MJ.startup.promise && MJ.typesetPromise)
-      MJ.startup.promise
-        .then(() => {
-          if (MJ.typesetClear) MJ.typesetClear([about]);
-          return MJ.typesetPromise([about]);
-        })
-        .catch(() => {});
+    if (about) setMath(about, aboutText());
+  }
+
+  // How the edges one group of stages decides split by sign, led by the sign most of them have.
+  function signPart(subject, none, below, total, t) {
+    if (total === 0) return none;
+    const f = below / total;
+    if (below === total) return "everything " + subject + " has " + LT(t);
+    if (below === 0) return "everything " + subject + " has " + GE(t);
+    if (f >= 0.9) return "almost everything " + subject + " has " + LT(t);
+    if (f <= 0.1) return "almost everything " + subject + " has " + GE(t);
+    return "of what " + subject + ", " + (f >= 0.5 ? pct(f) + " has " + LT(t) : pct(1 - f) + " has " + GE(t));
+  }
+
+  function seeingText() {
+    const g = state.g,
+      c = state.counts,
+      t = texNum(state.k),
+      h = c.here;
+    const share = (n) => pct(n / g.m);
+    const solver = h[C.STAGES - 1];
+    let text = "On " + graphName() + " at $\\tau = " + t + "$" + (state.k === 0 ? ", the sign query, " : ", ");
+    const bf = signPart("the BF interval decides", "the BF interval decides no edge", c.below[0], h[0], t);
+    if (h[0] === g.m) return text + "the BF interval alone decides every edge, so no edge needs a transport problem. " + cap(bf) + ".";
+    text += "the BF interval alone decides " + share(h[0]) + " of the edges, ";
+    text += h[1] > 0 ? "the 2-hop interval brings that to " + share(h[0] + h[1]) : "the 2-hop interval adds none";
+    if (h[2] > 0) text += (h[1] > 0 ? " and the TLW certificate to " : " and the TLW certificate brings that to ") + share(h[0] + h[1] + h[2]);
+    else text += " and the TLW certificate adds none";
+    text +=
+      solver === 0
+        ? ", so no edge needs a transport problem. "
+        : ", so " + int(solver) + " of the " + int(g.m) + " edges " + (solver === 1 ? "needs" : "need") + " a transport problem. ";
+    const added = signPart(
+      "the 2-hop interval and the TLW certificate add",
+      "the 2-hop interval and the TLW certificate add none",
+      c.below[1] + c.below[2],
+      h[1] + h[2],
+      t
+    );
+    return text + cap(bf) + ", and " + added + ".";
+  }
+
+  // Debounced, so that dragging the threshold doesn't typeset on every step.
+  let seeingTimer = 0;
+  function scheduleSeeing() {
+    clearTimeout(seeingTimer);
+    seeingTimer = setTimeout(() => {
+      const seeing = document.getElementById("screening-map-seeing");
+      if (seeing && state.g) setMath(seeing, seeingText());
+    }, 150);
+  }
+
+  // The spike at tau = 0 is a property of the graph, so this one follows the graph only.
+  function writeSpike() {
+    const spike = document.getElementById("screening-map-spike");
+    if (!spike) return;
+    const g = state.g,
+      st = C.stages(g, 0),
+      last = C.STAGES - 1;
+    let solver = 0,
+      held = 0;
+    for (let i = 0; i < g.m; i++) {
+      if (st[i] !== last) continue;
+      solver++;
+      if (C.heldByTolerance(g, last - 1, i, 0)) held++;
+    }
+    setMath(
+      spike,
+      held === 0
+        ? "On " + graphName() + ", no transport problem at $\\tau = 0$ comes from a lower end of exactly 0."
+        : "That is the spike in the chart at $\\tau = 0$: on " +
+            graphName() +
+            ", " +
+            int(held) +
+            " of the " +
+            int(solver) +
+            " transport problems at $\\tau = 0$ " +
+            (held === 1 ? "is an edge whose lower end is" : "are edges whose lower end is") +
+            " exactly 0."
+    );
   }
 
   // ---- the cascade at the current threshold ----
@@ -192,6 +288,7 @@
     stepNums[C.STAGES - 1].textContent = int(state.counts.here[C.STAGES - 1]) + " transport problems";
     redraw();
     moveMarker();
+    scheduleSeeing();
   }
 
   function redraw() {

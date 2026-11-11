@@ -62,11 +62,11 @@ To decide whether $\kappa_{\mathrm{OR}} < \tau$ for every edge, certify-then-sol
 
 ### What you're seeing
 
-On the paper's graph at $\tau = 0$, the sign query, the BF interval alone decides 52.8% of the edges, the 2-hop interval brings that to 63.4% and the TLW certificate to 73.8%, so 781 of the 2,985 edges need a transport problem. Almost everything the BF interval decides has $\kappa_{\mathrm{OR}} \geq 0$, and almost everything the 2-hop interval and the TLW certificate add has $\kappa_{\mathrm{OR}} < 0$.
+<span id="screening-map-seeing">On the paper's graph at $\tau = 0$, the sign query, the BF interval alone decides 52.8% of the edges, the 2-hop interval brings that to 63.4% and the TLW certificate to 73.8%, so 781 of the 2,985 edges need a transport problem. Almost everything the BF interval decides has $\kappa_{\mathrm{OR}} \geq 0$, and almost everything the 2-hop interval and the TLW certificate add has $\kappa_{\mathrm{OR}} < 0$.</span>
 
 Moving $\tau$ changes which edges sit close to the threshold, and so which ones are hard. The chart shows, for every $\tau$ from −1 to 1, how the edges split between the four stages; the vertical line marks the current $\tau$, and dragging along the chart moves it. Denser graphs leave more to the solver: at $\tau = 0$, the random geometric graphs of expected degree 6 send between 19% and 22% of their edges to it, those of degree 12 between 28% and 33%.
 
-As in the paper's code, every interval is widened by $10^{-9}$ against floating-point rounding before it is compared with $\tau$, so an interval whose lower end is exactly $\tau$ doesn't decide its edge. That is the spike in the chart at $\tau = 0$: on the paper's graph, 92 of the 781 transport problems at $\tau = 0$ are edges whose lower end is exactly 0.
+As in the paper's code, every interval is widened by $10^{-9}$ against floating-point rounding before it is compared with $\tau$, so an interval whose lower end is exactly $\tau$ doesn't decide its edge. <span id="screening-map-spike">That is the spike in the chart at $\tau = 0$: on the paper's graph, 92 of the 781 transport problems at $\tau = 0$ are edges whose lower end is exactly 0.</span>
 
 ### How it's computed
 
