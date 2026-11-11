@@ -28,7 +28,7 @@ ninja.data = [{
           description: "",
           section: "News",},{id: "projects-when-an-error-bar-can-39-t-warn-you",
           title: 'When an error bar can&amp;#39;t warn you',
-          description: "Bridge sampling&#39;s error estimate has a ceiling. Watch it hit it.",
+          description: "However wrong the estimate, bridge sampling&#39;s error estimate can&#39;t exceed √(log 3) ≈ 1.05. Watch it hit the ceiling.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/bridge-sampling/";
             },},{id: "projects-water-quality-from-coordinates",
@@ -38,17 +38,17 @@ ninja.data = [{
               window.location.href = "/projects/ey-water-quality/";
             },},{id: "projects-option-prices-with-honest-error-bars",
           title: 'Option prices with honest error bars',
-          description: "Monte Carlo pricing in your browser, checked against Black–Scholes.",
+          description: "Monte Carlo pricing in your browser, checked against Black–Scholes. At the defaults, a control variate narrows the 95% band 2.4×, worth six times the paths.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/option-pricing/";
             },},{id: "projects-which-edges-need-optimal-transport",
           title: 'Which edges need optimal transport?',
-          description: "Cheap bounds certify the sign of many edges&#39; Ollivier–Ricci curvature. See which ones still need a transport problem.",
+          description: "Cheap bounds certify the Ollivier–Ricci curvature sign of 73.8% of edges on the paper&#39;s graph. See which 781 still need optimal transport.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/screening-map/";
             },},{id: "projects-sporf-on-current-python",
           title: 'SPORF on current Python',
-          description: "A maintained fork of sparse projection oblique randomer forests, proposed upstream in neurodata/SPORF#361.",
+          description: "A maintained fork of sparse projection oblique randomer forests that installs on Python 3.8 to 3.14, proposed upstream in neurodata/SPORF#361.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/sporf/";
             },},{
