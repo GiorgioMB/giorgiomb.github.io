@@ -23,8 +23,8 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "news-scalable-graph-curvature-was-accepted-at-the-neurips-2026-workshop-on-geometric-distributional-deep-learning",
-          title: 'Scalable Graph Curvature was accepted at the NeurIPS 2026 Workshop on Geometric Distributional...',
+        },{id: "news-scalable-graph-curvature-was-accepted-at-the-neurips-2026-workshop-bridging-optimal-transport-learning-and-structured-data-toward-geometric-distributional-learning-held-in-paris",
+          title: 'Scalable Graph Curvature was accepted at the NeurIPS 2026 workshop Bridging Optimal Transport,...',
           description: "",
           section: "News",},{id: "projects-when-an-error-bar-can-39-t-warn-you",
           title: 'When an error bar can&amp;#39;t warn you',
