@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Which edges need optimal transport?
-description: Cheap bounds certify the Ollivier–Ricci curvature sign of 73.8% of edges on the paper's graph. See which 781 still need optimal transport.
+title: Certifying Ollivier–Ricci curvature signs
+description: Stage-by-stage certification of curvature signs from combinatorial bounds. On the paper's random geometric graph, 73.8% of edges are decided without solving an optimal transport problem.
 img: assets/img/projects/screening-map.png
 importance: 2
 category: Interactive
@@ -9,7 +9,9 @@ category: Interactive
 
 {% include demo-styles.liquid %}
 
-Ollivier–Ricci (OR) curvature compares the neighbourhoods of an edge's two endpoints by solving an optimal transport problem, one per edge. Balanced Forman (BF) curvature is a cheap combinatorial stand-in. In [From Proxy to Certificate](https://arxiv.org/abs/2603.13535v6), Tebe Nigrelli and I show that the BF value of an edge certifies an interval for its lazy OR curvature without solving any transport problem, and that the edge's 2-hop neighbourhood sharpens it.
+Curvature on a graph measures how well connected the neighbourhoods of an edge's two endpoints are. Edges inside dense clusters tend to be positively curved, while edges that bridge otherwise separate regions tend to be negatively curved and act as bottlenecks. This is why curvature is used to diagnose over-squashing in graph neural networks and to decide which edges to add or remove when rewiring a graph ([Topping et al., 2022](https://arxiv.org/abs/2111.14522)).
+
+Ollivier–Ricci (OR) curvature compares the neighbourhoods of an edge's two endpoints by solving an optimal transport problem, one per edge. Balanced Forman (BF) curvature, introduced by Topping et al. for this purpose, is a cheap combinatorial stand-in. In [From Proxy to Certificate](https://arxiv.org/abs/2603.13535), Tebe Nigrelli and I show that the BF value of an edge certifies an interval for its lazy OR curvature without solving any transport problem, and that the edge's 2-hop neighbourhood sharpens it.
 
 To decide whether $\kappa_{\mathrm{OR}} < \tau$ for every edge, certify-then-solve computes the 2-hop interval, which settles every edge the BF interval settles and more, intersects it with a certificate from the bounds of Tian, Lubberts and Weber (TLW), and solves a transport problem only for the edges still undecided. The map shows this one stage at a time, as the paper's figure does: (a) what the BF interval alone decides, (b) the 2-hop interval, (c) the TLW certificate, and (d) the transport problems that remain. Each stage draws the edges it decides in colour and the edges decided earlier in grey; edges still undecided aren't drawn.
 

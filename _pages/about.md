@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: PhD candidate in Statistics at the <a href="https://stat.uchicago.edu/">University of Chicago</a>
+subtitle: PhD student in Statistics at the <a href="https://stat.uchicago.edu/">University of Chicago</a>
 
 profile:
   align: right
@@ -21,4 +21,6 @@ latest_posts:
   enabled: false
 ---
 
-Much of my work asks when an answer can be checked instead of trusted. On graphs, this translates to computing discrete curvature fast, certifying it even faster, and asking what it actually measures. Several of these ideas have interactive demos on the [projects page]({{ '/projects/' | relative_url }}).
+Much of my work asks when an answer can be checked instead of trusted. On graphs, that means bounds that certify Ollivier–Ricci curvature without solving optimal transport problems; in Bayesian computation, knowing when a Monte Carlo error estimate can be believed. Several of these ideas have interactive demos on the [projects page]({{ '/projects/' | relative_url }}).
+
+Before Chicago, I did my bachelor's at [Bocconi University](https://www.unibocconi.it/) and spent a summer at Aalto University working with [Aki Vehtari](https://users.aalto.fi/~ave/), as an intern in the [AScI International Summer Research Programme](https://www.aalto.fi/en/aalto-university-science-institute-asci/aalto-university-science-institute-international-summer-research-programme).

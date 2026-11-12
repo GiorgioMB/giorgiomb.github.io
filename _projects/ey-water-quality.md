@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Water quality from coordinates
-description: EY AI & Data Challenge 2026, top 10 of 953 teams, competing solo.
+title: Water quality prediction from location and date
+description: Predicting three water quality indicators at South African monitoring stations from coordinates and sampling date alone. Solo entry in the EY AI & Data Challenge 2026, reaching the semifinal (top 10 of 953 teams).
 img: assets/img/projects/ey-water-quality.png
 importance: 1
 category: Competitions
