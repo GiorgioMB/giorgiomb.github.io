@@ -1,7 +1,7 @@
 ---
 layout: page
-title: When an error bar can't warn you
-description: However wrong the estimate, bridge sampling's error estimate can't exceed √(log 3) ≈ 1.05. Watch it hit the ceiling.
+title: Saturation of the bridge sampling error estimate
+description: Reported versus actual error of bridge sampling on a Gaussian posterior with known normalising constant. The reported Monte Carlo standard error cannot exceed √(log 3) ≈ 1.05, however large the actual error.
 img: assets/img/projects/bridge-sampling.png
 importance: 1
 category: Interactive

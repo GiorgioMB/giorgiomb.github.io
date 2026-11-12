@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Option prices with honest error bars
-description: Monte Carlo pricing in your browser, checked against Black–Scholes. At the defaults, a control variate narrows the 95% band 2.4×, worth six times the paths.
+title: Variance reduction for Monte Carlo option pricing
+description: European option prices by simulation, compared against Black–Scholes, with plain, antithetic and control-variate estimators. At the default parameters, the control variate narrows the 95% interval by a factor of 2.4, equivalent to about six times as many paths.
 img: assets/img/projects/option-pricing.png
 importance: 3
 category: Interactive
