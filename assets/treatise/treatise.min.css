@@ -212,15 +212,11 @@ svg.b-drawn .b-dot{transform:scale(1);transition:transform .38s cubic-bezier(.3,
 
 /* the print or the plate: a hatched half-disc that turns over */
 .theme-toggle{all:unset;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;width:1.4rem;height:1.4rem;color:var(--ink);vertical-align:middle}
-.theme-toggle svg{width:1.15rem;height:1.15rem;transition:transform .7s cubic-bezier(.3,.7,.2,1)}
+.theme-toggle svg{width:1.15rem;height:1.15rem}
 :root[data-theme="dark"] .theme-toggle svg{transform:rotate(180deg)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .theme-toggle svg{transform:rotate(180deg)}}
 .theme-toggle:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-body{transition:background-color .45s ease,color .45s ease}
 
-/* every item rises into place the first time it comes into view; .rv is set before paint, .rv-done if the script never runs */
 .math{white-space:nowrap}
 sub,sup{line-height:0}
-.rv .title-block > *,.rv .imprint,.rv .page-title > *,.rv .folio > h2:not(.visually-hidden),.rv .folio > .demo,.rv .folio > .pair > *,.rv .colophon{opacity:0;transform:translateY(.85rem)}
-.rv .rv-in{opacity:1!important;transform:none!important;transition:opacity .8s ease var(--rd,0s),transform 1s cubic-bezier(.2,.7,.2,1) var(--rd,0s)}
-.rv-done .title-block > *,.rv-done .imprint,.rv-done .page-title > *,.rv-done .folio > h2:not(.visually-hidden),.rv-done .folio > .demo,.rv-done .folio > .pair > *,.rv-done .colophon{opacity:1!important;transform:none!important}
+.penrose-frame svg{display:block;width:72%;height:auto;margin:14% auto 0}

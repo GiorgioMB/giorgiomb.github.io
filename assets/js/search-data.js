@@ -23,10 +23,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "news-scalable-graph-curvature-was-accepted-at-the-neurips-2026-workshop-bridging-optimal-transport-learning-and-structured-data-toward-geometric-distributional-learning-held-in-paris",
-          title: 'Scalable Graph Curvature was accepted at the NeurIPS 2026 workshop Bridging Optimal Transport,...',
-          description: "",
-          section: "News",},{id: "projects-saturation-of-the-bridge-sampling-error-estimate",
+        },{id: "projects-saturation-of-the-bridge-sampling-error-estimate",
           title: 'Saturation of the bridge sampling error estimate',
           description: "Reported against actual error of bridge sampling on a Gaussian posterior, worked in the browser.",
           section: "Projects",handler: () => {
