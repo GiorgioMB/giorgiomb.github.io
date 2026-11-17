@@ -13,3 +13,7 @@ _scripts/*
 _data/citations.yml
 # Precomputed data of the screening-map demo, kept as written by its export script
 assets/json/screening-map/*.json
+# The treatise pages are plain HTML inside a raw tag, kept as written
+_pages/about.html
+_pages/publications.html
+_pages/projects.html

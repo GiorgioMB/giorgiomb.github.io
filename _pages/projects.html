@@ -1,0 +1,146 @@
+---
+layout: null
+title: Projects
+permalink: /projects/
+nav: true
+nav_order: 3
+---
+{% comment %}Written as plain HTML; the raw tag keeps Liquid from reading the page.{% endcomment %}{% raw %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects · Giorgio Micaletto</title>
+<meta name="description" content="PhD student in Statistics at UChicago, previously at Bocconi and Aalto.">
+<link rel="icon" href="/assets/treatise/favicon.svg?v=1" type="image/svg+xml">
+<link rel="canonical" href="https://giorgiomb.github.io/projects/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Projects · Giorgio Micaletto">
+<meta property="og:description" content="PhD student in Statistics at UChicago, previously at Bocconi and Aalto.">
+<meta property="og:url" content="https://giorgiomb.github.io/projects/">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/assets/treatise/treatise.min.css?v=1">
+</head>
+<body>
+<header class="page-head">
+  <nav class="running-head" aria-label="Main">
+    <a href="/">About</a>
+    <a href="/publications/">Publications</a>
+    <a href="/projects/" aria-current="page">Projects</a>
+  </nav>
+</header>
+
+<main class="folio" id="main">
+  <div class="page-title">
+    <h1>Projects</h1>
+    <p>Each is set out as the problem it solves.</p>
+  </div>
+
+  <figure class="pair frontis">
+    <div class="plate-frame"><canvas class="plate" data-plate="mazzocchio" tabindex="0" role="img"
+      aria-label="An engraved mazzocchio, a ring of thirty-two faceted segments with alternate facets shaded, like a chequered headdress frame. Drag it, or use the arrow keys, to turn it."></canvas></div>
+    <figcaption class="gloss"><p><span class="tav">Tav. III</span>A mazzocchio, the faceted ring of Florentine headdresses that <a href="https://en.wikipedia.org/wiki/Paolo_Uccello">Paolo Uccello</a> drew to master perspective. Drag to turn it.</p></figcaption>
+  </figure>
+
+  <h2>To try in your browser</h2>
+
+  <article class="pair problem" id="tav-4">
+    <div>
+      <h3><span class="tav">Tav. IV</span>Certifying Ollivier–Ricci curvature signs</h3>
+      <p><span class="runin">Problem.</span> To decide, for every edge of a graph, whether its Ollivier–Ricci curvature lies below a threshold, while solving as few optimal transport problems as possible.</p>
+      <a class="open" href="/projects/screening-map/">Open the demo</a>
+    </div>
+    <figure>
+      <svg viewBox="0 0 200 200" role="img" aria-label="Diagram: an edge between two vertices, the triangle they share in yellow, the neighbours of one endpoint in red and of the other in blue.">
+        <polygon points="72,118 128,118 100,66" fill="var(--b-yellow)"/>
+        <g stroke="var(--b-red)" stroke-width="5" stroke-linecap="round"><line x1="72" y1="118" x2="28" y2="78"/><line x1="72" y1="118" x2="34" y2="162"/><line x1="72" y1="118" x2="100" y2="66"/></g>
+        <g stroke="var(--b-blue)" stroke-width="5" stroke-linecap="round"><line x1="128" y1="118" x2="172" y2="80"/><line x1="128" y1="118" x2="166" y2="164"/><line x1="128" y1="118" x2="100" y2="66"/></g>
+        <line x1="72" y1="118" x2="128" y2="118" stroke="var(--ink)" stroke-width="5.5" stroke-linecap="round"/>
+        <g fill="var(--ink)"><circle cx="72" cy="118" r="5.5"/><circle cx="128" cy="118" r="5.5"/><circle cx="100" cy="66" r="4.2"/><circle cx="28" cy="78" r="4.2"/><circle cx="34" cy="162" r="4.2"/><circle cx="172" cy="80" r="4.2"/><circle cx="166" cy="164" r="4.2"/></g>
+      </svg>
+    </figure>
+  </article>
+
+  <article class="pair problem" id="tav-5">
+    <div>
+      <h3><span class="tav">Tav. V</span>Saturation of the bridge sampling error estimate</h3>
+      <p><span class="runin">Problem.</span> To tell, from its reported Monte Carlo standard error, whether a bridge sampling estimate of the marginal likelihood can be believed.</p>
+      <a class="open" href="/projects/bridge-sampling/">Open the demo</a>
+    </div>
+    <figure>
+      <svg viewBox="0 0 200 200" role="img" aria-label="Diagram: reported and actual error agree along a black line, then split: the actual error keeps rising in blue while the reported error in red flattens under a dashed ceiling, with the gap between them in yellow.">
+        <path d="M86 118 L 178 30 L 178 67 C 148 70, 118 88, 86 118 Z" fill="var(--b-yellow)"/>
+        <line x1="24" y1="62" x2="182" y2="62" stroke="var(--ink)" stroke-width="2.2" stroke-dasharray="7 6"/>
+        <path d="M86 118 L 178 30" fill="none" stroke="var(--b-blue)" stroke-width="5" stroke-linecap="round"/>
+        <path d="M86 118 C 118 88, 148 70, 178 67" fill="none" stroke="var(--b-red)" stroke-width="5" stroke-linecap="round"/>
+        <path d="M28 172 C 50 160, 72 140, 86 118" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+    </figure>
+  </article>
+
+  <article class="pair problem" id="tav-6">
+    <div>
+      <h3><span class="tav">Tav. VI</span>Variance reduction for Monte Carlo option pricing</h3>
+      <p><span class="runin">Problem.</span> To price a European option by simulation with an error bar narrow enough to be useful, and to check the price against Black–Scholes.</p>
+      <a class="open" href="/projects/option-pricing/">Open the demo</a>
+    </div>
+    <figure>
+      <svg viewBox="0 0 200 200" role="img" aria-label="Diagram: a yellow confidence band narrowing from left to right around a red running estimate that settles on a blue horizontal line.">
+        <path d="M24 30 C 70 82, 120 94, 182 96 L 182 108 C 120 110, 70 122, 24 172 Z" fill="var(--b-yellow)"/>
+        <line x1="18" y1="102" x2="186" y2="102" stroke="var(--b-blue)" stroke-width="5" stroke-linecap="round"/>
+        <polyline points="24,64 36,128 48,86 60,118 74,92 88,110 104,97 120,106 138,99 156,104 172,101 182,102" fill="none" stroke="var(--b-red)" stroke-width="4.2" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+    </figure>
+  </article>
+
+  <h2>To read about</h2>
+
+  <article class="pair problem" id="tav-7">
+    <div>
+      <h3><span class="tav">Tav. VII</span>SPORF on current Python</h3>
+      <p><span class="runin">Problem.</span> To make sparse projection oblique randomer forests, which split on sparse random combinations of features rather than one feature at a time, install and run on current Python.</p>
+      <a class="open" href="/projects/sporf/">Read the details</a>
+    </div>
+    <figure>
+      <svg viewBox="0 0 200 200" role="img" aria-label="Diagram: red and blue points separated by an oblique black line, with a dashed vertical line that would split them less cleanly.">
+        <line x1="100" y1="22" x2="100" y2="186" stroke="var(--ink)" stroke-width="2.2" stroke-dasharray="7 6"/>
+        <line x1="36" y1="174" x2="174" y2="36" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>
+        <g fill="var(--b-red)"><circle cx="40" cy="90" r="6"/><circle cx="55" cy="120" r="6"/><circle cx="70" cy="70" r="6"/><circle cx="72" cy="124" r="6"/><circle cx="92" cy="100" r="6"/><circle cx="46" cy="148" r="6"/><circle cx="118" cy="72" r="6"/><circle cx="136" cy="54" r="6"/></g>
+        <g fill="var(--b-blue)"><circle cx="88" cy="150" r="6"/><circle cx="70" cy="168" r="6"/><circle cx="112" cy="132" r="6"/><circle cx="142" cy="110" r="6"/><circle cx="162" cy="82" r="6"/><circle cx="174" cy="140" r="6"/><circle cx="126" cy="162" r="6"/></g>
+      </svg>
+    </figure>
+  </article>
+
+  <article class="pair problem" id="tav-8">
+    <div>
+      <h3><span class="tav">Tav. VIII</span>Water quality prediction from location and date</h3>
+      <p><span class="runin">Problem.</span> To predict total alkalinity, electrical conductance and dissolved reactive phosphorus at South African monitoring stations from each sample’s coordinates and date alone.</p>
+      <a class="open" href="/projects/ey-water-quality/">Read the details</a>
+    </div>
+    <figure>
+      <svg viewBox="0 0 200 200" role="img" aria-label="Diagram: the land divided into square blocks, eight in yellow and one held out in red, with a blue river running across them and black dots for the monitoring stations along it.">
+        <g fill="var(--b-yellow)">
+          <rect x="18" y="18" width="50" height="50"/><rect x="75" y="18" width="50" height="50"/><rect x="132" y="18" width="50" height="50"/>
+          <rect x="18" y="75" width="50" height="50"/><rect x="75" y="75" width="50" height="50"/>
+          <rect x="18" y="132" width="50" height="50"/><rect x="75" y="132" width="50" height="50"/><rect x="132" y="132" width="50" height="50"/>
+        </g>
+        <rect x="132" y="75" width="50" height="50" fill="var(--b-red)"/>
+        <path d="M8 44 C 48 30, 70 70, 100 96 S 150 92, 168 112 S 178 160, 192 176" fill="none" stroke="var(--b-blue)" stroke-width="6.5" stroke-linecap="round"/>
+        <g fill="var(--ink)"><circle cx="36" cy="40" r="5"/><circle cx="74" cy="72" r="5"/><circle cx="104" cy="98" r="5"/><circle cx="148" cy="96" r="5"/><circle cx="168" cy="113" r="5"/><circle cx="182" cy="160" r="5"/></g>
+      </svg>
+    </figure>
+  </article>
+
+  <footer class="colophon">
+    <svg class="mark" viewBox="0 0 40 36" aria-hidden="true"><polygon points="4,32 36,32 20,4" fill="var(--b-yellow)"/><line x1="4" y1="32" x2="36" y2="32" stroke="var(--b-blue)" stroke-width="3" stroke-linecap="round"/><line x1="4" y1="32" x2="20" y2="4" stroke="var(--b-red)" stroke-width="3" stroke-linecap="round"/><line x1="36" y1="32" x2="20" y2="4" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/></svg>
+    <p>Set in Newsreader, by Production Type. The solids are after Albrecht Dürer, Leonardo da Vinci and Paolo Uccello; the coloured diagrams follow Oliver Byrne’s <cite>Euclid</cite> of 1847. In dark mode you see the steel plate instead of the print.</p>
+    <p>Some old cheat codes still work here, from the retro games I spent more hours on than I’d like to admit.</p>
+  </footer>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script defer src="/assets/treatise/plates.min.js?v=1"></script>
+<script defer src="/assets/treatise/shared.min.js?v=1"></script>
+</body>
+</html>
+{% endraw %}
