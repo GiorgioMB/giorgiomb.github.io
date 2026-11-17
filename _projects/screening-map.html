@@ -1,0 +1,112 @@
+---
+layout: treatise
+title: Certifying Ollivier–Ricci curvature signs
+description: Stage-by-stage certification of Ollivier–Ricci curvature signs from combinatorial bounds, worked in the browser.
+permalink: /projects/screening-map/
+img: assets/img/projects/screening-map.png
+importance: 2
+category: Interactive
+---
+<div class="pair demo-head">
+  <div>
+    <span class="tav block">Tav. IV</span>
+    <h1>Certifying Ollivier–Ricci curvature signs</h1>
+    <p class="problem"><span class="runin">Problem.</span> To decide, for every edge of a graph, whether its Ollivier–Ricci curvature lies below a threshold <i>τ</i>, while solving as few optimal transport problems as possible.</p>
+  </div>
+  <figure class="demo-fig"><svg class="byrne" viewBox="0 0 200 200" role="img" aria-label="Diagram: an edge between two vertices, the triangle they share in yellow, the neighbours of one endpoint in red and of the other in blue.">
+        <polygon points="72,118 128,118 100,66" fill="var(--b-yellow)"/>
+        <g stroke="var(--b-red)" stroke-width="5" stroke-linecap="round"><line x1="72" y1="118" x2="28" y2="78"/><line x1="72" y1="118" x2="34" y2="162"/><line x1="72" y1="118" x2="100" y2="66"/></g>
+        <g stroke="var(--b-blue)" stroke-width="5" stroke-linecap="round"><line x1="128" y1="118" x2="172" y2="80"/><line x1="128" y1="118" x2="166" y2="164"/><line x1="128" y1="118" x2="100" y2="66"/></g>
+        <line x1="72" y1="118" x2="128" y2="118" stroke="var(--ink)" stroke-width="5.5" stroke-linecap="round"/>
+        <g fill="var(--ink)"><circle cx="72" cy="118" r="5.5"/><circle cx="128" cy="118" r="5.5"/><circle cx="100" cy="66" r="4.2"/><circle cx="28" cy="78" r="4.2"/><circle cx="34" cy="162" r="4.2"/><circle cx="172" cy="80" r="4.2"/><circle cx="166" cy="164" r="4.2"/></g>
+      </svg></figure>
+</div>
+<div class="pair">
+  <p>Curvature on a graph measures how well connected the neighbourhoods of an edge’s two endpoints are. Edges inside dense clusters tend to be positively curved, and edges that bridge otherwise separate regions tend to be negatively curved and act as bottlenecks, which is why curvature is used to diagnose over-squashing in graph neural networks and to decide which edges to rewire.</p>
+  <aside class="gloss"><p><a href="https://arxiv.org/abs/2111.14522">Topping and others, 2022</a>, who introduced Balanced Forman curvature for this purpose.</p></aside>
+</div>
+<div class="pair">
+  <p>Ollivier–Ricci curvature costs one optimal transport problem per edge. In <a href="/publications/">Proposition I</a>, Tebe Nigrelli and I show that the Balanced Forman value of an edge certifies an interval for its lazy Ollivier–Ricci curvature with no transport problem at all, and that the edge’s 2-hop neighbourhood sharpens it.</p>
+  <aside class="gloss"></aside>
+</div>
+<div class="pair">
+  <p>Certify-then-solve takes the 2-hop interval, intersects it with the certificate of Tian, Lubberts and Weber, and solves a transport problem only for the edges still undecided. The map works it one stage at a time, as the paper’s figure does. Each stage draws the edges it decides in colour, red where <span class="math"><i>κ</i><sub>OR</sub></span> &lt; <i>τ</i> and blue where <span class="math"><i>κ</i><sub>OR</sub></span> ≥ <i>τ</i>, and the edges decided earlier in grey; edges still undecided are not drawn.</p>
+  <aside class="gloss"></aside>
+</div>
+
+<div id="screening-map" class="demo" data-src="/assets/json/screening-map/">
+  <div class="controls">
+    <fieldset>
+      <legend>Graph</legend>
+      <div class="seg">
+        <input type="radio" id="sm-rgg" name="sm-graph" value="rgg" checked><label for="sm-rgg">Random geometric</label>
+        <input type="radio" id="sm-yeast" name="sm-graph" value="yeast"><label for="sm-yeast">Yeast</label>
+        <input type="radio" id="sm-karate" name="sm-graph" value="karate"><label for="sm-karate">Karate club</label>
+      </div>
+    </fieldset>
+    <fieldset class="sm-rgg-only">
+      <legend>Expected degree</legend>
+      <div class="seg">
+        <input type="radio" id="sm-d6" name="sm-degree" value="6"><label for="sm-d6">6</label>
+        <input type="radio" id="sm-d8" name="sm-degree" value="8" checked><label for="sm-d8">8</label>
+        <input type="radio" id="sm-d12" name="sm-degree" value="12"><label for="sm-d12">12</label>
+      </div>
+    </fieldset>
+    <button type="button" class="action sm-rgg-only sm-another">Draw another graph</button>
+  </div>
+  <div class="sm-threshold">
+    <label for="sm-tau">Threshold <i>τ</i> <output class="sm-tau-value" for="sm-tau">0.00</output></label>
+    <button type="button" class="action sm-tau-reset">Back to <i>τ</i> = 0</button>
+    <input type="range" id="sm-tau" class="sm-tau-input" min="-100" max="100" step="1" value="0">
+  </div>
+  <div class="chart sm-chart"></div>
+  <fieldset class="sm-steps">
+    <legend class="sr-only">Stage</legend>
+    <input type="radio" id="sm-s0" name="sm-stage" value="0" checked><label for="sm-s0"><span class="sm-swatch sm-swatch-0"></span><span class="sm-step-name">(a) BF interval</span><span class="sm-step-num"></span></label>
+    <input type="radio" id="sm-s1" name="sm-stage" value="1"><label for="sm-s1"><span class="sm-swatch sm-swatch-1"></span><span class="sm-step-name">(b) 2-hop interval</span><span class="sm-step-num"></span></label>
+    <input type="radio" id="sm-s2" name="sm-stage" value="2"><label for="sm-s2"><span class="sm-swatch sm-swatch-2"></span><span class="sm-step-name">(c) + TLW certificate</span><span class="sm-step-num"></span></label>
+    <input type="radio" id="sm-s3" name="sm-stage" value="3"><label for="sm-s3"><span class="sm-swatch sm-swatch-3"></span><span class="sm-step-name">(d) + exact solver</span><span class="sm-step-num"></span></label>
+  </fieldset>
+  <div class="sm-map"></div>
+  <p class="sm-legend sm-legend-plain">
+    <span class="sm-key sm-key-neg">decided here, <i>κ</i><sub>OR</sub> &lt; <i>τ</i></span>
+    <span class="sm-key sm-key-pos">decided here, <i>κ</i><sub>OR</sub> ≥ <i>τ</i></span>
+    <span class="sm-key sm-key-old">decided by an earlier stage</span>
+    <span>undecided: not drawn</span>
+  </p>
+  <p class="sm-legend sm-legend-auto" hidden>
+    <span class="sm-key sm-key-auto-0">BF interval</span>
+    <span class="sm-key sm-key-auto-1">2-hop interval</span>
+    <span class="sm-key sm-key-auto-2">TLW certificate</span>
+    <span class="sm-key sm-key-auto-3">needs optimal transport</span>
+  </p>
+  <div class="readout sm-readout"></div>
+  <p class="sr-only sm-live" aria-live="polite"></p>
+  <p class="status sm-status"></p>
+</div>
+<script src="/assets/js/screening-core.js"></script>
+<script src="/assets/js/screening-demo.js"></script>
+
+<h2>What you are seeing</h2>
+<div class="pair">
+  <p><span id="screening-map-seeing">On the paper’s graph at <span class="math"><i>τ</i> = 0</span>, the sign query, the BF interval alone decides 52.8% of the edges, the 2-hop interval brings that to 63.4% and the TLW certificate to 73.8%, so 781 of the 2,985 edges need a transport problem. Almost everything the BF interval decides has <span class="math"><i>κ</i><sub>OR</sub></span> ≥ 0, and almost everything the 2-hop interval and the TLW certificate add has <span class="math"><i>κ</i><sub>OR</sub></span> &lt; 0.</span></p>
+  <aside class="gloss"></aside>
+</div>
+<div class="pair">
+  <p>Moving <i>τ</i> changes which edges sit close to the threshold, and so which ones are hard. The chart shows, for every <i>τ</i> from −1 to 1, how the edges split between the four stages; the vertical line marks the current <i>τ</i>, and dragging along the chart moves it. Denser graphs leave more to the solver: at <span class="math"><i>τ</i> = 0</span>, the random geometric graphs of expected degree 6 send between 19% and 22% of their edges to it, those of degree 12 between 28% and 33%.</p>
+  <aside class="gloss"></aside>
+</div>
+<div class="pair">
+  <p>As in the paper’s code, every interval is widened by 10<sup>−9</sup> against floating-point rounding before it is compared with <i>τ</i>, so an interval whose lower end is exactly <i>τ</i> does not decide its edge. <span id="screening-map-spike">That is the spike in the chart at <span class="math"><i>τ</i> = 0</span>: on the paper’s graph, 92 of the 781 transport problems at <span class="math"><i>τ</i> = 0</span> are edges whose lower end is exactly 0.</span></p>
+  <aside class="gloss"></aside>
+</div>
+
+<h2>How it is computed</h2>
+<div class="pair">
+  <p>Every interval and curvature comes from the paper’s code, <a href="https://github.com/GiorgioMB/Curvature-Transfer-Code">Curvature-Transfer-Code</a>, and every exact value from <a href="https://github.com/GiorgioMB/orcut">orcut</a>, the solver behind the exact values in the paper.</p>
+  <aside class="gloss"></aside>
+</div>
+<div class="pair">
+  <p id="screening-map-about">This random geometric graph has 800 uniform points in the unit square, joined when closer than <span class="math"><i>r</i> = 0.0564</span>, so that the expected degree <span class="math">800π<i>r</i><sup>2</sup></span> is 8; it is restricted to its largest component and drawn at its points. It is seed 0 of four at this degree, the graph of the paper’s figure, and “Draw another graph” steps through the other three.</p>
+  <aside class="gloss"></aside>
+</div>

@@ -1,15 +1,28 @@
 ---
-layout: page
+layout: treatise
 title: Variance reduction for Monte Carlo option pricing
-description: European option prices by simulation, compared against Black–Scholes, with plain, antithetic and control-variate estimators. At the default parameters, the control variate narrows the 95% interval by a factor of 2.4, equivalent to about six times as many paths.
+description: European option prices by simulation, with plain, antithetic and control-variate estimators, checked against Black–Scholes in the browser.
+permalink: /projects/option-pricing/
 img: assets/img/projects/option-pricing.png
 importance: 3
 category: Interactive
 ---
-
-{% include demo-styles.liquid %}
-
-[stockdatamanager](https://github.com/GiorgioMB/stockdatamanipulation) is a Python library I wrote for fun as a passion project before going to Aalto, for technical, fundamental and options analysis, including Greeks and option pricing with binomial trees and Crank–Nicolson. This page is its Monte Carlo counterpart: price a European option by simulation, see how wide the error bar is, and compare it with the Black–Scholes price.
+<div class="pair demo-head">
+  <div>
+    <span class="tav block">Tav. VI</span>
+    <h1>Variance reduction for Monte Carlo option pricing</h1>
+    <p class="problem"><span class="runin">Problem.</span> To price a European option by simulation with an error bar narrow enough to be useful, and to check the price against Black–Scholes.</p>
+  </div>
+  <figure class="demo-fig"><svg class="byrne" viewBox="0 0 200 200" role="img" aria-label="Diagram: a yellow confidence band narrowing from left to right around a red running estimate that settles on a blue horizontal line.">
+        <path d="M24 30 C 70 82, 120 94, 182 96 L 182 108 C 120 110, 70 122, 24 172 Z" fill="var(--b-yellow)"/>
+        <line x1="18" y1="102" x2="186" y2="102" stroke="var(--b-blue)" stroke-width="5" stroke-linecap="round"/>
+        <polyline points="24,64 36,128 48,86 60,118 74,92 88,110 104,97 120,106 138,99 156,104 172,101 182,102" fill="none" stroke="var(--b-red)" stroke-width="4.2" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg></figure>
+</div>
+<div class="pair">
+  <p><a href="https://github.com/GiorgioMB/stockdatamanipulation">stockdatamanager</a> is a Python library I wrote before going to Aalto, for technical, fundamental and options analysis, with Greeks and option pricing by binomial trees and Crank–Nicolson. This page is its Monte Carlo counterpart.</p>
+  <aside class="gloss"><p>Install it with <code>pip install stockdatamanager</code>.</p></aside>
+</div>
 
 <div id="option-demo" class="demo">
   <div class="controls">
@@ -47,12 +60,14 @@ category: Interactive
   </dl>
   <p class="readout od-readout" aria-live="polite"></p>
 </div>
-<script src="{{ '/assets/js/option-demo.js' | relative_url }}"></script>
+<script src="/assets/js/option-demo.js"></script>
 
-### What you're seeing
-
-The teal line is the running Monte Carlo estimate and the band is its 95% interval; the gold line is the Black–Scholes price. The band narrows like $1/\sqrt{N}$ in the number of paths $N$, so halving it takes four times as many. Variance reduction narrows it at almost no cost: antithetic draws pair each path with its mirror image, and a control variate subtracts the part of the payoff explained by the final stock price, whose mean is known. The paths stay the same as you move the sliders, so you can see how each input moves the price.
-
-The American price comes from a 400-step binomial tree. For a put, its difference from the European price is the value of being able to exercise early.
-
-Install the library with `pip install stockdatamanager`.
+<h2>What you are seeing</h2>
+<div class="pair">
+  <p>The red line is the running Monte Carlo estimate and the yellow band its 95% interval; the blue line is the Black–Scholes price. The band narrows like <span class="math">1/√<i>N</i></span> in the number of paths <i>N</i>, so halving it takes four times as many. Variance reduction narrows it at almost no cost: antithetic draws pair each path with its mirror image, and a control variate subtracts the part of the payoff explained by the final stock price, whose mean is known. The paths stay the same as you move the sliders, so you can see how each input moves the price.</p>
+  <aside class="gloss"></aside>
+</div>
+<div class="pair">
+  <p>The American price comes from a 400-step binomial tree. For a put, its difference from the European price is the value of being able to exercise early.</p>
+  <aside class="gloss"></aside>
+</div>

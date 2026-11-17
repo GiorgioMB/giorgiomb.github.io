@@ -1,0 +1,72 @@
+---
+layout: treatise
+title: Saturation of the bridge sampling error estimate
+description: Reported against actual error of bridge sampling on a Gaussian posterior, worked in the browser.
+permalink: /projects/bridge-sampling/
+img: assets/img/projects/bridge-sampling.png
+importance: 1
+category: Interactive
+---
+<div class="pair demo-head">
+  <div>
+    <span class="tav block">Tav. V</span>
+    <h1>Saturation of the bridge sampling error estimate</h1>
+    <p class="problem"><span class="runin">Problem.</span> To tell, from its reported Monte Carlo standard error, whether a bridge sampling estimate of the marginal likelihood can be believed.</p>
+  </div>
+  <figure class="demo-fig"><svg class="byrne" viewBox="0 0 200 200" role="img" aria-label="Diagram: reported and actual error agree along a black line, then split: the actual error keeps rising in blue while the reported error in red flattens under a dashed ceiling, with the gap between them in yellow.">
+        <path d="M86 118 L 178 30 L 178 67 C 148 70, 118 88, 86 118 Z" fill="var(--b-yellow)"/>
+        <line x1="24" y1="62" x2="182" y2="62" stroke="var(--ink)" stroke-width="2.2" stroke-dasharray="7 6"/>
+        <path d="M86 118 L 178 30" fill="none" stroke="var(--b-blue)" stroke-width="5" stroke-linecap="round"/>
+        <path d="M86 118 C 118 88, 148 70, 178 67" fill="none" stroke="var(--b-red)" stroke-width="5" stroke-linecap="round"/>
+        <path d="M28 172 C 50 160, 72 140, 86 118" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>
+      </svg></figure>
+</div>
+<div class="pair">
+  <p>Bridge sampling estimates the marginal likelihood of a Bayesian model and reports a Monte Carlo standard error (MCSE) with it. In <a href="/publications/">Proposition II</a>, Aki Vehtari and I show that this error estimate has a ceiling: however badly the estimate fails, the MCSE cannot exceed <span class="math">√(log 3) ≈ 1.05</span>.</p>
+  <aside class="gloss"></aside>
+</div>
+<div class="pair">
+  <p>The figure runs bridge sampling on a Gaussian posterior whose answer is known, so the error it reports, in red, can be set against the error it makes, in blue. Each point averages 20 runs.</p>
+  <aside class="gloss"></aside>
+</div>
+
+<div id="bridge-demo" class="demo" data-worker="/assets/js/bridge-worker.js">
+  <div class="controls">
+    <fieldset>
+      <legend>Proposal</legend>
+      <div class="seg">
+        <input type="radio" id="bd-sample" name="bd-proposal" value="sample" checked><label for="bd-sample">Standard</label>
+        <input type="radio" id="bd-hybrid" name="bd-proposal" value="hybrid"><label for="bd-hybrid">Hybrid</label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Draws per run</legend>
+      <div class="seg">
+        <input type="radio" id="bd-500" name="bd-draws" value="500" checked><label for="bd-500">500</label>
+        <input type="radio" id="bd-1000" name="bd-draws" value="1000"><label for="bd-1000">1,000</label>
+        <input type="radio" id="bd-2000" name="bd-draws" value="2000"><label for="bd-2000">2,000</label>
+      </div>
+    </fieldset>
+    <button type="button" class="action bd-run">Run again with new draws</button>
+  </div>
+  <div class="chart bd-chart"></div>
+  <p class="readout bd-readout" aria-live="polite"></p>
+  <p class="status bd-status"></p>
+</div>
+<script src="/assets/js/bridge-demo.js"></script>
+
+<h2>What you are seeing</h2>
+<div class="pair">
+  <p>With the standard proposal, a Gaussian fitted with the sample covariance of the draws, the two lines agree until the sample covariance grows too noisy for the dimension. Then the reported error flattens below the ceiling while the actual error keeps climbing. More draws push the breakdown further out, but slowly. The MCSE does cross 0.3 shortly before it breaks down, which is why the paper recommends trusting it only below that.</p>
+  <aside class="gloss"></aside>
+</div>
+<div class="pair">
+  <p>The hybrid proposal combines the sample covariance with the inverse covariance of the posterior’s gradients, taking their midpoint in the affine-invariant geometry of covariance matrices. For a Gaussian posterior that midpoint is the true covariance, which is why its lines stay low and together here. Real posteriors are not Gaussian, but across the 41 posteriors in the paper the hybrid proposal kept the actual error within a factor of 1.4 of the reported one.</p>
+  <aside class="gloss"></aside>
+</div>
+
+<h2>How it is computed</h2>
+<div class="pair">
+  <p>The posterior is <span class="math"><i>N</i>(0, <i>Σ</i>)</span>, with variances spread from 0.1 to 10 and its normalising constant dropped. Each run draws independent samples, fits the proposal on half of them, and uses the other half, with as many proposal draws, for the estimate. The estimator uses the bridge function of Meng and Wong (1996), starts from the median log ratio as the <a href="https://github.com/quentingronau/bridgesampling">bridgesampling</a> R package does, and computes the MCSE with the formula from the paper. Everything runs in your browser.</p>
+  <aside class="gloss"><p>The code for the paper’s experiments is <a href="https://github.com/GiorgioMB/bridgesampling_paper_code">on GitHub</a>.</p></aside>
+</div>

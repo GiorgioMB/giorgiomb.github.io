@@ -1,0 +1,44 @@
+---
+layout: treatise
+title: SPORF on current Python
+description: A maintained fork of sparse projection oblique randomer forests that installs on Python 3.8 to 3.14, proposed upstream in neurodata/SPORF#361.
+permalink: /projects/sporf/
+img: assets/img/projects/sporf.png
+importance: 1
+category: Open source
+---
+<div class="pair demo-head">
+  <div>
+    <span class="tav block">Tav. VII</span>
+    <h1>SPORF on current Python</h1>
+    <p class="problem"><span class="runin">Problem.</span> To make sparse projection oblique randomer forests, which split on sparse random combinations of features rather than one feature at a time, install and run on current Python.</p>
+  </div>
+  <figure class="demo-fig"><svg class="byrne" viewBox="0 0 200 200" role="img" aria-label="Diagram: red and blue points separated by an oblique black line, with a dashed vertical line that would split them less cleanly.">
+        <line x1="100" y1="22" x2="100" y2="186" stroke="var(--ink)" stroke-width="2.2" stroke-dasharray="7 6"/>
+        <line x1="36" y1="174" x2="174" y2="36" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>
+        <g fill="var(--b-red)"><circle cx="40" cy="90" r="6"/><circle cx="55" cy="120" r="6"/><circle cx="70" cy="70" r="6"/><circle cx="72" cy="124" r="6"/><circle cx="92" cy="100" r="6"/><circle cx="46" cy="148" r="6"/><circle cx="118" cy="72" r="6"/><circle cx="136" cy="54" r="6"/></g>
+        <g fill="var(--b-blue)"><circle cx="88" cy="150" r="6"/><circle cx="70" cy="168" r="6"/><circle cx="112" cy="132" r="6"/><circle cx="142" cy="110" r="6"/><circle cx="162" cy="82" r="6"/><circle cx="174" cy="140" r="6"/><circle cx="126" cy="162" r="6"/></g>
+      </svg></figure>
+</div>
+<div class="pair">
+  <p><a href="https://github.com/neurodata/SPORF">SPORF</a> is a random forest that splits on sparse random linear combinations of features, where an ordinary forest splits on one feature at a time. Its Python package no longer builds on recent versions of Python and pip, and <a href="https://github.com/GiorgioMB/SPORF_Available/tree/staging">my fork</a> makes it work again.</p>
+  <aside class="gloss"><p>Sparse projection oblique randomer forests are due to <a href="https://arxiv.org/abs/1506.03410">Tomita and others</a>.</p></aside>
+</div>
+
+<h2>What the fork changes</h2>
+<div class="pair">
+  <p>It restores the unsupervised forests, URF and URerF, and fixes a data race in the C++ code that updates their similarity matrix.</p>
+  <aside class="gloss"></aside>
+</div>
+<div class="pair">
+  <p>It removes an unused Eigen dependency and modernises the build, so the package installs with current pip on Python 3.8 to 3.14.</p>
+  <aside class="gloss"></aside>
+</div>
+<div class="pair">
+  <p>It makes scikit-learn 1.6 and later recognise the classifier, updates the tests for current scikit-learn, makes the unsupervised forests respect <code>random_state</code>, and adds continuous integration.</p>
+  <aside class="gloss"></aside>
+</div>
+<div class="pair">
+  <p>The changes are proposed upstream in <a href="https://github.com/neurodata/SPORF/pull/361">neurodata/SPORF#361</a>, which is awaiting review.</p>
+  <aside class="gloss"></aside>
+</div>
