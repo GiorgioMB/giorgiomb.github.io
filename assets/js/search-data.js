@@ -28,22 +28,22 @@ ninja.data = [{
           description: "",
           section: "News",},{id: "projects-saturation-of-the-bridge-sampling-error-estimate",
           title: 'Saturation of the bridge sampling error estimate',
-          description: "Reported versus actual error of bridge sampling on a Gaussian posterior with known normalising constant. The reported Monte Carlo standard error cannot exceed √(log 3) ≈ 1.05, however large the actual error.",
+          description: "Reported against actual error of bridge sampling on a Gaussian posterior, worked in the browser.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/bridge-sampling/";
             },},{id: "projects-water-quality-prediction-from-location-and-date",
           title: 'Water quality prediction from location and date',
-          description: "Predicting three water quality indicators at South African monitoring stations from coordinates and sampling date alone. Solo entry in the EY AI &amp; Data Challenge 2026, reaching the semifinal (top 10 of 953 teams).",
+          description: "Predicting three water quality indicators at South African monitoring stations from coordinates and date alone; a solo semifinalist in the EY AI &amp; Data Challenge 2026.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/ey-water-quality/";
             },},{id: "projects-variance-reduction-for-monte-carlo-option-pricing",
           title: 'Variance reduction for Monte Carlo option pricing',
-          description: "European option prices by simulation, compared against Black–Scholes, with plain, antithetic and control-variate estimators. At the default parameters, the control variate narrows the 95% interval by a factor of 2.4, equivalent to about six times as many paths.",
+          description: "European option prices by simulation, with plain, antithetic and control-variate estimators, checked against Black–Scholes in the browser.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/option-pricing/";
             },},{id: "projects-certifying-ollivier-ricci-curvature-signs",
           title: 'Certifying Ollivier–Ricci curvature signs',
-          description: "Stage-by-stage certification of curvature signs from combinatorial bounds. On the paper&#39;s random geometric graph, 73.8% of edges are decided without solving an optimal transport problem.",
+          description: "Stage-by-stage certification of Ollivier–Ricci curvature signs from combinatorial bounds, worked in the browser.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/screening-map/";
             },},{id: "projects-sporf-on-current-python",
