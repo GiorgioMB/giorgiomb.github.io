@@ -174,31 +174,18 @@ kramdown:
 include: ["_pages", "_scripts"]
 exclude:
   - bin/
-  - CONTRIBUTING.md
-  - CUSTOMIZE.md
   - Dockerfile
   - docker-compose.yml
   - docker-compose-slim.yml
-  - FAQ.md
   - Gemfile
   - Gemfile.lock
-  - INSTALL.md
   - LICENSE
   - lighthouse_results/
   - package.json
   - package-lock.json
-  - _pages/about_einstein.md
   - purgecss.config.js
   - README.md
-  - readme_preview/
   - vendor
-  # the al-folio guides stay in the repository but are not published
-  - AGENTS.md
-  - ANALYTICS.md
-  - QUICKSTART.md
-  - SEO.md
-  - TROUBLESHOOTING.md
-  - requirements.txt
 keep_files:
   - CNAME
   - .nojekyll
@@ -242,7 +229,7 @@ sass:
 
 jekyll-minifier:
   compress_javascript: false # set to false since we are using terser as the js minifier
-  exclude: ["robots.txt", "assets/js/search/*.js", "index.html", "publications/index.html", "projects/index.html", "projects/*/index.html", "404.html", "assets/treatise/*"] # the treatise pages ship as written
+  exclude: ["robots.txt", "index.html", "publications/index.html", "projects/index.html", "projects/*/index.html", "404.html", "assets/treatise/*"] # the treatise pages ship as written
 
 # -----------------------------------------------------------------------------
 # Terser
@@ -364,7 +351,7 @@ external_links:
 # MAKE SURE imagemagick is installed and on your PATH before enabling imagemagick. In a terminal, run:
 #   convert -version
 imagemagick:
-  enabled: true # enables responsive images for your site (recommended, see https://github.com/alshedivat/al-folio/issues/537)
+  enabled: false # enables responsive images for your site (recommended, see https://github.com/alshedivat/al-folio/issues/537)
   widths:
     - 480
     - 800
@@ -645,25 +632,3 @@ third_party_libraries:
       css: "https://cdn.jsdelivr.net/npm/venobox@{{version}}/dist/venobox.min.css"
       js: "https://cdn.jsdelivr.net/npm/venobox@{{version}}/dist/venobox.min.js"
     version: "2.1.8"
-
-# -----------------------------------------------------------------------------
-# Get external JSON data
-# -----------------------------------------------------------------------------
-
-jekyll_get_json:
-  - data: resume
-    json: assets/json/resume.json # it can also be an url
-
-jsonresume:
-  - basics
-  - work
-  - education
-  - publications
-  - projects
-  - volunteer
-  - awards
-  - certificates
-  - skills
-  - languages
-  - interests
-  - references
