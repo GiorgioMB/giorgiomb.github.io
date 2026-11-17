@@ -22,10 +22,6 @@ last_updated: false # set to true if you want to display last updated in the foo
 impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
 back_to_top: true # set to false to disable the back to top button
 
-# The Konami code (arrows or WASD, then B A) opens an arcade screen; ` or ~ opens a Source-style console
-arcade_easter_eggs:
-  enabled: true
-
 # -----------------------------------------------------------------------------
 # Theme
 # -----------------------------------------------------------------------------
@@ -196,6 +192,13 @@ exclude:
   - README.md
   - readme_preview/
   - vendor
+  # the al-folio guides stay in the repository but are not published
+  - AGENTS.md
+  - ANALYTICS.md
+  - QUICKSTART.md
+  - SEO.md
+  - TROUBLESHOOTING.md
+  - requirements.txt
 keep_files:
   - CNAME
   - .nojekyll
@@ -239,7 +242,7 @@ sass:
 
 jekyll-minifier:
   compress_javascript: false # set to false since we are using terser as the js minifier
-  exclude: ["robots.txt", "assets/js/search/*.js", "index.html", "publications/index.html", "projects/index.html", "projects/*/index.html", "assets/treatise/*"] # the treatise pages ship as written
+  exclude: ["robots.txt", "assets/js/search/*.js", "index.html", "publications/index.html", "projects/index.html", "projects/*/index.html", "404.html", "assets/treatise/*"] # the treatise pages ship as written
 
 # -----------------------------------------------------------------------------
 # Terser
