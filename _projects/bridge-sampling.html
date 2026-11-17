@@ -22,7 +22,7 @@ category: Interactive
       </svg></figure>
 </div>
 <div class="pair">
-  <p>Bridge sampling estimates the marginal likelihood of a Bayesian model and reports a Monte Carlo standard error (MCSE) with it. In <a href="/publications/">Proposition II</a>, Aki Vehtari and I show that this error estimate has a ceiling: however badly the estimate fails, the MCSE cannot exceed <span class="math">√(log 3) ≈ 1.05</span>.</p>
+  <p>Bridge sampling estimates the marginal likelihood of a Bayesian model and reports a Monte Carlo standard error (MCSE) with it. In <a href="/publications/">Proposition II</a>, Professor <a href="https://users.aalto.fi/~ave/">Aki Vehtari</a> and I show that this error estimate has a ceiling: however badly the estimate fails, the MCSE cannot exceed <span class="math">√(log 3) ≈ 1.05</span>.</p>
   <aside class="gloss"></aside>
 </div>
 <div class="pair">
@@ -67,6 +67,6 @@ category: Interactive
 
 <h2>How it is computed</h2>
 <div class="pair">
-  <p>The posterior is <span class="math"><i>N</i>(0, <i>Σ</i>)</span>, with variances spread from 0.1 to 10 and its normalising constant dropped. Each run draws independent samples, fits the proposal on half of them, and uses the other half, with as many proposal draws, for the estimate. The estimator uses the bridge function of Meng and Wong (1996), starts from the median log ratio as the <a href="https://github.com/quentingronau/bridgesampling">bridgesampling</a> R package does, and computes the MCSE with the formula from the paper. Everything runs in your browser.</p>
+  <p>The posterior is <span class="math"><i>N</i>(0, <i>Σ</i>)</span>, with variances spread from 0.1 to 10 and its normalising constant dropped. Each run draws independent samples, fits the proposal on half of them, and uses the other half, with as many proposal draws, for the estimate. The estimator uses the bridge function of <a href="https://www.jstor.org/stable/24306045">Meng and Wong (1996)</a>, starts from the median log ratio as the <a href="https://github.com/quentingronau/bridgesampling">bridgesampling</a> R package does, and computes the MCSE with the formula from the paper. Everything runs in your browser.</p>
   <aside class="gloss"><p>The code for the paper’s experiments is <a href="https://github.com/GiorgioMB/bridgesampling_paper_code">on GitHub</a>.</p></aside>
 </div>
