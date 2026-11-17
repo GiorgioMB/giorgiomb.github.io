@@ -14,7 +14,7 @@
 <meta property="og:description" content="Reported against actual error of bridge sampling on a Gaussian posterior, worked in the browser.">
 <meta property="og:url" content="https://giorgiomb.github.io/projects/bridge-sampling/">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="/assets/treatise/treatise.min.css?v=ac8c589c05">
+<link rel="stylesheet" href="/assets/treatise/treatise.min.css?v=67e689c746">
 <link rel="stylesheet" href="/assets/treatise/demos.min.css?v=2ff21f1b01">
 </head>
 <body>
@@ -35,11 +35,11 @@
     <p class="problem"><span class="runin">Problem.</span> To tell, from its reported Monte Carlo standard error, whether a bridge sampling estimate of the marginal likelihood can be believed.</p>
   </div>
   <figure class="demo-fig"><svg class="byrne" viewbox="0 0 200 200" role="img" aria-label="Diagram: reported and actual error agree along a black line, then split: the actual error keeps rising in blue while the reported error in red flattens under a dashed ceiling, with the gap between them in yellow.">
-        <path d="M86 118 L 178 30 L 178 67 C 148 70, 118 88, 86 118 Z" fill="var(--b-yellow)"></path>
-        <line x1="24" y1="62" x2="182" y2="62" stroke="var(--ink)" stroke-width="2.2" stroke-dasharray="7 6"></line>
-        <path d="M86 118 L 178 30" fill="none" stroke="var(--b-blue)" stroke-width="5" stroke-linecap="round"></path>
-        <path d="M86 118 C 118 88, 148 70, 178 67" fill="none" stroke="var(--b-red)" stroke-width="5" stroke-linecap="round"></path>
-        <path d="M28 172 C 50 160, 72 140, 86 118" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"></path>
+        <path d="M86 118 L 178 30 L 178 67 C 148 70, 118 88, 86 118 Z" fill="var(--b-yellow)" data-d=".95" data-t=".85" data-spread="right"></path>
+        <line x1="24" y1="62" x2="182" y2="62" stroke="var(--ink)" stroke-width="2.2" stroke-dasharray="7 6" data-d="0"></line>
+        <path d="M86 118 L 178 30" fill="none" stroke="var(--b-blue)" stroke-width="5" stroke-linecap="round" data-d=".95" data-t=".85"></path>
+        <path d="M86 118 C 118 88, 148 70, 178 67" fill="none" stroke="var(--b-red)" stroke-width="5" stroke-linecap="round" data-d=".95" data-t=".85"></path>
+        <path d="M28 172 C 50 160, 72 140, 86 118" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round" data-d=".1" data-t=".8"></path>
       </svg></figure>
 </div>
 <div class="pair">
@@ -99,6 +99,6 @@
   </footer>
 </main>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script defer src="/assets/treatise/shared.min.js?v=77ceb51e89"></script>
+<script defer src="/assets/treatise/shared.min.js?v=ca09d42dd7"></script>
 </body>
 </html>
