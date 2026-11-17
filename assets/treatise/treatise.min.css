@@ -220,3 +220,12 @@ svg.b-drawn .b-dot{transform:scale(1);transition:transform .38s cubic-bezier(.3,
 .math{white-space:nowrap}
 sub,sup{line-height:0}
 .page-title .countdown{margin-top:1.1rem;font-style:normal;color:var(--ink)}
+
+/* the address, drawn in the page's own type: it reads like the words around it, but the page holds no address */
+.address{all:unset;cursor:pointer;display:inline-block;vertical-align:-.265em;line-height:0;color:inherit;
+  background:linear-gradient(var(--faint),var(--faint)) no-repeat 0 .915em/100% 1px}
+.address:hover{background-image:linear-gradient(currentColor,currentColor)}
+.address:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.address-glyphs{display:block;width:10.36em;height:1em}
+/* the portrait, a plain photograph in the margin beside the correspondence */
+.portrait img{display:block;width:9.5rem;max-width:100%;height:auto}
