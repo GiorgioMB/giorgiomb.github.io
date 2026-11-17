@@ -153,8 +153,7 @@
         which
       );
     }
-    if (state.family === "yeast")
-      return "Yeast is one of the paper's real networks. It is restricted to its largest component and drawn with a Kamada\u2013Kawai layout.";
+    if (state.family === "yeast") return "";
     return "Zachary's karate club is one of the paper's real networks, drawn with a Kamada\u2013Kawai layout.";
   }
 
@@ -188,7 +187,12 @@
 
   function writeAbout() {
     const about = document.getElementById("screening-map-about");
-    if (about) setMath(about, aboutText());
+    if (!about) return;
+    const text = aboutText();
+    setMath(about, text);
+    // a graph with nothing to add here leaves no empty paragraph behind
+    const pair = about.closest(".pair");
+    if (pair) pair.hidden = !text;
   }
 
   // How the edges one group of stages decides split by sign, led by the sign most of them have.

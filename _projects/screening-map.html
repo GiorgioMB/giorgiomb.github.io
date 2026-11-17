@@ -13,7 +13,7 @@ category: Interactive
     <h1>Certifying Ollivier–Ricci curvature signs</h1>
     <p class="problem"><span class="runin">Problem.</span> To decide, for every edge of a graph, whether its Ollivier–Ricci curvature lies below a threshold <i>τ</i>, while solving as few optimal transport problems as possible.</p>
   </div>
-  <figure class="demo-fig"><svg class="byrne" viewBox="0 0 200 200" role="img" aria-label="Diagram: an edge between two vertices, the triangle they share in yellow, the neighbours of one endpoint in red and of the other in blue.">
+  <figure class="demo-fig"><svg class="byrne euclid" data-tav="Tav. IV" viewBox="0 0 200 200" role="img" aria-label="Diagram: an edge between two vertices, the triangle they share in yellow, the neighbours of one endpoint in red and of the other in blue.">
         <polygon points="72,118 128,118 100,66" fill="var(--b-yellow)"/>
         <g stroke="var(--b-red)" stroke-width="5" stroke-linecap="round"><line x1="72" y1="118" x2="28" y2="78"/><line x1="72" y1="118" x2="34" y2="162"/><line x1="72" y1="118" x2="100" y2="66"/></g>
         <g stroke="var(--b-blue)" stroke-width="5" stroke-linecap="round"><line x1="128" y1="118" x2="172" y2="80"/><line x1="128" y1="118" x2="166" y2="164"/><line x1="128" y1="118" x2="100" y2="66"/></g>
@@ -22,15 +22,11 @@ category: Interactive
       </svg></figure>
 </div>
 <div class="pair">
-  <p>Curvature on a graph measures how well connected the neighbourhoods of an edge’s two endpoints are. Edges inside dense clusters tend to be positively curved, and edges that bridge otherwise separate regions tend to be negatively curved and act as bottlenecks, which is why curvature is used to diagnose over-squashing in graph neural networks and to decide which edges to rewire.</p>
-  <aside class="gloss"><p><a href="https://arxiv.org/abs/2111.14522">Topping and others, 2022</a>, who introduced Balanced Forman curvature for this purpose.</p></aside>
-</div>
-<div class="pair">
   <p>Ollivier–Ricci curvature costs one optimal transport problem per edge. In <a href="/publications/">Proposition I</a>, Tebe Nigrelli and I show that the Balanced Forman value of an edge certifies an interval for its lazy Ollivier–Ricci curvature with no transport problem at all, and that the edge’s 2-hop neighbourhood sharpens it.</p>
-  <aside class="gloss"></aside>
+  <aside class="gloss"><p>Balanced Forman curvature was introduced by <a href="https://arxiv.org/abs/2111.14522">Topping and others (2022)</a>.</p></aside>
 </div>
 <div class="pair">
-  <p>Certify-then-solve takes the 2-hop interval, intersects it with the certificate of Tian, Lubberts and Weber, and solves a transport problem only for the edges still undecided. The map works it one stage at a time, as the paper’s figure does. Each stage draws the edges it decides in colour, red where <span class="math"><i>κ</i><sub>OR</sub></span> &lt; <i>τ</i> and blue where <span class="math"><i>κ</i><sub>OR</sub></span> ≥ <i>τ</i>, and the edges decided earlier in grey; edges still undecided are not drawn.</p>
+  <p>Certify-then-solve takes the 2-hop interval, intersects it with the certificate of <a href="https://www.jmlr.org/papers/v26/24-0781.html">Tian, Lubberts and Weber</a>, and solves a transport problem only for the edges still undecided. The map works it one stage at a time, as the paper’s figure does. Each stage draws the edges it decides in colour, red where <span class="math"><i>κ</i><sub>OR</sub></span> &lt; <i>τ</i> and blue where <span class="math"><i>κ</i><sub>OR</sub></span> ≥ <i>τ</i>, and the edges decided earlier in grey; edges still undecided are not drawn.</p>
   <aside class="gloss"></aside>
 </div>
 
@@ -93,7 +89,7 @@ category: Interactive
   <aside class="gloss"></aside>
 </div>
 <div class="pair">
-  <p>Moving <i>τ</i> changes which edges sit close to the threshold, and so which ones are hard. The chart shows, for every <i>τ</i> from −1 to 1, how the edges split between the four stages; the vertical line marks the current <i>τ</i>, and dragging along the chart moves it. Denser graphs leave more to the solver: at <span class="math"><i>τ</i> = 0</span>, the random geometric graphs of expected degree 6 send between 19% and 22% of their edges to it, those of degree 12 between 28% and 33%.</p>
+  <p>Moving <i>τ</i> changes which edges sit close to the threshold, and so which ones are hard. The chart shows, for every <i>τ</i> from −1 to 1, how the edges split between the four stages; the vertical line marks the current <i>τ</i>, and dragging along the chart moves it.</p>
   <aside class="gloss"></aside>
 </div>
 <div class="pair">
