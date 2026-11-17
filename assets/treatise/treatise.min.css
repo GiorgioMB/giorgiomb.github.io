@@ -219,4 +219,4 @@ svg.b-drawn .b-dot{transform:scale(1);transition:transform .38s cubic-bezier(.3,
 
 .math{white-space:nowrap}
 sub,sup{line-height:0}
-.penrose-frame svg{display:block;width:72%;height:auto;margin:14% auto 0}
+.page-title .countdown{margin-top:1.1rem;font-style:normal;color:var(--ink)}

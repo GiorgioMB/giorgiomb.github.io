@@ -32,11 +32,15 @@
     <span class="tav block">Erratum</span>
     <h1>This page does not exist</h1>
     <p>It may have been struck from an earlier edition. The <a href="/">title page</a>, the <a href="/publications/">publications</a> and the <a href="/projects/">projects</a> are all still here.</p>
+    <p class="countdown" id="countdown">Unless you take up the cube, the <a href="/">title page</a> follows in 3 seconds.</p>
   </div>
 
   <figure class="pair frontis">
-    <div class="plate-frame penrose-frame"><svg class="byrne penrose" viewbox="0 0 64 64" role="img" aria-label="A Penrose triangle in red, yellow and blue: three bars joined in a way no solid could be."><path fill="#E3A82B" fill-rule="evenodd" d="M37.17,5.15 16.50,40.95 26.83,40.95 32.00,32.00 26.83,23.05 32.00,14.10 57.83,58.85 63.00,49.90Z"></path><path fill="#C8352A" fill-rule="evenodd" d="M57.83,58.85 37.17,23.05 26.83,23.05 42.33,49.90 1.00,49.90 6.17,58.85Z"></path><path fill="#1F4C8F" fill-rule="evenodd" d="M37.17,5.15 26.83,5.15 1.00,49.90 42.33,49.90 37.17,40.95 16.50,40.95 26.83,23.05 37.17,23.05 42.33,14.10 37.17,23.05 32.00,14.10Z"></path></svg></div>
-    <figcaption class="gloss"><p>A triangle that cannot exist, for a page that does not.</p></figcaption>
+    <div class="plate-frame"><canvas class="plate" data-plate="cube" tabindex="0" role="img" aria-label="An engraved impossible cube: a frame of twelve bars in which a back upright passes in front of the front top bar. Drag it, or use the arrow keys, to turn it."></canvas></div>
+    <figcaption class="gloss">
+      <p><span class="tav">Tav. N</span>An impossible cube, after M. C. Escher’s <cite>Belvedere</cite> (1958). Drag to turn it.</p>
+      <p>Roman numerals have no zero. Around 725, a table from Bede’s circle wrote N, for <i>nulla</i>, and this plate borrows it.</p>
+    </figcaption>
   </figure>
 
   <footer class="colophon">
@@ -46,6 +50,7 @@
   </footer>
 </main>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script defer src="/assets/treatise/plates.min.js?v=4"></script>
 <script defer src="/assets/treatise/shared.min.js?v=4"></script>
 </body>
 </html>
