@@ -1,0 +1,2 @@
+# The build converts Jupyter notebooks with nbconvert, and the deploy workflow keys its pip cache on this file.
+nbconvert

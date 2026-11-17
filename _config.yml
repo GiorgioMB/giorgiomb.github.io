@@ -185,6 +185,7 @@ exclude:
   - package-lock.json
   - purgecss.config.js
   - README.md
+  - requirements.txt
   - vendor
 keep_files:
   - CNAME
