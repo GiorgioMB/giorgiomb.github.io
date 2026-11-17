@@ -17,3 +17,5 @@ assets/json/screening-map/*.json
 _pages/about.html
 _pages/publications.html
 _pages/projects.html
+_projects/*.html
+_layouts/treatise.liquid

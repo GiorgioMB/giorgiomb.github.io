@@ -169,19 +169,21 @@
     return state.family === "yeast" ? "Yeast" : "the karate club";
   }
 
-  // MathJax calls are chained, as its documentation asks; if MathJax hasn't started yet, its first pass typesets the page.
-  let typesetting = Promise.resolve();
+  // The sentences below are written with $...$ around their mathematics; this sets that mathematics as HTML.
+  // Every sentence is built here from numbers, never from input, so writing it as HTML is safe.
+  const esc = (t) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  function mathHTML(m) {
+    return m
+      .replace(/\\kappa_\{\\mathrm\{OR\}\}/g, "<i>κ</i><sub>OR</sub>")
+      .replace(/\\geq/g, "≥")
+      .replace(/\\tau/g, "<i>τ</i>")
+      .replace(/\\pi\s*r\^2/g, "π<i>r</i><sup>2</sup>")
+      .replace(/(^|\s)r(?= =)/g, "$1<i>r</i>")
+      .replace(/(^|\s)-(?=\d)/g, "$1−")
+      .replace(/(\d) π/g, "$1π");
+  }
   function setMath(node, text) {
-    node.textContent = text;
-    const MJ = window.MathJax;
-    if (!(MJ && MJ.startup && MJ.startup.promise && MJ.typesetPromise)) return;
-    typesetting = typesetting
-      .then(() => MJ.startup.promise)
-      .then(() => {
-        if (MJ.typesetClear) MJ.typesetClear([node]);
-        return MJ.typesetPromise([node]);
-      })
-      .catch(() => {});
+    node.innerHTML = esc(text).replace(/\$([^$]*)\$/g, (_, m) => '<span class="math">' + mathHTML(m) + "</span>");
   }
 
   function writeAbout() {
@@ -636,12 +638,12 @@
     if (chart) chart.bands.forEach((band, s) => band.classList.toggle("sm-band-on", s === state.stage));
   }
 
-  // ---- iddt: Doom's automap cheat reveals the whole map ----
+  // ---- iddt, the automap cheat, shows every stage at once ----
   const shownStage = () => (state.automap ? C.STAGES - 1 : state.stage);
   const automapTag = document.createElement("p");
   automapTag.className = "sm-automap-tag";
   automapTag.hidden = true;
-  automapTag.textContent = "AUTOMAP \u00b7 type iddt again to leave";
+  automapTag.textContent = "Every stage at once. Type iddt again to return.";
   const legends = { plain: q(".sm-legend-plain"), auto: q(".sm-legend-auto") };
   function setAutomap(on) {
     state.automap = on;

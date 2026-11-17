@@ -1,0 +1,154 @@
+/* The demo pages: title, problem and figure, then the instrument, then the reading of it */
+.demo-head{margin-top:clamp(3rem,9vh,6rem);align-items:end}
+.demo-head h1{font:400 clamp(2.1rem,2.2vw + 1.3rem,3rem)/1.1 var(--serif);letter-spacing:-.01em}
+.demo-head .problem{margin-top:1rem;font-size:1.2rem;line-height:1.5}
+.demo-fig{margin:0}
+.demo-fig svg{display:block;width:100%;height:auto;aspect-ratio:1}
+.math{white-space:nowrap}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+code{font:.88em ui-monospace,SFMono-Regular,Menlo,monospace}
+.approach p + p{margin-top:.75rem}
+
+/* ---------- The instrument ---------- */
+.demo{
+  --sm-neg:var(--b-red);--sm-pos:var(--b-blue);--sm-old:color-mix(in srgb,var(--ink) 26%,transparent);
+  margin:2.4rem 0 1rem;max-width:calc(var(--measure) + var(--gutter) + var(--margin));font-size:1rem;line-height:1.5
+}
+.demo [hidden]{display:none!important}
+.demo .controls{display:flex;flex-wrap:wrap;gap:1rem 2.4rem;align-items:flex-end;margin-bottom:1.1rem}
+.demo fieldset{border:0;margin:0;padding:0;min-width:0}
+.demo legend{padding:0;margin:0 0 .2rem;font-size:.85rem;font-style:italic;color:var(--gloss)}
+
+/* a choice between words: the chosen one is ruled beneath */
+.demo .seg{display:inline-flex;flex-wrap:wrap;gap:.2rem 1.1rem}
+.demo .seg input,.demo .sm-steps input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.demo .seg label{cursor:pointer;color:var(--gloss);padding:.05rem 0;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s}
+.demo .seg label:hover{color:var(--ink)}
+.demo .seg input:checked + label{color:var(--ink);border-bottom-color:var(--ink)}
+.demo .seg input:focus-visible + label{outline:2px solid var(--ink);outline-offset:3px}
+
+.demo .action{all:unset;cursor:pointer;font:inherit;font-style:italic;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.18em;text-decoration-color:var(--faint)}
+.demo .action:hover{text-decoration-color:currentColor}
+.demo .action:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.demo .action:disabled{opacity:.5;cursor:progress}
+
+/* sliders as an engraved rule with a ring on it */
+.demo input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:1.5rem;margin:0;background:transparent;cursor:pointer}
+.demo input[type=range]::-webkit-slider-runnable-track{height:1px;background:var(--ink)}
+.demo input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:.95rem;height:.95rem;margin-top:-.475rem;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink)}
+.demo input[type=range]::-moz-range-track{height:1px;background:var(--ink)}
+.demo input[type=range]::-moz-range-thumb{width:.8rem;height:.8rem;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink)}
+.demo input[type=range]:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+
+.demo .chart svg{display:block;width:100%;height:auto;overflow:visible}
+.demo text{font-family:var(--serif)}
+.demo .readout{margin:.9rem 0 .3rem;font-variant-numeric:lining-nums tabular-nums}
+.demo .status{margin:0;font-size:.85rem;font-style:italic;color:var(--gloss)}
+
+/* ---------- Charts, in Byrne's colours: blue for what is true, red for what is reported or estimated, yellow for the gap ---------- */
+.demo .bd-grid,.demo .od-grid,.demo .sm-grid{stroke:var(--faint);stroke-width:1}
+.demo .bd-tick,.demo .od-tick,.demo .sm-tick{fill:var(--gloss);font-size:12px;font-variant-numeric:lining-nums tabular-nums}
+.demo .bd-axis,.demo .od-axis,.demo .sm-axis{fill:var(--gloss);font-size:12.5px;font-style:italic}
+
+.demo .bd-unreachable{fill:color-mix(in srgb,var(--b-yellow) 24%,transparent)}
+.demo .bd-note{fill:var(--gloss);font-size:12px;font-style:italic}
+.demo .bd-cap{stroke:var(--ink);stroke-width:1.3;stroke-dasharray:6 4}
+.demo .bd-cap-label{fill:var(--ink);font-size:12px}
+.demo .bd-trust{stroke:var(--gloss);stroke-width:1;stroke-dasharray:2 4}
+.demo .bd-trust-label{fill:var(--gloss);font-size:12px}
+.demo .bd-line{fill:none;stroke-width:2.4;stroke-linejoin:round}
+.demo .bd-line.bd-reported{stroke:var(--b-red)}
+.demo .bd-line.bd-actual{stroke:var(--b-blue)}
+.demo .bd-dot.bd-reported{fill:var(--b-red)}
+.demo .bd-dot.bd-actual{fill:var(--b-blue)}
+.demo .bd-series-label{font-size:12.5px;font-weight:500}
+.demo .bd-series-label.bd-reported{fill:var(--b-red)}
+.demo .bd-series-label.bd-actual{fill:var(--b-blue)}
+
+.demo .od-band{fill:var(--b-yellow);fill-opacity:.38}
+.demo .od-band-plain{fill:var(--gloss);fill-opacity:.14}
+.demo .od-est{fill:none;stroke:var(--b-red);stroke-width:2}
+.demo .od-truth{stroke:var(--b-blue);stroke-width:2.2}
+.demo .od-truth-label{fill:var(--b-blue);font-size:12.5px;font-weight:500}
+.demo .od-plain-label{fill:var(--gloss);font-size:12px;font-style:italic}
+.demo .od-sliders{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.7rem 2.2rem;margin-bottom:1.1rem}
+.demo .od-slider{display:grid;grid-template-columns:1fr auto;align-items:baseline}
+.demo .od-slider label{font-size:.9rem;font-style:italic;color:var(--gloss)}
+.demo .od-slider output{font-size:.9rem;font-variant-numeric:lining-nums tabular-nums}
+.demo .od-slider input{grid-column:1 / -1}
+.demo .od-numbers{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.7rem 2.2rem;margin:1.1rem 0 0}
+.demo .od-numbers dt{font-size:.85rem;font-style:italic;color:var(--gloss)}
+.demo .od-numbers dd{margin:0;font-variant-numeric:lining-nums tabular-nums}
+
+/* ---------- The screening map ---------- */
+.demo .sm-threshold{display:grid;grid-template-columns:1fr auto;align-items:center;gap:.25rem 1rem;margin-bottom:.4rem}
+.demo .sm-threshold label{font-size:.9rem;font-style:italic;color:var(--gloss)}
+.demo .sm-threshold output{margin-left:.35rem;font-style:normal;color:var(--ink);font-variant-numeric:lining-nums tabular-nums}
+.demo .sm-threshold input{grid-column:1 / -1}
+.demo .sm-chart svg{touch-action:pan-y;cursor:ew-resize}
+.demo .sm-band-0{fill:var(--b-blue);fill-opacity:.55}
+.demo .sm-band-1{fill:var(--b-blue);fill-opacity:.32}
+.demo .sm-band-2{fill:var(--b-blue);fill-opacity:.14}
+.demo .sm-band-3{fill:var(--b-red);fill-opacity:.3}
+.demo .sm-band-on{stroke:var(--ink);stroke-width:1.25;stroke-linejoin:round}
+.demo .sm-marker{stroke:var(--ink);stroke-width:1.5}
+
+.demo .sm-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.9rem;margin:1.1rem 0 .6rem;border:0;padding:0}
+.demo .sm-steps label{display:block;cursor:pointer;padding:.5rem 0 .2rem;border-top:1px solid var(--faint);color:var(--gloss);line-height:1.3;transition:color .2s,border-color .2s}
+.demo .sm-steps label:hover{color:var(--ink)}
+.demo .sm-steps input:checked + label{color:var(--ink);border-top:2px solid var(--ink);padding-top:calc(.5rem - 1px)}
+.demo .sm-steps input:focus-visible + label{outline:2px solid var(--ink);outline-offset:3px}
+.demo .sm-swatch{display:block;height:5px;margin-bottom:.45rem}
+.demo .sm-swatch-0{background:color-mix(in srgb,var(--b-blue) 55%,transparent)}
+.demo .sm-swatch-1{background:color-mix(in srgb,var(--b-blue) 32%,transparent)}
+.demo .sm-swatch-2{background:color-mix(in srgb,var(--b-blue) 14%,transparent)}
+.demo .sm-swatch-3{background:color-mix(in srgb,var(--b-red) 40%,transparent)}
+.demo .sm-step-name{display:block;font-size:.9rem}
+.demo .sm-step-num{display:block;font-size:.85rem;font-variant-numeric:lining-nums tabular-nums}
+
+.demo .sm-map{position:relative}
+.demo .sm-map svg{display:block;width:100%;height:auto;max-height:78vh;touch-action:manipulation}
+.demo .sm-svg path{fill:none;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.demo .sm-svg .sm-old{stroke:var(--sm-old);stroke-width:.7}
+.demo .sm-svg .sm-neg{stroke:var(--sm-neg);stroke-width:1.7}
+.demo .sm-svg .sm-pos{stroke:var(--sm-pos);stroke-width:1.7}
+.demo .sm-svg.sm-sparse .sm-old{stroke-width:1.2}
+.demo .sm-svg.sm-sparse .sm-neg,.demo .sm-svg.sm-sparse .sm-pos{stroke-width:2.8}
+.demo .sm-svg .sm-hi{stroke:var(--ink);stroke-width:3.5}
+.demo .sm-svg .sm-ends{stroke:var(--ink);stroke-width:8}
+
+/* iddt: every stage at once, one of Byrne's colours for each */
+.demo .sm-auto-0{--auto:var(--b-blue)}
+.demo .sm-auto-1{--auto:var(--b-yellow)}
+.demo .sm-auto-2{--auto:var(--b-red)}
+.demo .sm-auto-3{--auto:var(--ink)}
+.demo .sm-svg .sm-auto{stroke:var(--auto);stroke-width:1}
+.demo .sm-svg .sm-auto-3{stroke-width:1.8}
+.demo .sm-svg.sm-sparse .sm-auto{stroke-width:2.2}
+.demo .sm-automap-tag{position:absolute;top:.2rem;left:0;margin:0;padding:.1rem .45rem;background:var(--paper);color:var(--ink);font:italic .9rem/1.3 var(--serif);pointer-events:none}
+
+.demo .sm-legend{display:flex;flex-wrap:wrap;gap:.2rem 1.4rem;margin:.6rem 0 0;font-size:.85rem;font-style:italic;color:var(--gloss)}
+.demo .sm-key::before{content:'';display:inline-block;width:1.4em;margin-right:.45em;vertical-align:middle;border-top:3px solid}
+.demo .sm-key-neg::before{border-top-color:var(--sm-neg)}
+.demo .sm-key-pos::before{border-top-color:var(--sm-pos)}
+.demo .sm-key-old::before{border-top:1.5px solid var(--sm-old)}
+.demo .sm-key-auto-0::before{border-top-color:var(--b-blue)}
+.demo .sm-key-auto-1::before{border-top-color:var(--b-yellow)}
+.demo .sm-key-auto-2::before{border-top-color:var(--b-red)}
+.demo .sm-key-auto-3::before{border-top-color:var(--ink)}
+
+.demo .sm-readout p{margin:0 0 .35rem}
+.demo .sm-hint{font-size:.85rem;font-style:italic;color:var(--gloss)}
+.demo .sm-table{width:100%;margin:.3rem 0 .6rem;border-collapse:collapse;font-size:.9rem;font-variant-numeric:lining-nums tabular-nums}
+.demo .sm-table th,.demo .sm-table td{padding:.25rem .8rem .25rem 0;border-bottom:1px solid var(--faint);text-align:left;font-weight:400}
+.demo .sm-table td:nth-child(2){white-space:nowrap}
+.demo .sm-table th{font-size:.8rem;font-style:italic;color:var(--gloss)}
+.demo .sm-row-on td{font-weight:500;color:var(--ink)}
+.demo .sm-row-off td{color:var(--gloss)}
+
+@media (max-width: 56rem){
+  .demo-fig{max-width:12rem;margin-top:1.4rem}
+}
+@media (max-width: 40rem){
+  .demo .sm-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
