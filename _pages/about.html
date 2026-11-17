@@ -1,0 +1,113 @@
+---
+layout: null
+title: About
+permalink: /
+---
+{% comment %}Written as plain HTML; the raw tag keeps Liquid from reading the page.{% endcomment %}{% raw %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giorgio Micaletto</title>
+<meta name="description" content="PhD student in Statistics at UChicago, previously at Bocconi and Aalto.">
+<link rel="icon" href="/assets/treatise/favicon.svg?v=1" type="image/svg+xml">
+<link rel="canonical" href="https://giorgiomb.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Giorgio Micaletto">
+<meta property="og:description" content="PhD student in Statistics at UChicago, previously at Bocconi and Aalto.">
+<meta property="og:url" content="https://giorgiomb.github.io/">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/assets/treatise/treatise.min.css?v=1">
+</head>
+<body>
+
+<header class="title-page">
+  <nav class="running-head" aria-label="Main">
+    <a href="/" aria-current="page">About</a>
+    <a href="/publications/">Publications</a>
+    <a href="/projects/">Projects</a>
+  </nav>
+  <div class="title-block">
+    <h1>Giorgio Micaletto</h1>
+    <p class="subtitle">PhD student in Statistics at the University of Chicago</p>
+    <figure class="frontispiece">
+      <div class="plate-frame" id="tav-1">
+        <canvas class="plate" data-plate="durer" tabindex="0" role="img"
+          aria-label="An engraved polyhedron, the truncated rhombohedron from Dürer's Melencolia I. Drag it, or use the arrow keys, to turn it."></canvas>
+      </div>
+      <figcaption><span class="tav">Tav. I</span>The solid from Dürer’s <cite>Melencolia I</cite> (1514). Drag to turn it.</figcaption>
+    </figure>
+  </div>
+  <p class="imprint">Chicago, MMXXVI</p>
+  <div class="canon" aria-hidden="true"><svg viewBox="0 0 9 9" preserveAspectRatio="none"><rect x="1" y="1" width="7" height="6"/></svg></div>
+</header>
+
+<main class="folio" id="main">
+
+  <div class="pair">
+    <p class="opening">Much of my work asks when an answer can be checked instead of trusted. Before Chicago, I did my bachelor’s at <a href="https://www.unibocconi.it/">Bocconi University</a> and spent a summer at Aalto University working with <a href="https://users.aalto.fi/~ave/">Aki Vehtari</a>, as an intern in the <a href="https://www.aalto.fi/en/aalto-university-science-institute-asci/aalto-university-science-institute-international-summer-research-programme">AScI International Summer Research Programme</a>.</p>
+    <aside class="gloss" style="align-self:end"><p>AScI: Aalto University Science Institute.</p></aside>
+  </div>
+
+  <h2>News</h2>
+  <div class="pair">
+    <p><a href="https://neurips.cc/virtual/2026/loc/paris/159361">Scalable Graph Curvature</a> was accepted at the NeurIPS 2026 workshop <i>Bridging Optimal Transport, Learning and Structured Data: Toward Geometric Distributional Learning</i>, held in Paris.</p>
+    <aside class="gloss date"><p>October 2026</p></aside>
+  </div>
+
+  <h2>Postulates</h2>
+  <div class="pair prop">
+    <p class="statement"><span class="tav">Postulate I</span>Error bars are as important as the quantity they come with; without them, estimation is alchemy with a new name.</p>
+    <aside class="gloss"></aside>
+  </div>
+  <div class="pair prop">
+    <p class="statement"><span class="tav">Postulate II</span>Data are samples from a manifold, and what is true lives on the manifold rather than in any one sample.</p>
+    <aside class="gloss"></aside>
+  </div>
+
+  <h2>Conjectures</h2>
+  <div class="pair prop">
+    <div>
+      <p class="statement"><span class="tav">Conjecture I</span>A graph has a natural tangent space at each vertex and each edge, and a curvature operator on it that plays the part Ricci curvature plays on a manifold.</p>
+      <p class="checked"><span class="runin">Status.</span> Consistency and convergence are shown; optimality is not, yet.</p>
+    </div>
+    <aside class="gloss"><p>The tangent space is spanned by increments along the half-edges, and the operator is the curvature term of a discrete Bochner formula. At a vertex it recovers the curvature matrix of Cushing, Kamtue, Liu and Peyerimhoff (2022).</p></aside>
+  </div>
+  <div class="pair prop">
+    <div>
+      <p class="statement"><span class="tav">Conjecture II</span>Bootstrap error bars for deep networks measure the wrong thing. The bootstrap treats each network retrained on a resample as a fresh draw of one estimator, but each retraining settles in a different minimum, so the spread mixes the noise in the data with the randomness of training. Methods built the same way inherit the problem.</p>
+      <p class="checked"><span class="runin">Status.</span> Open.</p>
+    </div>
+    <aside class="gloss"></aside>
+  </div>
+
+  <h2>Errata</h2>
+  <div class="pair prop">
+    <p><span class="tav block">Erratum I</span>I used to think that if data lie on a manifold, geometric methods are the natural way to study them. I still think they lie on one, but rarely one tame enough to use. Curvature is the clearest case: estimated from a point cloud it is noisy, and the sample has to be far denser than real data usually are before the estimate means anything.</p>
+    <aside class="gloss"><p>Some notions only work once they are heavily modified: Ollivier curvature of random geometric graphs converges to Ricci curvature only after it is generalised to mesoscopic neighbourhoods (<a href="https://arxiv.org/abs/2008.01209">van der Hoorn and others, 2020</a>).</p></aside>
+  </div>
+  <div class="pair prop">
+    <p><span class="tav block">Erratum II</span>I thought Ollivier–Ricci curvature would be easy to bound by Balanced Forman, since a rough rule mostly works: the triangles on an edge from below, twice the triangles from above. The rule fits in a sentence; proving it took a paper.</p>
+    <aside class="gloss"><p>What came of it is <a href="/publications/">Proposition I</a>.</p></aside>
+  </div>
+
+  <h2>Correspondence</h2>
+  <div class="pair">
+    <p>The fastest way to reach me is e-mail, at <a href="mailto:gmicaletto@uchicago.edu">gmicaletto@uchicago.edu</a>. I am also on <a href="https://scholar.google.com/citations?user=Wlw7t8wAAAAJ">Google Scholar</a>, <a href="https://github.com/GiorgioMB">GitHub</a> and <a href="https://www.linkedin.com/in/giorgio-micaletto">LinkedIn</a>.</p>
+    <aside class="gloss"></aside>
+  </div>
+
+  <footer class="colophon">
+    <svg class="mark" viewBox="0 0 40 36" aria-hidden="true"><polygon points="4,32 36,32 20,4" fill="var(--b-yellow)"/><line x1="4" y1="32" x2="36" y2="32" stroke="var(--b-blue)" stroke-width="3" stroke-linecap="round"/><line x1="4" y1="32" x2="20" y2="4" stroke="var(--b-red)" stroke-width="3" stroke-linecap="round"/><line x1="36" y1="32" x2="20" y2="4" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/></svg>
+    <p>Set in Newsreader, by Production Type. The solids are after Albrecht Dürer, Leonardo da Vinci and Paolo Uccello; the coloured diagrams follow Oliver Byrne’s <cite>Euclid</cite> of 1847. In dark mode you see the steel plate instead of the print.</p>
+    <p>Some old cheat codes still work here, from the retro games I spent more hours on than I’d like to admit.</p>
+  </footer>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script defer src="/assets/treatise/plates.min.js?v=1"></script>
+<script defer src="/assets/treatise/shared.min.js?v=1"></script>
+</body>
+</html>
+{% endraw %}
