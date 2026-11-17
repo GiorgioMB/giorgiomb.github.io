@@ -205,8 +205,13 @@ div.prop + div.prop{margin-top:2.1rem}
 svg.b-ready .b-dash,svg.b-ready .b-stroke,svg.b-ready .b-fill{opacity:0}
 svg.b-ready .b-stroke{stroke-dasharray:1 1;stroke-dashoffset:1}
 svg.b-ready .b-dot{transform:scale(0);transform-box:fill-box;transform-origin:center}
+/* a colour field that spreads with its lines, from the edge it grows out of */
+svg.b-ready .b-spread{opacity:0}
+svg.b-ready .b-spread-up{clip-path:inset(100% 0 0 0)}
+svg.b-ready .b-spread-right{clip-path:inset(0 100% 0 0)}
+svg.b-drawn .b-spread{opacity:1;clip-path:inset(0 0 0 0);transition:clip-path var(--t,.75s) cubic-bezier(.45,.05,.25,1) var(--d),opacity 0s linear var(--d)}
 svg.b-drawn .b-dash{opacity:1;transition:opacity .5s ease var(--d)}
-svg.b-drawn .b-stroke{opacity:1;stroke-dashoffset:0;transition:stroke-dashoffset .75s cubic-bezier(.45,.05,.25,1) var(--d),opacity 0s linear var(--d)}
+svg.b-drawn .b-stroke{opacity:1;stroke-dashoffset:0;transition:stroke-dashoffset var(--t,.75s) cubic-bezier(.45,.05,.25,1) var(--d),opacity 0s linear var(--d)}
 svg.b-drawn .b-fill{opacity:1;transition:opacity .7s ease var(--d)}
 svg.b-drawn .b-dot{transform:scale(1);transition:transform .38s cubic-bezier(.3,1.5,.5,1) var(--d)}
 
