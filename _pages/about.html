@@ -11,14 +11,15 @@ permalink: /
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Giorgio Micaletto</title>
 <meta name="description" content="PhD student in Statistics at UChicago, previously at Bocconi and Aalto.">
-<link rel="icon" href="/assets/treatise/favicon.svg?v=2" type="image/svg+xml">
+<script>try{var t=localStorage.getItem("treatise-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("rv");setTimeout(function(){if(!window.treatiseRevealed)document.documentElement.classList.add("rv-done")},2500)}</script>
+<link rel="icon" href="/assets/treatise/favicon.svg?v=3" type="image/svg+xml">
 <link rel="canonical" href="https://giorgiomb.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Giorgio Micaletto">
 <meta property="og:description" content="PhD student in Statistics at UChicago, previously at Bocconi and Aalto.">
 <meta property="og:url" content="https://giorgiomb.github.io/">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="/assets/treatise/treatise.min.css?v=2">
+<link rel="stylesheet" href="/assets/treatise/treatise.min.css?v=3">
 </head>
 <body>
 
@@ -27,6 +28,7 @@ permalink: /
     <a href="/" aria-current="page">About</a>
     <a href="/publications/">Publications</a>
     <a href="/projects/">Projects</a>
+    <button type="button" class="theme-toggle" aria-label="Show the steel plate" title="Show the steel plate"><svg viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="tt-half"><path d="M10 2.75A7.25 7.25 0 0 0 10 17.25Z"/></clipPath></defs><g clip-path="url(#tt-half)" stroke="currentColor" stroke-width="1"><line x1="0" y1="4" x2="4" y2="0"/><line x1="0" y1="7" x2="7" y2="0"/><line x1="0" y1="10" x2="10" y2="0"/><line x1="0" y1="13" x2="13" y2="0"/><line x1="0" y1="16" x2="16" y2="0"/><line x1="0" y1="19" x2="19" y2="0"/><line x1="0" y1="22" x2="22" y2="0"/></g><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
   </nav>
   <div class="title-block">
     <h1>Giorgio Micaletto</h1>
@@ -40,7 +42,7 @@ permalink: /
     </figure>
   </div>
   <p class="imprint">Chicago, MMXXVI</p>
-  <div class="canon" aria-hidden="true"><svg viewBox="0 0 9 9" preserveAspectRatio="none"><rect x="1" y="1" width="7" height="6"/></svg></div>
+  <div class="canon" aria-hidden="true"><span class="canon-block"></span></div>
 </header>
 
 <main class="folio" id="main">
@@ -72,7 +74,7 @@ permalink: /
       <p class="statement"><span class="tav">Conjecture I</span>A graph has a natural tangent space at each vertex and each edge, and a curvature operator on it that plays the part Ricci curvature plays on a manifold.</p>
       <p class="checked"><span class="runin">Status.</span> Consistency and convergence are shown; optimality is not, yet.</p>
     </div>
-    <aside class="gloss"><p>The tangent space is spanned by increments along the half-edges, and the operator is the curvature term of a discrete Bochner formula. At a vertex it recovers the curvature matrix of Cushing, Kamtue, Liu and Peyerimhoff (2022).</p></aside>
+    <aside class="gloss"><p>The tangent space is spanned by increments along the half-edges, and the operator is the curvature term of a discrete Bochner formula. At a vertex it recovers the curvature matrix of <a href="https://arxiv.org/abs/2102.08687">Cushing, Kamtue, Liu and Peyerimhoff (2022)</a>.</p></aside>
   </div>
   <div class="pair prop">
     <div>
@@ -88,7 +90,7 @@ permalink: /
     <aside class="gloss"><p>Some notions only work once they are heavily modified: Ollivier curvature of random geometric graphs converges to Ricci curvature only after it is generalised to mesoscopic neighbourhoods (<a href="https://arxiv.org/abs/2008.01209">van der Hoorn and others, 2020</a>).</p></aside>
   </div>
   <div class="pair prop">
-    <p><span class="tav block">Erratum II</span>I thought Ollivier–Ricci curvature would be easy to bound by Balanced Forman, since a rough rule mostly works: the triangles on an edge from below, twice the triangles from above. The rule fits in a sentence; proving it took a paper.</p>
+    <p><span class="tav block">Erratum II</span>I thought Ollivier–Ricci curvature would be easy to bound, since a rough rule mostly works: on an edge whose endpoints have degrees <i>d<sub>i</sub></i> and <i>d<sub>j</sub></i> and which lies on <i>T</i> triangles, it sits between <span class="math">−2 + 3<i>T</i>/max(<i>d<sub>i</sub></i>, <i>d<sub>j</sub></i>)</span> and <span class="math"><i>T</i>/max(<i>d<sub>i</sub></i>, <i>d<sub>j</sub></i>)</span>. The rule fits in a sentence; proving it took a paper.</p>
     <aside class="gloss"><p>What came of it is <a href="/publications/">Proposition I</a>.</p></aside>
   </div>
 
@@ -106,8 +108,8 @@ permalink: /
 </main>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script defer src="/assets/treatise/plates.min.js?v=2"></script>
-<script defer src="/assets/treatise/shared.min.js?v=2"></script>
+<script defer src="/assets/treatise/plates.min.js?v=3"></script>
+<script defer src="/assets/treatise/shared.min.js?v=3"></script>
 </body>
 </html>
 {% endraw %}
