@@ -234,3 +234,4 @@ sub,sup{line-height:0}
 .address-glyphs{display:block;width:10.36em;height:1em}
 /* the portrait, a plain photograph in the margin beside the correspondence */
 .portrait img{display:block;width:9.5rem;max-width:100%;height:auto}
+canvas.plate[data-plate="cube"]{cursor:pointer}
