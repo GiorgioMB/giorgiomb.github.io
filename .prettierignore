@@ -19,3 +19,4 @@ _pages/publications.html
 _pages/projects.html
 _projects/*.html
 _layouts/treatise.liquid
+_pages/404.html
