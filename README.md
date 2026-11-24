@@ -2,9 +2,6 @@
 
 The website of Giorgio Micaletto, PhD student in Statistics at the University of Chicago.
 
-It is set as a small treatise: a title page, publications stated as propositions, and projects set
-out as problems, each page with an engraved plate drawn in the browser.
-
 ## How it is built
 
 The pages are plain HTML. The home, publications, projects and 404 pages are in `_pages/`, the
