@@ -1,7 +1,7 @@
 /* The demo pages: title, problem and figure, then the instrument, then the reading of it */
 .demo-head{margin-top:clamp(3rem,9vh,6rem);align-items:end}
 .demo-head h1{font:400 clamp(2.1rem,2.2vw + 1.3rem,3rem)/1.1 var(--serif);letter-spacing:-.01em}
-.demo-head .problem{margin-top:1rem;font-size:1.2rem;line-height:1.5}
+.demo-head .problem,.demo-head .lede{margin-top:1rem;font-size:1.2rem;line-height:1.5}
 .demo-fig{margin:0}
 .demo-fig svg{display:block;width:100%;height:auto;aspect-ratio:1}
 .math{white-space:nowrap}

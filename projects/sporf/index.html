@@ -19,7 +19,7 @@
 <meta property="og:image:alt" content="Giorgio Micaletto, PhD student in Statistics at the University of Chicago, beside an engraving of the solid from Dürer’s Melencolia I.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/assets/treatise/treatise.min.css?v=1d3db51f77">
-<link rel="stylesheet" href="/assets/treatise/demos.min.css?v=2ff21f1b01">
+<link rel="stylesheet" href="/assets/treatise/demos.min.css?v=0508a53ba1">
 </head>
 <body>
 <header class="page-head">
@@ -35,7 +35,7 @@
 <div class="pair demo-head">
   <div>
     <h1>SPORF on current Python</h1>
-    <p class="problem"><span class="runin">Problem.</span> To make sparse projection oblique randomer forests, which split on sparse random combinations of features rather than one feature at a time, install and run on current Python.</p>
+    <p class="lede">A maintained fork of the SPORF random forest package that installs and runs on Python 3.8 to 3.14.</p>
   </div>
   <figure class="demo-fig"><svg class="byrne" viewbox="0 0 200 200" role="img" aria-label="Diagram: red and blue points separated by an oblique black line, with a dashed vertical line that would split them less cleanly.">
         <line x1="100" y1="22" x2="100" y2="186" stroke="var(--ink)" stroke-width="2.2" stroke-dasharray="7 6"></line>
@@ -45,7 +45,7 @@
       </svg><figcaption><span class="tav">Tav. VII</span></figcaption></figure>
 </div>
 <div class="pair">
-  <p><a href="https://github.com/neurodata/SPORF" rel="external nofollow noopener" target="_blank">SPORF</a> is a random forest that splits on sparse random linear combinations of features, where an ordinary forest splits on one feature at a time. Its Python package no longer builds on recent versions of Python and pip, and <a href="https://github.com/GiorgioMB/SPORF_Available/tree/staging" rel="external nofollow noopener" target="_blank">my fork</a> makes it work again.</p>
+  <p><a href="https://github.com/neurodata/SPORF" rel="external nofollow noopener" target="_blank">SPORF</a> is a random forest that splits on sparse random linear combinations of features, where an ordinary forest splits on one feature at a time. Its Python package no longer builds on recent versions of Python and pip, and <a href="https://github.com/GiorgioMB/SPORF_Available/tree/staging" rel="external nofollow noopener" target="_blank">my fork</a> makes it work again. I started it in May 2024 as a quick fix to get SPORF running on Colab, and brought it up to date properly in October 2026.</p>
   <aside class="gloss"><p>Sparse projection oblique randomer forests are due to <a href="https://arxiv.org/abs/1506.03410" rel="external nofollow noopener" target="_blank">Tomita and others</a>.</p></aside>
 </div>
 
@@ -74,6 +74,6 @@
   </footer>
 </main>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script defer src="/assets/treatise/shared.min.js?v=711b7665bf"></script>
+<script defer src="/assets/treatise/shared.min.js?v=32fca5b502"></script>
 </body>
 </html>
