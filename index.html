@@ -14,7 +14,7 @@
 <meta property="og:description" content="PhD student in Statistics at UChicago, previously at Bocconi and Aalto.">
 <meta property="og:url" content="https://giorgiomb.github.io/">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="/assets/treatise/treatise.min.css?v=37d866ea2d">
+<link rel="stylesheet" href="/assets/treatise/treatise.min.css?v=1d3db51f77">
 </head>
 <body>
 
@@ -54,25 +54,25 @@
 
   <h2>Postulates</h2>
   <div class="pair prop">
-    <p class="statement"><span class="tav">Postulate I</span>Error bars are as important as the quantity they come with; without them, estimation is alchemy with a new name.</p>
+    <p class="statement">Error bars are as important as the quantity they come with; without them, estimation is alchemy with a new name.</p>
     <aside class="gloss"></aside>
   </div>
   <div class="pair prop">
-    <p class="statement"><span class="tav">Postulate II</span>Data are samples from a manifold, and what is true lives on the manifold rather than in any one sample.</p>
+    <p class="statement">Data are samples from a manifold, and what is true lives on the manifold rather than in any one sample.</p>
     <aside class="gloss"></aside>
   </div>
 
   <h2>Conjectures</h2>
   <div class="pair prop">
     <div>
-      <p class="statement"><span class="tav">Conjecture I</span>A graph has a natural tangent space at each vertex and each edge, and a curvature operator on it that plays the part Ricci curvature plays on a manifold.</p>
+      <p class="statement">A graph has a natural tangent space at each vertex and each edge, and a curvature operator on it that plays the part Ricci curvature plays on a manifold.</p>
       <p class="checked"><span class="runin">Status.</span> Consistency and convergence are shown; optimality is not, yet.</p>
     </div>
     <aside class="gloss"><p>The tangent space is spanned by increments along the half-edges, and the operator is the curvature term of a discrete Bochner formula. At a vertex it recovers the curvature matrix of <a href="https://arxiv.org/abs/2102.08687" rel="external nofollow noopener" target="_blank">Cushing, Kamtue, Liu and Peyerimhoff (2022)</a>.</p></aside>
   </div>
   <div class="pair prop">
     <div>
-      <p class="statement"><span class="tav">Conjecture II</span>Bootstrap error bars for deep networks measure the wrong thing. The bootstrap treats each network retrained on a resample as a fresh draw of one estimator, but each retraining settles in a different minimum, so the spread mixes the noise in the data with the randomness of training. Methods built the same way inherit the problem.</p>
+      <p class="statement">Bootstrap error bars for deep networks measure the wrong thing. The bootstrap treats each network retrained on a resample as a fresh draw of one estimator, but each retraining settles in a different minimum, so the spread mixes the noise in the data with the randomness of training. Methods built the same way inherit the problem.</p>
       <p class="checked"><span class="runin">Status.</span> Open.</p>
     </div>
     <aside class="gloss"></aside>
@@ -80,11 +80,11 @@
 
   <h2>Errata</h2>
   <div class="pair prop">
-    <p><span class="tav block">Erratum I</span>I used to think that if data lie on a manifold, geometric methods are the natural way to study them. I still think they lie on one, but rarely one tame enough to use. Curvature is the clearest case: estimated from a point cloud it is noisy, and the sample has to be far denser than real data usually are before the estimate means anything.</p>
+    <p>I used to think that if data lie on a manifold, geometric methods are the natural way to study them. I still think they lie on one, but rarely one tame enough to use. Curvature is the clearest case: estimated from a point cloud it is noisy, and the sample has to be far denser than real data usually are before the estimate means anything.</p>
     <aside class="gloss"><p>Some notions only work once they are heavily modified: Ollivier curvature of random geometric graphs converges to Ricci curvature only after it is generalised to mesoscopic neighbourhoods (<a href="https://arxiv.org/abs/2008.01209" rel="external nofollow noopener" target="_blank">van der Hoorn and others, 2020</a>).</p></aside>
   </div>
   <div class="pair prop">
-    <p><span class="tav block">Erratum II</span>I thought Ollivier–Ricci curvature would be easy to bound by Balanced Forman curvature, since a cruder rule already holds: on an edge whose endpoints have degrees <i>d<sub>i</sub></i> and <i>d<sub>j</sub></i> and which lies on <i>T</i> triangles, it sits between <span class="math">−2 + 3<i>T</i>/max(<i>d<sub>i</sub></i>, <i>d<sub>j</sub></i>)</span> and <span class="math"><i>T</i>/max(<i>d<sub>i</sub></i>, <i>d<sub>j</sub></i>)</span>, a loosened form of the bound of <a href="https://arxiv.org/abs/1103.4037" rel="external nofollow noopener" target="_blank">Jost and Liu</a>. Balanced Forman also counts the 4-cycles through the edge, and turning it into a two-sided bound took a paper.</p>
+    <p>I thought Ollivier–Ricci curvature would be easy to bound by Balanced Forman curvature, since a cruder rule already holds: on an edge whose endpoints have degrees <i>d<sub>i</sub></i> and <i>d<sub>j</sub></i> and which lies on <i>T</i> triangles, it sits between <span class="math">−2 + 3<i>T</i>/max(<i>d<sub>i</sub></i>, <i>d<sub>j</sub></i>)</span> and <span class="math"><i>T</i>/max(<i>d<sub>i</sub></i>, <i>d<sub>j</sub></i>)</span>, a loosened form of the bound of <a href="https://arxiv.org/abs/1103.4037" rel="external nofollow noopener" target="_blank">Jost and Liu</a>. Balanced Forman also counts the 4-cycles through the edge, and turning it into a two-sided bound took a paper.</p>
     <aside class="gloss"><p>What came of it is <a href="/publications/">Proposition I</a>.</p></aside>
   </div>
 

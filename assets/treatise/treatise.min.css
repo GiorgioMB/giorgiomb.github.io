@@ -107,7 +107,6 @@ h2{font:italic 400 1.75rem/1.2 var(--serif);margin:3.6rem 0 1rem}
 /* propositions (publications) */
 .prop + .prop{margin-top:3.4rem}
 .prop .statement{font-size:1.32rem;line-height:1.45}
-.prop .statement .tav{display:block;font-size:1rem;margin-bottom:.35rem}
 .prop .checked{margin-top:.9rem}
 .prop .cite{margin-top:.9rem;font-size:1rem;line-height:1.5}
 .prop .cite .title{font-weight:500}
@@ -157,7 +156,7 @@ body.gilt{--rubric:#B8892B}
 @media (max-width: 56rem){
   .folio{margin-left:auto}
   .pair{grid-template-columns:minmax(0,1fr)}
-  .gloss{margin-top:.5rem;padding:0 0 0 1rem;border-left:1px solid var(--faint)}
+  .gloss{margin-top:.5rem;padding:0 0 0 1rem}
   .gloss:empty{display:none}
   .gloss.date{order:-1;margin:0 0 .15rem;padding:0;border:0}
   .problem figure{order:-1;max-width:14rem;margin-bottom:1rem}
@@ -190,7 +189,8 @@ body.gilt{--rubric:#B8892B}
 .frontis{margin-top:2.6rem}
 .frontis .plate-frame{width:min(24rem,100%);height:auto;aspect-ratio:1;transition:none}
 .frontis .gloss{align-self:end;padding-bottom:1.2rem}
-.tav.block{display:block;margin-bottom:.35rem}
+.problem figcaption,.demo-fig figcaption{text-align:center;font-size:.95rem}
+.problem figcaption .tav,.demo-fig figcaption .tav{margin-right:0}
 div.prop + div.prop{margin-top:2.1rem}
 .gloss .lead{font-style:normal;color:var(--ink)}
 
