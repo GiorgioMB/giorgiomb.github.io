@@ -3,7 +3,7 @@
 
 :root{
   color-scheme: light;
-  /* the print */
+  /* light theme */
   --paper:#FDFDFC;
   --ink:#1D1E20;
   --gloss:#63666B;
@@ -21,7 +21,7 @@
 }
 :root[data-theme="dark"]{
     color-scheme: dark;
-    /* the steel plate */
+    /* dark theme */
     --paper:#16191C;
     --ink:#E4E7EA;
     --gloss:#9BA2A9;
@@ -35,7 +35,7 @@
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     color-scheme: dark;
-    /* the steel plate */
+    /* dark theme */
     --paper:#16191C;
     --ink:#E4E7EA;
     --gloss:#9BA2A9;
@@ -67,7 +67,7 @@ h1,h2,h3,p,figure,ol,ul{margin:0}
 .running-head a[aria-current]{text-decoration:underline;text-decoration-color:currentColor}
 .tav{font-style:normal;font-weight:500;color:var(--rubric);margin-right:.4em;font-variant-numeric:lining-nums}
 
-/* ---------- Title page (home), on the canon of ninths ---------- */
+/* ---------- Home page, laid out on a grid of ninths ---------- */
 .title-page{position:relative;min-height:100svh;display:grid;grid-template-columns:1fr 7fr 1fr;grid-template-rows:1fr 6fr 2fr}
 .title-page .running-head{grid-column:2/4;grid-row:1;align-self:center;justify-self:end;padding-right:clamp(1rem,4vw,3rem)}
 .title-block{grid-column:2;grid-row:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.5rem;padding:1rem 0}
@@ -86,7 +86,7 @@ canvas.plate:active{cursor:grabbing}
 .page-title h1{font:400 clamp(2.6rem,3vw + 1.4rem,4rem)/1.05 var(--serif);letter-spacing:-.012em}
 .page-title p{margin-top:.8rem;font-style:italic;font-size:1.2rem;color:var(--gloss);max-width:var(--measure)}
 
-/* ---------- The folio: text column plus outer margin ---------- */
+/* ---------- Two columns: text and margin notes ---------- */
 .folio{
   width:min(100% - 2.5rem, calc(var(--measure) + var(--gutter) + var(--margin)));
   margin:0 auto;padding:2rem 0 4rem;
@@ -117,14 +117,14 @@ button.reveal:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .abstract{margin-top:.7rem;font-size:1rem;line-height:1.55}
 pre.bib{margin:.7rem 0 0;padding:0;font:400 .8rem/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;color:var(--gloss)}
 
-/* problems (projects): the figure sits in the outer margin, as in a treatise */
+/* projects list: figure in the margin column */
 .problem + .problem{margin-top:3.6rem}
 .problem h3{margin:0 0 .7rem;font-weight:400;font-size:1.45rem;line-height:1.3}
 .problem p + p{margin-top:.75rem}
 .problem .open{display:inline-block;margin-top:.8rem;font-style:italic}
 .problem figure svg{display:block;width:100%;height:auto;aspect-ratio:1}
 
-/* colophon */
+/* colophon (footer) */
 .colophon{margin-top:5rem;padding-bottom:3rem;text-align:center;font-size:.9rem;line-height:1.55;font-style:italic;color:var(--gloss)}
 .colophon .mark{display:block;margin:0 auto 1rem;width:2.1rem;height:auto}
 .colophon p{max-width:31rem;margin:0 auto}
@@ -134,7 +134,7 @@ pre.bib{margin:.7rem 0 0;padding:0;font:400 .8rem/1.5 ui-monospace,SFMono-Regula
 .toast{position:fixed;top:1rem;left:1.25rem;z-index:20;font-style:italic;font-size:1.05rem;color:var(--ink);background:var(--paper);padding:.2rem .5rem;opacity:0;transition:opacity .25s}
 .toast.show{opacity:1}
 
-/* iddt: show the construction of the page */
+/* iddt: show the layout grid */
 .canon{position:absolute;inset:0;pointer-events:none;visibility:hidden;background-repeat:no-repeat;background-size:100% 0,0 100%;
   background-image:
     repeating-linear-gradient(to right, transparent 0 calc(100%/9 - 1px), color-mix(in srgb, var(--rubric) 45%, transparent) calc(100%/9 - 1px) calc(100%/9)),
@@ -179,7 +179,7 @@ body.gilt{--rubric:#B8892B}
 .magic td.year{color:var(--rubric)}
 .magic figcaption{margin-top:.6rem;font-size:.85rem;line-height:1.4;font-style:italic;color:var(--gloss)}
 
-/* noclip: Tav. I opens out into the engraving it came from */
+/* noclip: full Melencolia I engraving */
 .plate-frame .melencolia{display:none}
 .plate-frame.through{--ph:min(86svh,62rem,calc(92vw / .7794));height:var(--ph);width:calc(var(--ph) * .7794)}
 .plate-frame.through canvas.plate{display:none}
@@ -200,12 +200,11 @@ div.prop + div.prop{margin-top:2.1rem}
 @media (prefers-reduced-motion: reduce){.plate-frame{transition:none}}
 
 
-/* Byrne's diagrams, constructed on arrival. Preparing a figure hides it at once;
-   only the change to drawn is animated, so the transitions live on the drawn state. */
+/* Byrne diagram animation. .b-ready hides the parts at once; the transitions sit on .b-drawn, so only drawing in is animated. */
 svg.b-ready .b-dash,svg.b-ready .b-stroke,svg.b-ready .b-fill{opacity:0}
 svg.b-ready .b-stroke{stroke-dasharray:1 1;stroke-dashoffset:1}
 svg.b-ready .b-dot{transform:scale(0);transform-box:fill-box;transform-origin:center}
-/* a colour field that spreads with its lines, from the edge it grows out of */
+/* fills that grow from one edge (data-spread) */
 svg.b-ready .b-spread{opacity:0}
 svg.b-ready .b-spread-up{clip-path:inset(100% 0 0 0)}
 svg.b-ready .b-spread-right{clip-path:inset(0 100% 0 0)}
@@ -215,7 +214,7 @@ svg.b-drawn .b-stroke{opacity:1;stroke-dashoffset:0;transition:stroke-dashoffset
 svg.b-drawn .b-fill{opacity:1;transition:opacity .7s ease var(--d)}
 svg.b-drawn .b-dot{transform:scale(1);transition:transform .38s cubic-bezier(.3,1.5,.5,1) var(--d)}
 
-/* the print or the plate: a hatched half-disc that turns over */
+/* theme toggle: a hatched half-disc that flips */
 .theme-toggle{all:unset;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;width:1.4rem;height:1.4rem;color:var(--ink);vertical-align:middle}
 .theme-toggle svg{width:1.15rem;height:1.15rem}
 :root[data-theme="dark"] .theme-toggle svg{transform:rotate(180deg)}
@@ -226,12 +225,12 @@ svg.b-drawn .b-dot{transform:scale(1);transition:transform .38s cubic-bezier(.3,
 sub,sup{line-height:0}
 .page-title .countdown{margin-top:1.1rem;font-style:normal;color:var(--ink)}
 
-/* the address, drawn in the page's own type: it reads like the words around it, but the page holds no address */
+/* e-mail address drawn as SVG glyphs, so it is not in the page text */
 .address{all:unset;cursor:pointer;display:inline-block;vertical-align:-.265em;line-height:0;color:inherit;
   background:linear-gradient(var(--faint),var(--faint)) no-repeat 0 .915em/100% 1px}
 .address:hover{background-image:linear-gradient(currentColor,currentColor)}
 .address:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .address-glyphs{display:block;width:10.36em;height:1em}
-/* the portrait, a plain photograph in the margin beside the correspondence */
+/* portrait, in the margin of the contact section */
 .portrait img{display:block;width:9.5rem;max-width:100%;height:auto}
 canvas.plate[data-plate="cube"]{cursor:pointer}

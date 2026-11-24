@@ -1,4 +1,4 @@
-/* The demo pages: title, problem and figure, then the instrument, then the reading of it */
+/* Demo pages: header with figure, then controls, then explanation */
 .demo-head{margin-top:clamp(3rem,9vh,6rem);align-items:end}
 .demo-head h1{font:400 clamp(2.1rem,2.2vw + 1.3rem,3rem)/1.1 var(--serif);letter-spacing:-.01em}
 .demo-head .problem,.demo-head .lede{margin-top:1rem;font-size:1.2rem;line-height:1.5}
@@ -9,7 +9,7 @@
 code{font:.88em ui-monospace,SFMono-Regular,Menlo,monospace}
 .approach p + p{margin-top:.75rem}
 
-/* ---------- The instrument ---------- */
+/* ---------- Controls ---------- */
 .demo{
   --sm-neg:var(--b-red);--sm-pos:var(--b-blue);--sm-old:color-mix(in srgb,var(--ink) 26%,transparent);
   margin:2.4rem 0 1rem;max-width:calc(var(--measure) + var(--gutter) + var(--margin));font-size:1rem;line-height:1.5
@@ -19,7 +19,7 @@ code{font:.88em ui-monospace,SFMono-Regular,Menlo,monospace}
 .demo fieldset{border:0;margin:0;padding:0;min-width:0}
 .demo legend{padding:0;margin:0 0 .2rem;font-size:.85rem;font-style:italic;color:var(--gloss)}
 
-/* a choice between words: the chosen one is ruled beneath */
+/* segmented choice: the selected option is underlined */
 .demo .seg{display:inline-flex;flex-wrap:wrap;gap:.2rem 1.1rem}
 .demo .seg input,.demo .sm-steps input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
 .demo .seg label{cursor:pointer;color:var(--gloss);padding:.05rem 0;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s}
@@ -32,7 +32,7 @@ code{font:.88em ui-monospace,SFMono-Regular,Menlo,monospace}
 .demo .action:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .demo .action:disabled{opacity:.5;cursor:progress}
 
-/* sliders as an engraved rule with a ring on it */
+/* range sliders: thin track with a ring thumb */
 .demo input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:1.5rem;margin:0;background:transparent;cursor:pointer}
 .demo input[type=range]::-webkit-slider-runnable-track{height:1px;background:var(--ink)}
 .demo input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:.95rem;height:.95rem;margin-top:-.475rem;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink)}
@@ -45,7 +45,7 @@ code{font:.88em ui-monospace,SFMono-Regular,Menlo,monospace}
 .demo .readout{margin:.9rem 0 .3rem;font-variant-numeric:lining-nums tabular-nums}
 .demo .status{margin:0;font-size:.85rem;font-style:italic;color:var(--gloss)}
 
-/* ---------- Charts, in Byrne's colours: blue for what is true, red for what is reported or estimated, yellow for the gap ---------- */
+/* ---------- Charts. Blue: true value; red: reported or estimated; yellow: the gap ---------- */
 .demo .bd-grid,.demo .od-grid,.demo .sm-grid{stroke:var(--faint);stroke-width:1}
 .demo .bd-tick,.demo .od-tick,.demo .sm-tick{fill:var(--gloss);font-size:12px;font-variant-numeric:lining-nums tabular-nums}
 .demo .bd-axis,.demo .od-axis,.demo .sm-axis{fill:var(--gloss);font-size:12.5px;font-style:italic}
@@ -80,7 +80,7 @@ code{font:.88em ui-monospace,SFMono-Regular,Menlo,monospace}
 .demo .od-numbers dt{font-size:.85rem;font-style:italic;color:var(--gloss)}
 .demo .od-numbers dd{margin:0;font-variant-numeric:lining-nums tabular-nums}
 
-/* ---------- The screening map ---------- */
+/* ---------- Screening map ---------- */
 .demo .sm-threshold{display:grid;grid-template-columns:1fr auto;align-items:center;gap:.25rem 1rem;margin-bottom:.4rem}
 .demo .sm-threshold label{font-size:.9rem;font-style:italic;color:var(--gloss)}
 .demo .sm-threshold output{margin-left:.35rem;font-style:normal;color:var(--ink);font-variant-numeric:lining-nums tabular-nums}
@@ -117,7 +117,7 @@ code{font:.88em ui-monospace,SFMono-Regular,Menlo,monospace}
 .demo .sm-svg .sm-hi{stroke:var(--ink);stroke-width:3.5}
 .demo .sm-svg .sm-ends{stroke:var(--ink);stroke-width:8}
 
-/* iddt: every stage at once, one of Byrne's colours for each */
+/* iddt: all stages at once, one colour per stage */
 .demo .sm-auto-0{--auto:var(--b-blue)}
 .demo .sm-auto-1{--auto:var(--b-yellow)}
 .demo .sm-auto-2{--auto:var(--b-red)}
