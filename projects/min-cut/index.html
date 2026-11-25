@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem("treatise-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<title>Ollivier–Ricci curvature as a minimum cut · Giorgio Micaletto</title>
+<meta name="description" content="The exact Ollivier–Ricci curvature of an edge from one minimum cut, with the network, the cut and its certificate, as an interactive demo.">
+<link rel="icon" href="/assets/treatise/favicon.svg?v=5f5688a25d" type="image/svg+xml">
+<link rel="canonical" href="https://giorgiomb.github.io/projects/min-cut/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ollivier–Ricci curvature as a minimum cut · Giorgio Micaletto">
+<meta property="og:description" content="The exact Ollivier–Ricci curvature of an edge from one minimum cut, with the network, the cut and its certificate, as an interactive demo.">
+<meta property="og:url" content="https://giorgiomb.github.io/projects/min-cut/">
+<meta property="og:image" content="https://giorgiomb.github.io/assets/treatise/og.png?v=1569c403be">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Giorgio Micaletto, PhD student in Statistics at the University of Chicago, beside an engraving of the solid from Dürer’s Melencolia I.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/assets/treatise/treatise.min.css?v=b74e077134">
+<link rel="stylesheet" href="/assets/treatise/demos.min.css?v=0eb533ca3d">
+</head>
+<body>
+<header class="page-head">
+  <nav class="running-head" aria-label="Main">
+    <a href="/">About</a>
+    <a href="/publications/">Publications</a>
+    <a href="/projects/" aria-current="page">Projects</a>
+    <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode"><svg viewbox="0 0 20 20" aria-hidden="true"><defs><clippath id="tt-half"><path d="M10 2.75A7.25 7.25 0 0 0 10 17.25Z"></path></clippath></defs><g clip-path="url(#tt-half)" stroke="currentColor" stroke-width="1"><line x1="0" y1="4" x2="4" y2="0"></line><line x1="0" y1="7" x2="7" y2="0"></line><line x1="0" y1="10" x2="10" y2="0"></line><line x1="0" y1="13" x2="13" y2="0"></line><line x1="0" y1="16" x2="16" y2="0"></line><line x1="0" y1="19" x2="19" y2="0"></line><line x1="0" y1="22" x2="22" y2="0"></line></g><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.3"></circle></svg></button>
+  </nav>
+</header>
+
+<main class="folio" id="main">
+<div class="pair demo-head">
+  <div>
+    <h1>Ollivier–Ricci curvature as a minimum cut</h1>
+    <p class="problem"><span class="runin">Problem.</span> To compute the exact Ollivier–Ricci curvature of an edge without a distance matrix or a linear program.</p>
+  </div>
+  <figure class="demo-fig"><svg class="byrne" viewbox="0 0 200 200" role="img" aria-label="Diagram: a source on the left joined in red to three nodes, three nodes joined in blue to a sink on the right, black arcs between the two columns, and a dashed curve that cuts one red and one blue line and no black one, with the source's side shaded yellow.">
+        <polygon points="26,100 82,52 82,100" fill="var(--b-yellow)" data-d=".55" data-t=".8" data-spread="right"></polygon>
+        <path d="M150 20 C 152 50, 140 80, 112 92 C 90 102, 70 124, 50 136 S 26 150, 16 156" fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-dasharray="7 6" data-d="0"></path>
+        <g stroke="var(--b-red)" stroke-width="5" stroke-linecap="round"><line x1="26" y1="100" x2="82" y2="52" data-d=".2" data-t=".6"></line><line x1="26" y1="100" x2="82" y2="100" data-d=".2" data-t=".6"></line><line x1="26" y1="100" x2="82" y2="148" data-d=".2" data-t=".6"></line></g>
+        <g stroke="var(--b-blue)" stroke-width="5" stroke-linecap="round"><line x1="118" y1="52" x2="174" y2="100" data-d=".2" data-t=".6"></line><line x1="118" y1="100" x2="174" y2="100" data-d=".2" data-t=".6"></line><line x1="118" y1="148" x2="174" y2="100" data-d=".2" data-t=".6"></line></g>
+        <g stroke="var(--ink)" stroke-width="4" stroke-linecap="round"><line x1="82" y1="52" x2="118" y2="52" data-d=".8" data-t=".45"></line><line x1="82" y1="100" x2="118" y2="52" data-d=".8" data-t=".45"></line><line x1="82" y1="148" x2="118" y2="100" data-d=".8" data-t=".45"></line><line x1="82" y1="148" x2="118" y2="148" data-d=".8" data-t=".45"></line></g>
+        <g fill="var(--ink)"><circle cx="26" cy="100" r="5.5" data-d=".1"></circle><circle cx="174" cy="100" r="5.5" data-d=".1"></circle><circle cx="82" cy="52" r="4.2" data-d="1.25"></circle><circle cx="82" cy="100" r="4.2" data-d="1.25"></circle><circle cx="82" cy="148" r="4.2" data-d="1.25"></circle><circle cx="118" cy="52" r="4.2" data-d="1.25"></circle><circle cx="118" cy="100" r="4.2" data-d="1.25"></circle><circle cx="118" cy="148" r="4.2" data-d="1.25"></circle></g>
+      </svg><figcaption><span class="tav">Tav. IV</span></figcaption></figure>
+</div>
+<div class="pair">
+  <p>Ollivier–Ricci curvature compares the random walks at the two ends of an edge by the cost of moving one onto the other, <span class="math"><i>κ</i> = 1 − <i>W</i><sub>1</sub></span>, and that cost is usually a linear program over a matrix of graph distances. In <a href="/publications/">Proposition I</a>, I show that for any walk that stays within one step, the dual of that program has an optimum with three levels, so the curvature of an edge is one minimum cut on a network built from adjacency lists alone.</p>
+  <aside class="gloss"><p>The curvature is due to <a href="https://doi.org/10.1016/j.jfa.2008.11.001" rel="external nofollow noopener" target="_blank">Ollivier (2009)</a>; <i>W</i><sub>1</sub> is the Wasserstein distance for the shortest-path metric.</p></aside>
+</div>
+<div class="pair">
+  <p>Click an edge of the graph and the page builds that edge’s network, cuts it, and reads off both the curvature and the certificate that it is optimal.</p>
+  <aside class="gloss"></aside>
+</div>
+
+<div id="min-cut" class="demo" data-src="/assets/json/screening-map/">
+  <div class="controls">
+    <fieldset>
+      <legend>Graph</legend>
+      <div class="seg">
+        <input type="radio" id="mc-karate" name="mc-graph" value="karate" checked><label for="mc-karate">Karate club</label>
+        <input type="radio" id="mc-rgg" name="mc-graph" value="rgg-d8-s0"><label for="mc-rgg">Random geometric</label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Measure</legend>
+      <div class="seg">
+        <input type="radio" id="mc-lazy" name="mc-measure" value="lazy" checked><label for="mc-lazy">Lazy walk</label>
+        <input type="radio" id="mc-nonlazy" name="mc-measure" value="nonlazy"><label for="mc-nonlazy">Non-lazy walk</label>
+        <input type="radio" id="mc-lly" name="mc-measure" value="lly"><label for="mc-lly">Lin–Lu–Yau</label>
+      </div>
+    </fieldset>
+    <button type="button" class="action mc-random">Pick another edge</button>
+  </div>
+  <div class="mc-graph"></div>
+  <p class="mc-legend">
+    <span class="mc-dot mc-dot-send">sends net mass</span>
+    <span class="mc-dot mc-dot-recv">receives it</span>
+    <span class="mc-key">plan at distance 1</span>
+    <span class="mc-key mc-key-d2">at distance 2</span>
+    <span class="mc-key mc-key-d3">at distance 3</span>
+  </p>
+  <div class="mc-net"></div>
+  <p class="mc-legend">
+    <span class="mc-dot mc-dot-in">source side of the cut</span>
+    <span class="mc-dot mc-dot-out">sink side</span>
+    <span class="mc-key mc-key-cut">the cut</span>
+    <span class="mc-key">arc carrying flow</span>
+    <span class="mc-key mc-key-d2">arc for a pair at distance 2</span>
+  </p>
+  <div class="readout mc-readout"></div>
+  <p class="sr-only mc-live" aria-live="polite"></p>
+  <p class="status mc-status"></p>
+</div>
+<script src="/assets/js/mincut-core.js"></script>
+<script src="/assets/js/mincut-demo.js"></script>
+
+<h2>What you are seeing</h2>
+<div class="pair">
+  <p>The upper figure is the graph, with the chosen edge in black. The walks at its two ends put mass on their neighbourhoods; mass common to both stays where it is, and the rest has to move from the red vertices, drawn in proportion to what they send, to the blue ones. The lines between them are an optimal transport plan.</p>
+  <aside class="gloss"></aside>
+</div>
+<div class="pair">
+  <p>The lower figure is the network of the paper. Each red vertex has two nodes, one for each step its potential can rise, and so does each blue vertex. Arcs between them encode the constraints of the dual, <span class="math"><i>u</i><sub><i>x</i></sub> − <i>v</i><sub><i>y</i></sub> ≤ dist(<i>x</i>, <i>y</i>)</span>: two arcs for an adjacent pair, one for a pair with a common neighbour, and none for a pair at distance 3. The filled nodes are the source side of a minimum cut and the yellow arcs are the cut, whose capacity is the maximum flow <i>F</i>; the curvature follows from <span class="math"><i>W</i><sub>1</sub> = 3<i>A</i> − <i>F</i></span>, where <i>A</i> is the mass that moves.</p>
+  <aside class="gloss"><p>The rows are sorted by potential, so the source side gathers at the top of each band.</p></aside>
+</div>
+<div class="pair">
+  <p>The cut is also a proof. A red vertex’s potential is 1 plus the number of its filled nodes, a blue vertex’s the number of its filled nodes, and these potentials satisfy every constraint of the dual. The plan is a second, smaller flow along the pairs where a constraint is tight, and it costs exactly <span class="math">3<i>A</i> − <i>F</i></span>, so no other plan can cost less.</p>
+  <aside class="gloss"></aside>
+</div>
+
+<h2>How it is computed</h2>
+<div class="pair">
+  <p>Everything runs in your browser from the two endpoints’ adjacency lists. A pair is at distance 1 if it is adjacent, 2 if it has a common neighbour, and 3 otherwise, since the edge itself joins any two of these vertices in three steps; no distance matrix is built and no linear program is solved. The maximum flow is Dinic’s algorithm on integer masses, so every number is an exact fraction.</p>
+  <aside class="gloss"></aside>
+</div>
+<div class="pair">
+  <p>The page draws the plain network. The paper’s solver, <a href="https://github.com/GiorgioMB/orcut" rel="external nofollow noopener" target="_blank">orcut</a>, also routes blocks of distance-2 pairs through relay nodes, merges vertices with the same neighbours and starts from a warm flow; these change the network but not the value. On both graphs here, every lazy value equals orcut’s, and every value for the three measures agrees with a linear program on breadth-first distances.</p>
+  <aside class="gloss"><p>The solver on its own is the Python package <a href="https://pypi.org/project/faster-or-curvature/" rel="external nofollow noopener" target="_blank">faster-or-curvature</a>.</p></aside>
+</div>
+<div class="pair">
+  <p>The karate club is <a href="https://www.jstor.org/stable/3629752" rel="external nofollow noopener" target="_blank">Zachary’s</a>, 34 members and 78 friendships. The random geometric graph is the one on the <a href="/projects/screening-map/">screening map</a>, the largest component of 800 random points in the unit square at expected degree 8, shown around the chosen edge.</p>
+  <aside class="gloss"></aside>
+</div>
+
+  <footer class="colophon">
+    <svg class="mark" viewbox="0 0 40 36" aria-hidden="true"><polygon points="4,32 36,32 20,4" fill="var(--b-yellow)"></polygon><line x1="4" y1="32" x2="36" y2="32" stroke="var(--b-blue)" stroke-width="3" stroke-linecap="round"></line><line x1="4" y1="32" x2="20" y2="4" stroke="var(--b-red)" stroke-width="3" stroke-linecap="round"></line><line x1="36" y1="32" x2="20" y2="4" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"></line></svg>
+    <p data-colophon>Set in Newsreader, by Production Type.</p>
+    <p>Some old cheat codes still work here, from the retro games I spent more hours on than I’d like to admit.</p>
+  </footer>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script defer src="/assets/treatise/shared.min.js?v=45fdc95e40"></script>
+</body>
+</html>

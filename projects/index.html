@@ -44,22 +44,39 @@
 
   <article class="pair problem" id="tav-4">
     <div>
+      <h3>Ollivier–Ricci curvature as a minimum cut</h3>
+      <p><span class="runin">Problem.</span> To compute the exact Ollivier–Ricci curvature of an edge without a distance matrix or a linear program.</p>
+      <a class="open" href="/projects/min-cut/">Open the demo</a>
+    </div>
+    <figure>
+      <svg class="byrne" viewbox="0 0 200 200" role="img" aria-label="Diagram: a source on the left joined in red to three nodes, three nodes joined in blue to a sink on the right, black arcs between the two columns, and a dashed curve that cuts one red and one blue line and no black one, with the source's side shaded yellow.">
+        <polygon points="26,100 82,52 82,100" fill="var(--b-yellow)" data-d=".55" data-t=".8" data-spread="right"></polygon>
+        <path d="M150 20 C 152 50, 140 80, 112 92 C 90 102, 70 124, 50 136 S 26 150, 16 156" fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-dasharray="7 6" data-d="0"></path>
+        <g stroke="var(--b-red)" stroke-width="5" stroke-linecap="round"><line x1="26" y1="100" x2="82" y2="52" data-d=".2" data-t=".6"></line><line x1="26" y1="100" x2="82" y2="100" data-d=".2" data-t=".6"></line><line x1="26" y1="100" x2="82" y2="148" data-d=".2" data-t=".6"></line></g>
+        <g stroke="var(--b-blue)" stroke-width="5" stroke-linecap="round"><line x1="118" y1="52" x2="174" y2="100" data-d=".2" data-t=".6"></line><line x1="118" y1="100" x2="174" y2="100" data-d=".2" data-t=".6"></line><line x1="118" y1="148" x2="174" y2="100" data-d=".2" data-t=".6"></line></g>
+        <g stroke="var(--ink)" stroke-width="4" stroke-linecap="round"><line x1="82" y1="52" x2="118" y2="52" data-d=".8" data-t=".45"></line><line x1="82" y1="100" x2="118" y2="52" data-d=".8" data-t=".45"></line><line x1="82" y1="148" x2="118" y2="100" data-d=".8" data-t=".45"></line><line x1="82" y1="148" x2="118" y2="148" data-d=".8" data-t=".45"></line></g>
+        <g fill="var(--ink)"><circle cx="26" cy="100" r="5.5" data-d=".1"></circle><circle cx="174" cy="100" r="5.5" data-d=".1"></circle><circle cx="82" cy="52" r="4.2" data-d="1.25"></circle><circle cx="82" cy="100" r="4.2" data-d="1.25"></circle><circle cx="82" cy="148" r="4.2" data-d="1.25"></circle><circle cx="118" cy="52" r="4.2" data-d="1.25"></circle><circle cx="118" cy="100" r="4.2" data-d="1.25"></circle><circle cx="118" cy="148" r="4.2" data-d="1.25"></circle></g>
+      </svg>
+    <figcaption><span class="tav">Tav. IV</span></figcaption></figure>
+  </article>
+  <article class="pair problem" id="tav-5">
+    <div>
       <h3>Certifying Ollivier–Ricci curvature signs</h3>
       <p><span class="runin">Problem.</span> To decide, for every edge of a graph, whether its Ollivier–Ricci curvature lies below a threshold, while solving as few optimal transport problems as possible.</p>
       <a class="open" href="/projects/screening-map/">Open the demo</a>
     </div>
     <figure>
-      <svg class="byrne euclid" data-tav="Tav. IV" viewbox="0 0 200 200" role="img" aria-label="Diagram: an edge between two vertices, the triangle they share in yellow, the neighbours of one endpoint in red and of the other in blue.">
+      <svg class="byrne euclid" data-tav="Tav. V" viewbox="0 0 200 200" role="img" aria-label="Diagram: an edge between two vertices, the triangle they share in yellow, the neighbours of one endpoint in red and of the other in blue.">
         <polygon points="72,118 128,118 100,66" fill="var(--b-yellow)" data-d=".55" data-t=".8" data-spread="up"></polygon>
         <g stroke="var(--b-red)" stroke-width="5" stroke-linecap="round"><line x1="72" y1="118" x2="28" y2="78" data-d=".55" data-t=".8"></line><line x1="72" y1="118" x2="34" y2="162" data-d=".55" data-t=".8"></line><line x1="72" y1="118" x2="100" y2="66" data-d=".55" data-t=".8"></line></g>
         <g stroke="var(--b-blue)" stroke-width="5" stroke-linecap="round"><line x1="128" y1="118" x2="172" y2="80" data-d=".55" data-t=".8"></line><line x1="128" y1="118" x2="166" y2="164" data-d=".55" data-t=".8"></line><line x1="128" y1="118" x2="100" y2="66" data-d=".55" data-t=".8"></line></g>
         <g stroke="var(--ink)" stroke-width="5.5" stroke-linecap="round"><line x1="100" y1="118" x2="72" y2="118" data-d="0" data-t=".5"></line><line x1="100" y1="118" x2="128" y2="118" data-d="0" data-t=".5"></line></g>
         <g fill="var(--ink)"><circle cx="72" cy="118" r="5.5" data-d=".42"></circle><circle cx="128" cy="118" r="5.5" data-d=".42"></circle><circle cx="100" cy="66" r="4.2" data-d="1.25"></circle><circle cx="28" cy="78" r="4.2" data-d="1.25"></circle><circle cx="34" cy="162" r="4.2" data-d="1.25"></circle><circle cx="172" cy="80" r="4.2" data-d="1.25"></circle><circle cx="166" cy="164" r="4.2" data-d="1.25"></circle></g>
       </svg>
-    <figcaption><span class="tav">Tav. IV</span></figcaption></figure>
+    <figcaption><span class="tav">Tav. V</span></figcaption></figure>
   </article>
 
-  <article class="pair problem" id="tav-5">
+  <article class="pair problem" id="tav-6">
     <div>
       <h3>Saturation of the bridge sampling error estimate</h3>
       <p><span class="runin">Problem.</span> To tell, from its reported Monte Carlo standard error, whether a bridge sampling estimate of the marginal likelihood can be believed.</p>
@@ -73,10 +90,10 @@
         <path d="M86 118 C 118 88, 148 70, 178 67" fill="none" stroke="var(--b-red)" stroke-width="5" stroke-linecap="round" data-d=".95" data-t=".85"></path>
         <path d="M28 172 C 50 160, 72 140, 86 118" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round" data-d=".1" data-t=".8"></path>
       </svg>
-    <figcaption><span class="tav">Tav. V</span></figcaption></figure>
+    <figcaption><span class="tav">Tav. VI</span></figcaption></figure>
   </article>
 
-  <article class="pair problem" id="tav-6">
+  <article class="pair problem" id="tav-7">
     <div>
       <h3>Variance reduction for Monte Carlo option pricing</h3>
       <p>A small browser demo of Monte Carlo pricing for European options, showing how antithetic draws and a control variate narrow the error bar, with the Black–Scholes price as a check.</p>
@@ -88,12 +105,12 @@
         <line x1="18" y1="102" x2="186" y2="102" stroke="var(--b-blue)" stroke-width="5" stroke-linecap="round" data-d=".1" data-t=".8"></line>
         <polyline points="24,64 36,128 48,86 60,118 74,92 88,110 104,97 120,106 138,99 156,104 172,101 182,102" fill="none" stroke="var(--b-red)" stroke-width="4.2" stroke-linejoin="round" stroke-linecap="round" data-d=".1" data-t=".8"></polyline>
       </svg>
-    <figcaption><span class="tav">Tav. VI</span></figcaption></figure>
+    <figcaption><span class="tav">Tav. VII</span></figcaption></figure>
   </article>
 
   <h2>To read about</h2>
 
-  <article class="pair problem" id="tav-7">
+  <article class="pair problem" id="tav-8">
     <div>
       <h3>SPORF on current Python</h3>
       <p>A maintained fork of the SPORF random forest package that installs and runs on Python 3.8 to 3.14.</p>
@@ -106,10 +123,10 @@
         <g fill="var(--b-red)"><circle cx="40" cy="90" r="6"></circle><circle cx="55" cy="120" r="6"></circle><circle cx="70" cy="70" r="6"></circle><circle cx="72" cy="124" r="6"></circle><circle cx="92" cy="100" r="6"></circle><circle cx="46" cy="148" r="6"></circle><circle cx="118" cy="72" r="6"></circle><circle cx="136" cy="54" r="6"></circle></g>
         <g fill="var(--b-blue)"><circle cx="88" cy="150" r="6"></circle><circle cx="70" cy="168" r="6"></circle><circle cx="112" cy="132" r="6"></circle><circle cx="142" cy="110" r="6"></circle><circle cx="162" cy="82" r="6"></circle><circle cx="174" cy="140" r="6"></circle><circle cx="126" cy="162" r="6"></circle></g>
       </svg>
-    <figcaption><span class="tav">Tav. VII</span></figcaption></figure>
+    <figcaption><span class="tav">Tav. VIII</span></figcaption></figure>
   </article>
 
-  <article class="pair problem" id="tav-8">
+  <article class="pair problem" id="tav-9">
     <div>
       <h3>Water quality prediction from location and date</h3>
       <p>My solo entry to the 2026 EY AI &amp; Data Challenge, which predicted water quality at South African monitoring stations from location and date alone and reached the semifinal.</p>
@@ -126,7 +143,7 @@
         <path d="M8 44 C 48 30, 70 70, 100 96 S 150 92, 168 112 S 178 160, 192 176" fill="none" stroke="var(--b-blue)" stroke-width="6.5" stroke-linecap="round"></path>
         <g fill="var(--ink)"><circle cx="36" cy="40" r="5"></circle><circle cx="74" cy="72" r="5"></circle><circle cx="104" cy="98" r="5"></circle><circle cx="148" cy="96" r="5"></circle><circle cx="168" cy="113" r="5"></circle><circle cx="182" cy="160" r="5"></circle></g>
       </svg>
-    <figcaption><span class="tav">Tav. VIII</span></figcaption></figure>
+    <figcaption><span class="tav">Tav. IX</span></figcaption></figure>
   </article>
 
   <footer class="colophon">
