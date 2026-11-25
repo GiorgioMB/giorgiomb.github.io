@@ -197,3 +197,14 @@ code{font:.88em ui-monospace,SFMono-Regular,Menlo,monospace}
 .demo .mc-dot-recv::before{background:var(--b-blue)}
 .demo .mc-dot-in::before{background:var(--ink)}
 .demo .mc-dot-out::before{border:1.6px solid var(--ink)}
+.demo .mc-vertex-s{fill:var(--ink)}
+.demo .mc-pot{fill:var(--paper);font-size:12px;font-weight:600;pointer-events:none;font-variant-numeric:lining-nums tabular-nums}
+.demo .mc-mass{cursor:default}
+.demo .mc-rlabel{cursor:default}
+.demo.mc-focusing .mc-arc,.demo.mc-focusing .mc-st,.demo.mc-focusing .mc-plan line{opacity:.35}
+.demo.mc-focusing .mc-arc.mc-focus,.demo.mc-focusing .mc-st.mc-focus,.demo.mc-focusing .mc-plan line.mc-focus{opacity:1}
+.demo .mc-arc.mc-focus{stroke-opacity:.9;stroke-width:2}
+.demo .mc-st.mc-focus{stroke:var(--ink);stroke-width:1.6}
+.demo .mc-plan line.mc-focus{stroke-opacity:1}
+.demo .mc-mass.mc-focus circle,.demo circle.mc-focus{stroke:var(--ink);stroke-width:3}
+.demo .mc-rlabel.mc-focus{fill:var(--ink);font-weight:600}
