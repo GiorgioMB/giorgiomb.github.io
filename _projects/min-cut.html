@@ -19,11 +19,11 @@ permalink: /projects/min-cut/
       </svg><figcaption><span class="tav">Tav. IV</span></figcaption></figure>
 </div>
 <div class="pair">
-  <p>Ollivier–Ricci curvature compares the random walks at the two ends of an edge by the cost of moving one onto the other, <span class="math"><i>κ</i> = 1 − <i>W</i><sub>1</sub></span>, and that cost is usually a linear program over a matrix of graph distances. In <a href="/publications/">Proposition I</a>, I show that for any walk that stays within one step, the dual of that program has an optimum with three levels, so the curvature of an edge is one minimum cut on a network built from adjacency lists alone.</p>
-  <aside class="gloss"><p>The curvature is due to <a href="https://doi.org/10.1016/j.jfa.2008.11.001">Ollivier (2009)</a>; <i>W</i><sub>1</sub> is the Wasserstein distance for the shortest-path metric.</p></aside>
+  <p>Ollivier–Ricci curvature compares the random walks at the two ends of an edge by the cost of moving one onto the other, <span class="math"><i>κ</i> = 1 − <i>W</i><sub>1</sub></span>, and that cost is usually a linear program over a matrix of graph distances. When both endpoints have degree <i>d</i>, the matrix has <span class="math">(<i>d</i> + 1)<sup>2</sup></span> entries, and solving the program exactly takes <span class="math"><i>O</i>(<i>d</i><sup>3</sup> log <i>d</i>)</span> time. In <a href="/publications/">Proposition I</a>, I show that for any one-step random walk, the dual of that program has an optimum with three levels, so the curvature of an edge is one minimum cut on a network built from adjacency lists alone.</p>
+  <aside class="gloss"><p>The curvature is due to <a href="https://doi.org/10.1016/j.jfa.2008.11.001">Ollivier (2009)</a>; <i>W</i><sub>1</sub> is the Wasserstein distance for the shortest-path metric.</p><p>The <span class="math"><i>O</i>(<i>d</i><sup>3</sup> log <i>d</i>)</span> bound is <a href="https://doi.org/10.1287/opre.41.2.338">Orlin’s (1993)</a>, for transportation problems.</p></aside>
 </div>
 <div class="pair">
-  <p>Click an edge of the graph and the page builds that edge’s network, cuts it, and reads off both the curvature and the certificate that it is optimal.</p>
+  <p>Click an edge of the graph to see its network, its minimum cut and its curvature.</p>
   <aside class="gloss"></aside>
 </div>
 
@@ -50,14 +50,15 @@ permalink: /projects/min-cut/
   <p class="mc-legend">
     <span class="mc-dot mc-dot-send">sends net mass</span>
     <span class="mc-dot mc-dot-recv">receives it</span>
+    <span>number inside: its potential</span>
     <span class="mc-key">plan at distance 1</span>
     <span class="mc-key mc-key-d2">at distance 2</span>
     <span class="mc-key mc-key-d3">at distance 3</span>
   </p>
   <div class="mc-net"></div>
   <p class="mc-legend">
-    <span class="mc-dot mc-dot-in">source side of the cut</span>
-    <span class="mc-dot mc-dot-out">sink side</span>
+    <span class="mc-dot mc-dot-in">yes, on the source side</span>
+    <span class="mc-dot mc-dot-out">no</span>
     <span class="mc-key mc-key-cut">the cut</span>
     <span class="mc-key">arc carrying flow</span>
     <span class="mc-key mc-key-d2">arc for a pair at distance 2</span>
@@ -71,28 +72,24 @@ permalink: /projects/min-cut/
 
 <h2>What you are seeing</h2>
 <div class="pair">
-  <p>The upper figure is the graph, with the chosen edge in black. The walks at its two ends put mass on their neighbourhoods; mass common to both stays where it is, and the rest has to move from the red vertices, drawn in proportion to what they send, to the blue ones. The lines between them are an optimal transport plan.</p>
+  <p>The upper figure is the graph, with the chosen edge drawn thick. The walks from its two ends spread their mass over the ends’ neighbours. Where both put mass, the common part stays put, and the rest has to move from the red vertices to the blue ones, each drawn in proportion to its share. The lines are an optimal plan for that move: solid between neighbours, dashed between vertices two steps apart, dotted between vertices three apart.</p>
   <aside class="gloss"></aside>
 </div>
 <div class="pair">
-  <p>The lower figure is the network of the paper. Each red vertex has two nodes, one for each step its potential can rise, and so does each blue vertex. Arcs between them encode the constraints of the dual, <span class="math"><i>u</i><sub><i>x</i></sub> − <i>v</i><sub><i>y</i></sub> ≤ dist(<i>x</i>, <i>y</i>)</span>: two arcs for an adjacent pair, one for a pair with a common neighbour, and none for a pair at distance 3. The filled nodes are the source side of a minimum cut and the yellow arcs are the cut, whose capacity is the maximum flow <i>F</i>; the curvature follows from <span class="math"><i>W</i><sub>1</sub> = 3<i>A</i> − <i>F</i></span>, where <i>A</i> is the mass that moves.</p>
-  <aside class="gloss"><p>The rows are sorted by potential, so the source side gathers at the top of each band.</p></aside>
+  <p>The same cost can be found without a plan, by numbering the vertices. Give each red vertex a potential of 1, 2 or 3 and each blue vertex one of 0, 1 or 2, so that no red vertex sits more than its distance above any blue one. The numbering that makes the red masses times their potentials, minus the blue masses times theirs, as large as possible gives exactly the cost of the best plan. Those are the numbers inside the vertices.</p>
+  <aside class="gloss"></aside>
 </div>
 <div class="pair">
-  <p>The cut is also a proof. A red vertex’s potential is 1 plus the number of its filled nodes, a blue vertex’s the number of its filled nodes, and these potentials satisfy every constraint of the dual. The plan is a second, smaller flow along the pairs where a constraint is tight, and it costs exactly <span class="math">3<i>A</i> − <i>F</i></span>, so no other plan can cost less.</p>
-  <aside class="gloss"></aside>
+  <p>The lower figure finds that numbering with one cut. Each vertex of the upper figure has two nodes in it, one in each band: a red vertex’s nodes ask whether its potential is at least 3 and at least 2, a blue vertex’s whether it is at least 2 and at least 1. An arc means that one yes forces another, so that no pair breaks the distance rule: an adjacent pair needs two arcs, a pair two steps apart one, a pair three apart none. The lines from <i>s</i> and to <i>t</i> carry the masses, a yes earning a red vertex’s mass and paying a blue one’s, and a minimum cut picks the answers worth the most. Its yes answers are the filled nodes, its arcs are the yellow ones, and its capacity <i>F</i> gives the cost, <span class="math"><i>W</i><sub>1</sub> = 3<i>A</i> − <i>F</i></span>, where <i>A</i> is the mass that moves.</p>
+  <aside class="gloss"><p>Rows are sorted by potential, so the yes answers gather at the top of each band.</p></aside>
 </div>
 
 <h2>How it is computed</h2>
 <div class="pair">
-  <p>Everything runs in your browser from the two endpoints’ adjacency lists. A pair is at distance 1 if it is adjacent, 2 if it has a common neighbour, and 3 otherwise, since the edge itself joins any two of these vertices in three steps; no distance matrix is built and no linear program is solved. The maximum flow is Dinic’s algorithm on integer masses, so every number is an exact fraction.</p>
+  <p>Everything runs in your browser from the graph’s adjacency lists. The maximum flow is Dinic’s algorithm on integer masses, so every number is an exact fraction.</p>
   <aside class="gloss"></aside>
 </div>
 <div class="pair">
-  <p>The page draws the plain network. The paper’s solver, <a href="https://github.com/GiorgioMB/orcut">orcut</a>, also routes blocks of distance-2 pairs through relay nodes, merges vertices with the same neighbours and starts from a warm flow; these change the network but not the value. On both graphs here, every lazy value equals orcut’s, and every value for the three measures agrees with a linear program on breadth-first distances.</p>
-  <aside class="gloss"><p>The solver on its own is the Python package <a href="https://pypi.org/project/faster-or-curvature/">faster-or-curvature</a>.</p></aside>
-</div>
-<div class="pair">
-  <p>The karate club is <a href="https://www.jstor.org/stable/3629752">Zachary’s</a>, 34 members and 78 friendships. The random geometric graph is the one on the <a href="/projects/screening-map/">screening map</a>, the largest component of 800 random points in the unit square at expected degree 8, shown around the chosen edge.</p>
+  <p>The karate club is <a href="https://www.jstor.org/stable/3629752">Zachary’s</a>, 34 members and 78 friendships. The random geometric graph is the one on the <a href="/projects/screening-map/">screening map</a>, the largest component of 800 random points in the unit square at expected degree 8, shown at a fixed scale around the chosen edge.</p>
   <aside class="gloss"></aside>
 </div>
